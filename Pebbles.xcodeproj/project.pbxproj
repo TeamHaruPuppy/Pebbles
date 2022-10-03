@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		847B78A428E5E8D3000DC20A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B78A328E5E8D3000DC20A /* AppDelegate.swift */; };
-		847B78A628E5E8D3000DC20A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B78A528E5E8D3000DC20A /* SceneDelegate.swift */; };
 		847B78AD28E5E8D6000DC20A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847B78AC28E5E8D6000DC20A /* Assets.xcassets */; };
 		847B78B028E5E8D6000DC20A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847B78AE28E5E8D6000DC20A /* LaunchScreen.storyboard */; };
 		847B78BE28E9DA54000DC20A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B78BD28E9DA54000DC20A /* Constant.swift */; };
@@ -28,6 +27,10 @@
 		847B78DA28E9DAF1000DC20A /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B78D928E9DAF1000DC20A /* UIView.swift */; };
 		847B78DC28E9DAFE000DC20A /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B78DB28E9DAFE000DC20A /* Device.swift */; };
 		847B78DE28E9DB15000DC20A /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B78DD28E9DB15000DC20A /* IndicatorView.swift */; };
+		847B792F28EB6E34000DC20A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B792D28EB6E34000DC20A /* LoginViewController.swift */; };
+		847B793028EB6E34000DC20A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847B792E28EB6E34000DC20A /* LoginViewController.xib */; };
+		847B793B28EB78FB000DC20A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B793A28EB78FB000DC20A /* SceneDelegate.swift */; };
+		847B793D28EB7A6B000DC20A /* LaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 847B793C28EB7A6B000DC20A /* LaunchScreen.png */; };
 		F510E6A562B3BB2AA7547786 /* Pods_Pebbles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A174502E8721EB5D2107F2B /* Pods_Pebbles.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +39,6 @@
 		68D1D21C981C4D61E61FB5E9 /* Pods-Pebbles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pebbles.release.xcconfig"; path = "Target Support Files/Pods-Pebbles/Pods-Pebbles.release.xcconfig"; sourceTree = "<group>"; };
 		847B78A028E5E8D3000DC20A /* Pebbles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pebbles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847B78A328E5E8D3000DC20A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		847B78A528E5E8D3000DC20A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		847B78AC28E5E8D6000DC20A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		847B78AF28E5E8D6000DC20A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		847B78B128E5E8D6000DC20A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,6 +59,10 @@
 		847B78D928E9DAF1000DC20A /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		847B78DB28E9DAFE000DC20A /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		847B78DD28E9DB15000DC20A /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
+		847B792D28EB6E34000DC20A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		847B792E28EB6E34000DC20A /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		847B793A28EB78FB000DC20A /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		847B793C28EB7A6B000DC20A /* LaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreen.png; sourceTree = "<group>"; };
 		84D5A57114568676E81C6FE6 /* Pods-Pebbles.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pebbles.debug.xcconfig"; path = "Target Support Files/Pods-Pebbles/Pods-Pebbles.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,11 +109,12 @@
 			children = (
 				847B78B728E9D9C2000DC20A /* Configuration */,
 				847B78E128E9F98E000DC20A /* Models */,
-				847B78E428E9F9A5000DC20A /* Views */,
 				847B78E228E9F992000DC20A /* ViewModels */,
-				847B78AE28E5E8D6000DC20A /* LaunchScreen.storyboard */,
+				847B78E428E9F9A5000DC20A /* ViewController */,
+				847B792B28EB6CF0000DC20A /* Views */,
 				847B78DF28E9F849000DC20A /* AppDelegate */,
 				847B78E028E9F863000DC20A /* Resource */,
+				847B78AE28E5E8D6000DC20A /* LaunchScreen.storyboard */,
 				847B78B128E5E8D6000DC20A /* Info.plist */,
 			);
 			path = Pebbles;
@@ -179,8 +186,8 @@
 		847B78DF28E9F849000DC20A /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
+				847B793A28EB78FB000DC20A /* SceneDelegate.swift */,
 				847B78A328E5E8D3000DC20A /* AppDelegate.swift */,
-				847B78A528E5E8D3000DC20A /* SceneDelegate.swift */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -188,6 +195,7 @@
 		847B78E028E9F863000DC20A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				847B793128EB7669000DC20A /* LaunchScreen */,
 				847B78B928E9DA0F000DC20A /* Font */,
 				847B78AC28E5E8D6000DC20A /* Assets.xcassets */,
 			);
@@ -208,11 +216,36 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		847B78E428E9F9A5000DC20A /* Views */ = {
+		847B78E428E9F9A5000DC20A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		847B792B28EB6CF0000DC20A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				847B792C28EB6E11000DC20A /* Login */,
+			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		847B792C28EB6E11000DC20A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				847B792D28EB6E34000DC20A /* LoginViewController.swift */,
+				847B792E28EB6E34000DC20A /* LoginViewController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		847B793128EB7669000DC20A /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				847B793C28EB7A6B000DC20A /* LaunchScreen.png */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 		DEC977D147129968330FF911 /* Pods */ = {
@@ -285,7 +318,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				847B78B028E5E8D6000DC20A /* LaunchScreen.storyboard in Resources */,
+				847B793D28EB7A6B000DC20A /* LaunchScreen.png in Resources */,
 				847B78AD28E5E8D6000DC20A /* Assets.xcassets in Resources */,
+				847B793028EB6E34000DC20A /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,13 +381,14 @@
 				847B78D028E9DAC3000DC20A /* UIViewController.swift in Sources */,
 				847B78CC28E9DAA6000DC20A /* String.swift in Sources */,
 				847B78C028E9DA65000DC20A /* BaseViewController.swift in Sources */,
+				847B792F28EB6E34000DC20A /* LoginViewController.swift in Sources */,
 				847B78D628E9DAE7000DC20A /* UIImage.swift in Sources */,
 				847B78C828E9DA94000DC20A /* Date.swift in Sources */,
 				847B78D828E9DAED000DC20A /* UIImageView.swift in Sources */,
 				847B78CA28E9DA9B000DC20A /* UIColor.swift in Sources */,
 				847B78C428E9DA79000DC20A /* Font.swift in Sources */,
-				847B78A628E5E8D3000DC20A /* SceneDelegate.swift in Sources */,
 				847B78D428E9DADC000DC20A /* UIFont.swift in Sources */,
+				847B793B28EB78FB000DC20A /* SceneDelegate.swift in Sources */,
 				847B78DA28E9DAF1000DC20A /* UIView.swift in Sources */,
 				847B78CE28E9DAAE000DC20A /* UIButton.swift in Sources */,
 				847B78C228E9DA72000DC20A /* BaseTabbarViewController.swift in Sources */,

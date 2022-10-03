@@ -6,7 +6,7 @@ extension UIView {
         layer.masksToBounds = true
         layer.cornerRadius = 10
         layer.borderWidth = 0.5
-        layer.borderColor = UIColor.searchFieldBorderColor.cgColor
+       
         
         backView.layer.masksToBounds = false
         backView.layer.shadowOpacity = 1
@@ -19,6 +19,6 @@ extension UIView {
         layer.masksToBounds = true
         layer.cornerRadius = 4
         layer.borderWidth = 0
-        layer.borderColor = UIColor.searchFieldBorderColor.cgColor
+        
     }
 }
