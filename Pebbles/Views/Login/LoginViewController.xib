@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -11,37 +11,94 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Pebbles" customModuleProvider="target">
             <connections>
+                <outlet property="appleBtn" destination="RgV-3q-VIQ" id="Yw9-Ub-jYN"/>
+                <outlet property="btn_apple_action" destination="Brb-d7-rx8" id="kvf-k6-Dou"/>
+                <outlet property="btn_kakao_action" destination="1IK-uh-gnx" id="Y77-Km-7UX"/>
+                <outlet property="btn_naver_action" destination="ehe-iL-RgU" id="wAY-Hv-ixe"/>
+                <outlet property="kakaoBtn" destination="sZz-9I-myd" id="gcb-W7-dYY"/>
+                <outlet property="logo" destination="zjZ-GM-mu7" id="sel-fg-9c6"/>
+                <outlet property="naverBtn" destination="9Qj-kt-ICR" id="1jh-Hi-sU6"/>
+                <outlet property="signUpLabel" destination="Lin-HN-Pac" id="scI-u1-gIE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIK-ZG-2Em">
-                    <rect key="frame" x="183.5" y="438" width="47" height="20"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="로고(투명배경)" translatesAutoresizingMaskIntoConstraints="NO" id="zjZ-GM-mu7">
+                    <rect key="frame" x="44" y="219" width="287" height="287"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lin-HN-Pac">
+                    <rect key="frame" x="41.666666666666657" y="557" width="292" height="17"/>
                     <attributedString key="attributedText">
-                        <fragment content="테스트">
+                        <fragment content="간단한 회원가입">
                             <attributes>
-                                <font key="NSFont" size="18" name=".AppleSDGothicNeoI-Regular"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                <color key="NSColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <font key="NSFont" size="14" name="AppleSDGothicNeo-SemiBold"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="으로 오늘의 조약돌을 시작 해볼까요?">
+                            <attributes>
+                                <color key="NSColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>
                     </attributedString>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Brb-d7-rx8" userLabel="btn_apple_action">
+                    <rect key="frame" x="144" y="628" width="24" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain"/>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="btn_apple" translatesAutoresizingMaskIntoConstraints="NO" id="RgV-3q-VIQ">
+                    <rect key="frame" x="20" y="609" width="335" height="50"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1IK-uh-gnx" userLabel="btn_kakao_action">
+                    <rect key="frame" x="185" y="688" width="24" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain"/>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="btn_kakao" translatesAutoresizingMaskIntoConstraints="NO" id="sZz-9I-myd">
+                    <rect key="frame" x="20" y="669" width="335" height="50"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehe-iL-RgU" userLabel="btn_naver_action">
+                    <rect key="frame" x="185" y="748" width="24" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain"/>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="btn_naver" translatesAutoresizingMaskIntoConstraints="NO" id="9Qj-kt-ICR">
+                    <rect key="frame" x="20" y="729" width="335" height="50"/>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="PIK-ZG-2Em" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="0HK-S5-Qk7"/>
-                <constraint firstItem="PIK-ZG-2Em" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="vH6-31-Cnd"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zjZ-GM-mu7" secondAttribute="trailing" constant="44" id="6dO-DO-ncJ"/>
+                <constraint firstItem="RgV-3q-VIQ" firstAttribute="top" secondItem="Lin-HN-Pac" secondAttribute="bottom" constant="35" id="EKP-OC-ipX"/>
+                <constraint firstItem="Lin-HN-Pac" firstAttribute="top" secondItem="zjZ-GM-mu7" secondAttribute="bottom" constant="51" id="EQo-o9-qmy"/>
+                <constraint firstItem="zjZ-GM-mu7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="175" id="IaO-BO-a4C"/>
+                <constraint firstItem="9Qj-kt-ICR" firstAttribute="top" secondItem="sZz-9I-myd" secondAttribute="bottom" constant="10" id="VVK-G5-xz6"/>
+                <constraint firstItem="zjZ-GM-mu7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="44" id="b5j-Xw-PPw"/>
+                <constraint firstItem="sZz-9I-myd" firstAttribute="top" secondItem="RgV-3q-VIQ" secondAttribute="bottom" constant="10" id="dh2-w0-mbT"/>
+                <constraint firstItem="Lin-HN-Pac" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="tKR-KC-C5c"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="139"/>
+            <point key="canvasLocation" x="138.40000000000001" y="138.91625615763547"/>
         </view>
     </objects>
     <resources>
+        <image name="btn_apple" width="335" height="50"/>
+        <image name="btn_kakao" width="335" height="50"/>
+        <image name="btn_naver" width="335" height="50"/>
+        <image name="로고(투명배경)" width="287" height="287"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
