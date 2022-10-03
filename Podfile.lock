@@ -1,0 +1,48 @@
+PODS:
+  - Alamofire (5.6.1)
+  - KakaoSDKAuth (2.10.1):
+    - KakaoSDKCommon (= 2.10.1)
+  - KakaoSDKCommon (2.10.1):
+    - KakaoSDKCommon/Common (= 2.10.1)
+    - KakaoSDKCommon/Network (= 2.10.1)
+  - KakaoSDKCommon/Common (2.10.1)
+  - KakaoSDKCommon/Network (2.10.1):
+    - Alamofire (~> 5.1)
+    - KakaoSDKCommon/Common (= 2.10.1)
+  - KakaoSDKUser (2.10.1):
+    - KakaoSDKAuth (= 2.10.1)
+  - Kingfisher (7.2.2)
+  - SnapKit (5.6.0)
+  - Then (3.0.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - KakaoSDKAuth
+  - KakaoSDKCommon
+  - KakaoSDKUser
+  - Kingfisher
+  - SnapKit
+  - Then
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - KakaoSDKAuth
+    - KakaoSDKCommon
+    - KakaoSDKUser
+    - Kingfisher
+    - SnapKit
+    - Then
+
+SPEC CHECKSUMS:
+  Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
+  KakaoSDKAuth: b4fec62192c2ac8a9375847f666c0932e38afeb5
+  KakaoSDKCommon: 4989e3bae5f4884903bc1df7134e13d0e903d587
+  KakaoSDKUser: 5c5fd4b5864e8b5ac9587fdbb473daf2fa675abf
+  Kingfisher: 184d4d1a8c36666e663caf8e08abe87898595c53
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
+
+PODFILE CHECKSUM: 41f7094eec5d66c7329bd7408766a686bc9dd0f5
+
+COCOAPODS: 1.11.2
