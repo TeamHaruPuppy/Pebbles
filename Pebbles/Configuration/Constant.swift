@@ -4,5 +4,7 @@ import UIKit
 struct Constant {
     
     static let BASE_URL = " "
+    static let edgeWidth = 375 / UIScreen.main.bounds.width
+    static let edgeHeight = 812 / UIScreen.main.bounds.height
 }
 
