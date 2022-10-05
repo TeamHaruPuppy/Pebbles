@@ -64,6 +64,9 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain"/>
+                    <connections>
+                        <action selector="kakaoBtnTapped:" destination="-1" eventType="touchUpInside" id="eFY-a9-Bf9"/>
+                    </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="btn_kakao" translatesAutoresizingMaskIntoConstraints="NO" id="sZz-9I-myd">
                     <rect key="frame" x="20" y="669" width="335" height="50"/>

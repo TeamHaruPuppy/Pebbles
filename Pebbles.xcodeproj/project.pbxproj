@@ -13,8 +13,6 @@
 		847B78BE28E9DA54000DC20A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B78BD28E9DA54000DC20A /* Constant.swift */; };
 		847B78C028E9DA65000DC20A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B78BF28E9DA65000DC20A /* BaseViewController.swift */; };
 		847B78C228E9DA72000DC20A /* BaseTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B78C128E9DA72000DC20A /* BaseTabbarViewController.swift */; };
-		847B78C428E9DA79000DC20A /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B78C328E9DA79000DC20A /* Font.swift */; };
-		847B78C628E9DA8D000DC20A /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B78C528E9DA8D000DC20A /* Secret.swift */; };
 		847B78C828E9DA94000DC20A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B78C728E9DA94000DC20A /* Date.swift */; };
 		847B78CA28E9DA9B000DC20A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B78C928E9DA9B000DC20A /* UIColor.swift */; };
 		847B78CC28E9DAA6000DC20A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B78CB28E9DAA6000DC20A /* String.swift */; };
@@ -31,6 +29,18 @@
 		847B793028EB6E34000DC20A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847B792E28EB6E34000DC20A /* LoginViewController.xib */; };
 		847B793B28EB78FB000DC20A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B793A28EB78FB000DC20A /* SceneDelegate.swift */; };
 		847B793D28EB7A6B000DC20A /* LaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 847B793C28EB7A6B000DC20A /* LaunchScreen.png */; };
+		847B794228EB95A7000DC20A /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B794128EB95A7000DC20A /* Secret.swift */; };
+		847B794A28EC4CBF000DC20A /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B794828EC4CBF000DC20A /* SignUp.swift */; };
+		847B794B28EC4CBF000DC20A /* SignUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847B794928EC4CBF000DC20A /* SignUp.xib */; };
+		847B797228EC5C0D000DC20A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B797028EC5C0D000DC20A /* HomeViewController.swift */; };
+		847B797328EC5C0D000DC20A /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847B797128EC5C0D000DC20A /* HomeViewController.xib */; };
+		847B797F28EC7556000DC20A /* WriteNickNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B797E28EC7556000DC20A /* WriteNickNameViewModel.swift */; };
+		847B798128EC757C000DC20A /* WriteFutureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B798028EC757C000DC20A /* WriteFutureViewModel.swift */; };
+		847B799B28ECA90B000DC20A /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B799A28ECA90B000DC20A /* XibView.swift */; };
+		847B799F28ECCEA6000DC20A /* NicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B799E28ECCEA5000DC20A /* NicknameView.swift */; };
+		847B79A128ECCEB3000DC20A /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B79A028ECCEB3000DC20A /* GoalView.swift */; };
+		847B79A328ECCEC2000DC20A /* NicknameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847B79A228ECCEC2000DC20A /* NicknameView.xib */; };
+		847B79A528ECCEC9000DC20A /* GoalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847B79A428ECCEC9000DC20A /* GoalView.xib */; };
 		F510E6A562B3BB2AA7547786 /* Pods_Pebbles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A174502E8721EB5D2107F2B /* Pods_Pebbles.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,8 +55,6 @@
 		847B78BD28E9DA54000DC20A /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		847B78BF28E9DA65000DC20A /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		847B78C128E9DA72000DC20A /* BaseTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabbarViewController.swift; sourceTree = "<group>"; };
-		847B78C328E9DA79000DC20A /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
-		847B78C528E9DA8D000DC20A /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		847B78C728E9DA94000DC20A /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		847B78C928E9DA9B000DC20A /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		847B78CB28E9DAA6000DC20A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -63,6 +71,18 @@
 		847B792E28EB6E34000DC20A /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		847B793A28EB78FB000DC20A /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		847B793C28EB7A6B000DC20A /* LaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreen.png; sourceTree = "<group>"; };
+		847B794128EB95A7000DC20A /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
+		847B794828EC4CBF000DC20A /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		847B794928EC4CBF000DC20A /* SignUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUp.xib; sourceTree = "<group>"; };
+		847B797028EC5C0D000DC20A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		847B797128EC5C0D000DC20A /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		847B797E28EC7556000DC20A /* WriteNickNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteNickNameViewModel.swift; sourceTree = "<group>"; };
+		847B798028EC757C000DC20A /* WriteFutureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteFutureViewModel.swift; sourceTree = "<group>"; };
+		847B799A28ECA90B000DC20A /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
+		847B799E28ECCEA5000DC20A /* NicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameView.swift; sourceTree = "<group>"; };
+		847B79A028ECCEB3000DC20A /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
+		847B79A228ECCEC2000DC20A /* NicknameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NicknameView.xib; sourceTree = "<group>"; };
+		847B79A428ECCEC9000DC20A /* GoalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalView.xib; sourceTree = "<group>"; };
 		84D5A57114568676E81C6FE6 /* Pods-Pebbles.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pebbles.debug.xcconfig"; path = "Target Support Files/Pods-Pebbles/Pods-Pebbles.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +127,7 @@
 		847B78A228E5E8D3000DC20A /* Pebbles */ = {
 			isa = PBXGroup;
 			children = (
+				847B799C28ECCABC000DC20A /* Services */,
 				847B78B728E9D9C2000DC20A /* Configuration */,
 				847B78E128E9F98E000DC20A /* Models */,
 				847B78E228E9F992000DC20A /* ViewModels */,
@@ -123,9 +144,9 @@
 		847B78B728E9D9C2000DC20A /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				847B794028EB958B000DC20A /* Secret */,
 				847B78BC28E9DA23000DC20A /* CustomClass */,
 				847B78BB28E9DA16000DC20A /* Extension */,
-				847B78BA28E9DA13000DC20A /* Secret */,
 				847B78B828E9DA06000DC20A /* Base */,
 				847B78BD28E9DA54000DC20A /* Constant.swift */,
 			);
@@ -139,22 +160,6 @@
 				847B78C128E9DA72000DC20A /* BaseTabbarViewController.swift */,
 			);
 			path = Base;
-			sourceTree = "<group>";
-		};
-		847B78B928E9DA0F000DC20A /* Font */ = {
-			isa = PBXGroup;
-			children = (
-				847B78C328E9DA79000DC20A /* Font.swift */,
-			);
-			path = Font;
-			sourceTree = "<group>";
-		};
-		847B78BA28E9DA13000DC20A /* Secret */ = {
-			isa = PBXGroup;
-			children = (
-				847B78C528E9DA8D000DC20A /* Secret.swift */,
-			);
-			path = Secret;
 			sourceTree = "<group>";
 		};
 		847B78BB28E9DA16000DC20A /* Extension */ = {
@@ -179,6 +184,7 @@
 			children = (
 				847B78DB28E9DAFE000DC20A /* Device.swift */,
 				847B78DD28E9DB15000DC20A /* IndicatorView.swift */,
+				847B799A28ECA90B000DC20A /* XibView.swift */,
 			);
 			path = CustomClass;
 			sourceTree = "<group>";
@@ -196,7 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				847B793128EB7669000DC20A /* LaunchScreen */,
-				847B78B928E9DA0F000DC20A /* Font */,
 				847B78AC28E5E8D6000DC20A /* Assets.xcassets */,
 			);
 			path = Resource;
@@ -212,6 +217,7 @@
 		847B78E228E9F992000DC20A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				847B797428EC6FBC000DC20A /* Login */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -226,18 +232,20 @@
 		847B792B28EB6CF0000DC20A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				847B792C28EB6E11000DC20A /* Login */,
+				847B796F28EC5BFD000DC20A /* HomePage */,
+				847B792C28EB6E11000DC20A /* LoginPage */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		847B792C28EB6E11000DC20A /* Login */ = {
+		847B792C28EB6E11000DC20A /* LoginPage */ = {
 			isa = PBXGroup;
 			children = (
 				847B792D28EB6E34000DC20A /* LoginViewController.swift */,
 				847B792E28EB6E34000DC20A /* LoginViewController.xib */,
+				847B794328EC4BEB000DC20A /* SignUpPage */,
 			);
-			path = Login;
+			path = LoginPage;
 			sourceTree = "<group>";
 		};
 		847B793128EB7669000DC20A /* LaunchScreen */ = {
@@ -246,6 +254,68 @@
 				847B793C28EB7A6B000DC20A /* LaunchScreen.png */,
 			);
 			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		847B794028EB958B000DC20A /* Secret */ = {
+			isa = PBXGroup;
+			children = (
+				847B794128EB95A7000DC20A /* Secret.swift */,
+			);
+			path = Secret;
+			sourceTree = "<group>";
+		};
+		847B794328EC4BEB000DC20A /* SignUpPage */ = {
+			isa = PBXGroup;
+			children = (
+				847B794828EC4CBF000DC20A /* SignUp.swift */,
+				847B794928EC4CBF000DC20A /* SignUp.xib */,
+				847B799D28ECCE8C000DC20A /* WriteInfo */,
+			);
+			path = SignUpPage;
+			sourceTree = "<group>";
+		};
+		847B796F28EC5BFD000DC20A /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				847B797028EC5C0D000DC20A /* HomeViewController.swift */,
+				847B797128EC5C0D000DC20A /* HomeViewController.xib */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		847B797428EC6FBC000DC20A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				847B797528EC6FC0000DC20A /* SignUp */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		847B797528EC6FC0000DC20A /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				847B797E28EC7556000DC20A /* WriteNickNameViewModel.swift */,
+				847B798028EC757C000DC20A /* WriteFutureViewModel.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		847B799C28ECCABC000DC20A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		847B799D28ECCE8C000DC20A /* WriteInfo */ = {
+			isa = PBXGroup;
+			children = (
+				847B799E28ECCEA5000DC20A /* NicknameView.swift */,
+				847B79A228ECCEC2000DC20A /* NicknameView.xib */,
+				847B79A028ECCEB3000DC20A /* GoalView.swift */,
+				847B79A428ECCEC9000DC20A /* GoalView.xib */,
+			);
+			path = WriteInfo;
 			sourceTree = "<group>";
 		};
 		DEC977D147129968330FF911 /* Pods */ = {
@@ -317,10 +387,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847B794B28EC4CBF000DC20A /* SignUp.xib in Resources */,
 				847B78B028E5E8D6000DC20A /* LaunchScreen.storyboard in Resources */,
+				847B79A328ECCEC2000DC20A /* NicknameView.xib in Resources */,
+				847B79A528ECCEC9000DC20A /* GoalView.xib in Resources */,
 				847B793D28EB7A6B000DC20A /* LaunchScreen.png in Resources */,
 				847B78AD28E5E8D6000DC20A /* Assets.xcassets in Resources */,
 				847B793028EB6E34000DC20A /* LoginViewController.xib in Resources */,
+				847B797328EC5C0D000DC20A /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,21 +450,27 @@
 				847B78DE28E9DB15000DC20A /* IndicatorView.swift in Sources */,
 				847B78A428E5E8D3000DC20A /* AppDelegate.swift in Sources */,
 				847B78D228E9DAD6000DC20A /* UINavigationBar.swift in Sources */,
-				847B78C628E9DA8D000DC20A /* Secret.swift in Sources */,
 				847B78DC28E9DAFE000DC20A /* Device.swift in Sources */,
 				847B78D028E9DAC3000DC20A /* UIViewController.swift in Sources */,
+				847B797228EC5C0D000DC20A /* HomeViewController.swift in Sources */,
 				847B78CC28E9DAA6000DC20A /* String.swift in Sources */,
+				847B798128EC757C000DC20A /* WriteFutureViewModel.swift in Sources */,
 				847B78C028E9DA65000DC20A /* BaseViewController.swift in Sources */,
 				847B792F28EB6E34000DC20A /* LoginViewController.swift in Sources */,
 				847B78D628E9DAE7000DC20A /* UIImage.swift in Sources */,
+				847B794228EB95A7000DC20A /* Secret.swift in Sources */,
 				847B78C828E9DA94000DC20A /* Date.swift in Sources */,
 				847B78D828E9DAED000DC20A /* UIImageView.swift in Sources */,
 				847B78CA28E9DA9B000DC20A /* UIColor.swift in Sources */,
-				847B78C428E9DA79000DC20A /* Font.swift in Sources */,
+				847B799F28ECCEA6000DC20A /* NicknameView.swift in Sources */,
 				847B78D428E9DADC000DC20A /* UIFont.swift in Sources */,
+				847B794A28EC4CBF000DC20A /* SignUp.swift in Sources */,
 				847B793B28EB78FB000DC20A /* SceneDelegate.swift in Sources */,
 				847B78DA28E9DAF1000DC20A /* UIView.swift in Sources */,
 				847B78CE28E9DAAE000DC20A /* UIButton.swift in Sources */,
+				847B799B28ECA90B000DC20A /* XibView.swift in Sources */,
+				847B797F28EC7556000DC20A /* WriteNickNameViewModel.swift in Sources */,
+				847B79A128ECCEB3000DC20A /* GoalView.swift in Sources */,
 				847B78C228E9DA72000DC20A /* BaseTabbarViewController.swift in Sources */,
 				847B78BE28E9DA54000DC20A /* Constant.swift in Sources */,
 			);
