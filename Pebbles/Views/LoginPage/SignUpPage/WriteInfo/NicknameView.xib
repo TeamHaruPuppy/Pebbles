@@ -27,7 +27,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBO-RO-MZg">
-                    <rect key="frame" x="20" y="103" width="214" height="18.5"/>
+                    <rect key="frame" x="20" y="103" width="214" height="18"/>
                     <attributedString key="attributedText">
                         <fragment content="설정 된 닉네임은 수정이 불가합니다.">
                             <attributes>
@@ -38,7 +38,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="특수문자는 사용할 수 없습니다." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Fh-DS-dRd">
-                    <rect key="frame" x="20" y="146.5" width="374" height="50"/>
+                    <rect key="frame" x="20" y="146" width="374" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="oTM-3N-ZMp"/>
                     </constraints>
@@ -46,12 +46,28 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZF-Lf-G50">
-                    <rect key="frame" x="322" y="156" width="67" height="31"/>
+                    <rect key="frame" x="323" y="153" width="65" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="2Ib-C2-EH7"/>
+                        <constraint firstAttribute="width" constant="65" id="kxm-xk-YXn"/>
+                    </constraints>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain">
+                        <attributedString key="attributedTitle">
+                            <fragment content="중복 확인">
+                                <attributes>
+                                    <font key="NSFont" size="11" name="AppleSDGothicNeo-Regular"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="repetCheckTapped:" destination="-1" eventType="touchUpInside" id="QbC-MX-qUn"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQj-7b-xSz">
-                    <rect key="frame" x="358" y="202.5" width="28" height="17"/>
+                    <rect key="frame" x="358" y="202" width="28" height="17"/>
                     <attributedString key="attributedText">
                         <fragment content="0 / 5">
                             <attributes>
@@ -63,7 +79,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3A9-zZ-iT1">
-                    <rect key="frame" x="28" y="204" width="137" height="17"/>
+                    <rect key="frame" x="28" y="203.5" width="137" height="17"/>
                     <attributedString key="attributedText">
                         <fragment content="일반적으로는 안보여야함">
                             <attributes>
@@ -89,8 +105,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="KQj-7b-xSz" secondAttribute="trailing" constant="28" id="ldD-CP-Van"/>
                 <constraint firstItem="pBO-RO-MZg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="mmn-Y7-5O8"/>
                 <constraint firstItem="pBO-RO-MZg" firstAttribute="top" secondItem="7wv-kw-YOn" secondAttribute="bottom" constant="8" id="nrw-70-VlK"/>
-                <constraint firstItem="hZF-Lf-G50" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="322" id="r4g-fV-zhZ"/>
-                <constraint firstItem="hZF-Lf-G50" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="112" id="vfi-VM-gdm"/>
+                <constraint firstItem="6Fh-DS-dRd" firstAttribute="trailing" secondItem="hZF-Lf-G50" secondAttribute="trailing" constant="6" id="r4g-fV-zhZ"/>
                 <constraint firstItem="7wv-kw-YOn" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="27" id="wQd-NJ-K9W"/>
             </constraints>
             <point key="canvasLocation" x="139" y="104"/>

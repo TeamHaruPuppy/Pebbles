@@ -4,10 +4,23 @@ import UIKit
 
 class WriteNickNameViewModel {
     
-    let name = BehaviorSubject<String>(value: "")
-    let nameCount = BehaviorSubject<Int>(value: 0)
+    let input = Input()
+    let output = Output()
     
-    init(){
+    struct Input {
         
     }
+    
+    struct Output{
+        
+    }
+    
+    
+    //    let nicknameObservable = BehaviorSubject<String>(value: "")
+    //
+    //    var nicknameCount: Int = 0
+    //
+    //    init(){
+    //
+    //    }
 }
