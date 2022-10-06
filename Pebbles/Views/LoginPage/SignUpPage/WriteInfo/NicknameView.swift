@@ -7,22 +7,25 @@
 
 import UIKit
 
-class NicknameView: UIView {
+open class NicknameView: UIView, UITextFieldDelegate {
     
     let nicknameViewModel = WriteNickNameViewModel()
     
-    override init(frame: CGRect) {
+//    @IBOutlet weak var textField: UITextField!
+    
+    
+    
+    public override init(frame: CGRect) {
         super.init(frame: frame)
-        
         
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
     @IBAction func repetCheckTapped(_ sender: Any) {
-        
+     print("중복확인")
     }
     
 }

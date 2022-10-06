@@ -127,8 +127,8 @@
 		847B78A228E5E8D3000DC20A /* Pebbles */ = {
 			isa = PBXGroup;
 			children = (
-				847B799C28ECCABC000DC20A /* Services */,
 				847B78B728E9D9C2000DC20A /* Configuration */,
+				847B799C28ECCABC000DC20A /* Services */,
 				847B78E128E9F98E000DC20A /* Models */,
 				847B78E228E9F992000DC20A /* ViewModels */,
 				847B78E428E9F9A5000DC20A /* ViewController */,

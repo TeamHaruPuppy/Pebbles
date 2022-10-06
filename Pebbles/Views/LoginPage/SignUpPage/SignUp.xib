@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,8 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUp" customModule="Pebbles" customModuleProvider="target">
             <connections>
                 <outlet property="appBar" destination="mtt-UP-2cN" id="cST-TF-muM"/>
+                <outlet property="btnView" destination="aBw-bP-cPa" id="L7y-xH-x0g"/>
                 <outlet property="dissmissBtn" destination="Uy7-2k-GOs" id="IeD-9M-MVE"/>
-                <outlet property="nextCompleBtn" destination="arV-M1-OeX" id="Mh1-dS-OMW"/>
+                <outlet property="nextCompleBtn" destination="w4C-Rp-TN1" id="Wbk-gc-wlp"/>
                 <outlet property="scrollView" destination="U16-9A-M7O" id="smI-zp-nzy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -24,10 +25,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mtt-UP-2cN">
-                    <rect key="frame" x="0.0" y="44" width="375" height="56"/>
+                    <rect key="frame" x="0.0" y="47" width="375" height="56"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mb5-g0-h6g">
-                            <rect key="frame" x="156.33333333333334" y="17.333333333333336" width="62.333333333333343" height="21.666666666666664"/>
+                            <rect key="frame" x="156.33333333333334" y="17.333333333333329" width="62.333333333333343" height="21.666666666666671"/>
                             <attributedString key="attributedText">
                                 <fragment content="회원가입">
                                     <attributes>
@@ -44,8 +45,8 @@
                                 <constraint firstAttribute="width" constant="24" id="O9W-bY-oOG"/>
                             </constraints>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uy7-2k-GOs">
-                            <rect key="frame" x="16" y="13" width="31" height="31"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uy7-2k-GOs">
+                            <rect key="frame" x="16" y="11" width="30" height="34"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal">
                                 <attributedString key="attributedTitle"/>
@@ -71,29 +72,39 @@
                     <viewLayoutGuide key="contentLayoutGuide" id="oAz-nc-mFv"/>
                     <viewLayoutGuide key="frameLayoutGuide" id="xCf-2w-sBJ"/>
                 </scrollView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arV-M1-OeX">
-                    <rect key="frame" x="20" y="678" width="335" height="50"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aBw-bP-cPa">
+                    <rect key="frame" x="20" y="648" width="335" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w4C-Rp-TN1">
+                            <rect key="frame" x="4" y="4" width="327" height="42"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                            <connections>
+                                <action selector="nextCompleBtnTapped:" destination="-1" eventType="touchUpInside" id="rMH-VJ-6eY"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="vFe-g6-X5S"/>
+                        <constraint firstItem="w4C-Rp-TN1" firstAttribute="top" secondItem="aBw-bP-cPa" secondAttribute="top" constant="4" id="2MG-oc-vhJ"/>
+                        <constraint firstItem="w4C-Rp-TN1" firstAttribute="leading" secondItem="aBw-bP-cPa" secondAttribute="leading" constant="4" id="3Yv-sZ-Njk"/>
+                        <constraint firstAttribute="height" constant="50" id="DNA-qG-U2n"/>
+                        <constraint firstAttribute="bottom" secondItem="w4C-Rp-TN1" secondAttribute="bottom" constant="4" id="bWF-gT-Ttp"/>
+                        <constraint firstAttribute="trailing" secondItem="w4C-Rp-TN1" secondAttribute="trailing" constant="4" id="qhH-tX-mTm"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="filled" title="다음"/>
-                    <connections>
-                        <action selector="nextCompleBtnTapped:" destination="-1" eventType="touchUpInside" id="QT3-2K-fDf"/>
-                    </connections>
-                </button>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="U16-9A-M7O" secondAttribute="bottom" id="1hQ-Nj-Nxp"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="aBw-bP-cPa" secondAttribute="trailing" constant="20" id="5Cc-bY-8US"/>
                 <constraint firstItem="mtt-UP-2cN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="8o5-U7-aoA"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="arV-M1-OeX" secondAttribute="bottom" constant="50" id="BW7-Qg-f45"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="arV-M1-OeX" secondAttribute="trailing" constant="20" id="JrV-In-RGZ"/>
-                <constraint firstItem="arV-M1-OeX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Yb5-6Q-NLC"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="aBw-bP-cPa" secondAttribute="bottom" constant="80" id="REp-gm-xZe"/>
                 <constraint firstItem="U16-9A-M7O" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ZrS-S4-39T"/>
                 <constraint firstItem="U16-9A-M7O" firstAttribute="top" secondItem="mtt-UP-2cN" secondAttribute="bottom" id="b27-6B-0r9"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mtt-UP-2cN" secondAttribute="trailing" id="ccl-lU-wTK"/>
+                <constraint firstItem="aBw-bP-cPa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="cmC-3j-16s"/>
                 <constraint firstItem="mtt-UP-2cN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="f0o-Ju-XKt"/>
                 <constraint firstItem="U16-9A-M7O" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="wFy-DL-2bB"/>
             </constraints>
@@ -101,7 +112,7 @@
         </view>
     </objects>
     <resources>
-        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="chevron.left" catalog="system" width="97" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
