@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8439D46328F0B97000D9161C /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439D46228F0B96F00D9161C /* UITextField.swift */; };
 		847B78A428E5E8D3000DC20A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B78A328E5E8D3000DC20A /* AppDelegate.swift */; };
 		847B78AD28E5E8D6000DC20A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847B78AC28E5E8D6000DC20A /* Assets.xcassets */; };
 		847B78B028E5E8D6000DC20A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847B78AE28E5E8D6000DC20A /* LaunchScreen.storyboard */; };
@@ -41,12 +42,14 @@
 		847B79A128ECCEB3000DC20A /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B79A028ECCEB3000DC20A /* GoalView.swift */; };
 		847B79A328ECCEC2000DC20A /* NicknameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847B79A228ECCEC2000DC20A /* NicknameView.xib */; };
 		847B79A528ECCEC9000DC20A /* GoalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847B79A428ECCEC9000DC20A /* GoalView.xib */; };
+		84F4765828EF830300B6F755 /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F4765728EF830300B6F755 /* UIScrollView.swift */; };
 		F510E6A562B3BB2AA7547786 /* Pods_Pebbles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A174502E8721EB5D2107F2B /* Pods_Pebbles.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4A174502E8721EB5D2107F2B /* Pods_Pebbles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pebbles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68D1D21C981C4D61E61FB5E9 /* Pods-Pebbles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pebbles.release.xcconfig"; path = "Target Support Files/Pods-Pebbles/Pods-Pebbles.release.xcconfig"; sourceTree = "<group>"; };
+		8439D46228F0B96F00D9161C /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		847B78A028E5E8D3000DC20A /* Pebbles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pebbles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847B78A328E5E8D3000DC20A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		847B78AC28E5E8D6000DC20A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,6 +87,7 @@
 		847B79A228ECCEC2000DC20A /* NicknameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NicknameView.xib; sourceTree = "<group>"; };
 		847B79A428ECCEC9000DC20A /* GoalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalView.xib; sourceTree = "<group>"; };
 		84D5A57114568676E81C6FE6 /* Pods-Pebbles.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pebbles.debug.xcconfig"; path = "Target Support Files/Pods-Pebbles/Pods-Pebbles.debug.xcconfig"; sourceTree = "<group>"; };
+		84F4765728EF830300B6F755 /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +179,8 @@
 				847B78D528E9DAE7000DC20A /* UIImage.swift */,
 				847B78D728E9DAED000DC20A /* UIImageView.swift */,
 				847B78D928E9DAF1000DC20A /* UIView.swift */,
+				84F4765728EF830300B6F755 /* UIScrollView.swift */,
+				8439D46228F0B96F00D9161C /* UITextField.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -468,7 +474,9 @@
 				847B793B28EB78FB000DC20A /* SceneDelegate.swift in Sources */,
 				847B78DA28E9DAF1000DC20A /* UIView.swift in Sources */,
 				847B78CE28E9DAAE000DC20A /* UIButton.swift in Sources */,
+				84F4765828EF830300B6F755 /* UIScrollView.swift in Sources */,
 				847B799B28ECA90B000DC20A /* XibView.swift in Sources */,
+				8439D46328F0B97000D9161C /* UITextField.swift in Sources */,
 				847B797F28EC7556000DC20A /* WriteNickNameViewModel.swift in Sources */,
 				847B79A128ECCEB3000DC20A /* GoalView.swift in Sources */,
 				847B78C228E9DA72000DC20A /* BaseTabbarViewController.swift in Sources */,

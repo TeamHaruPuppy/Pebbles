@@ -33,6 +33,6 @@ extension UIColor {
     class var Main_30: UIColor {UIColor(hex: 0x35A3FF) }
     class var Main_20: UIColor {UIColor(hex: 0x5CB4FF) }
     class var Main_10: UIColor {UIColor(hex: 0x82C6FF) }
-    
+    class var Main_BG: UIColor {UIColor(hex: 0xF1F7FF)}
     
 }

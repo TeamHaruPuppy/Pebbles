@@ -86,7 +86,7 @@ class LoginViewController: UIViewController {
         signUpViewController.modalPresentationStyle = .overFullScreen
         self.present(signUpViewController, animated: true, completion: nil)
         
-        print(111)
+        print("-------카카오 로그인을 눌렀네??-------")
         
         //        // 카카오톡 설치 여부 확인
         //        if (UserApi.isKakaoTalkLoginAvailable()) {

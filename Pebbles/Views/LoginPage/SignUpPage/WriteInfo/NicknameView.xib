@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NicknameView" customModule="Pebbles" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NicknameView" customModule="Pebbles" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wv-kw-YOn">
-                    <rect key="frame" x="20" y="71" width="189" height="24"/>
+                    <rect key="frame" x="20" y="75" width="189" height="24"/>
                     <attributedString key="attributedText">
                         <fragment content="닉네임을 입력 해 주세요">
                             <attributes>
+                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" size="20" name="AppleSDGothicNeo-Bold"/>
                             </attributes>
                         </fragment>
@@ -27,10 +27,11 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBO-RO-MZg">
-                    <rect key="frame" x="20" y="103" width="214" height="18"/>
+                    <rect key="frame" x="20" y="107" width="214" height="18"/>
                     <attributedString key="attributedText">
                         <fragment content="설정 된 닉네임은 수정이 불가합니다.">
                             <attributes>
+                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" size="15" name="AppleSDGothicNeo-Regular"/>
                             </attributes>
                         </fragment>
@@ -38,36 +39,64 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="특수문자는 사용할 수 없습니다." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Fh-DS-dRd">
-                    <rect key="frame" x="20" y="146" width="374" height="50"/>
+                    <rect key="frame" x="20" y="150" width="374" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="oTM-3N-ZMp"/>
                     </constraints>
                     <attributedString key="attributedText"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZF-Lf-G50">
-                    <rect key="frame" x="323" y="153" width="65" height="36"/>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hZF-Lf-G50">
+                    <rect key="frame" x="339" y="157" width="49" height="36"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="2Ib-C2-EH7"/>
-                        <constraint firstAttribute="width" constant="65" id="kxm-xk-YXn"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain">
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Button">
                         <attributedString key="attributedTitle">
                             <fragment content="중복 확인">
                                 <attributes>
-                                    <font key="NSFont" size="11" name="AppleSDGothicNeo-Regular"/>
+                                    <color key="NSColor" red="0.20784313725490194" green="0.63921568627450975" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <font key="NSFont" size="13" name="AppleSDGothicNeo-Regular"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>
                         </attributedString>
-                    </buttonConfiguration>
+                    </state>
+                    <state key="disabled">
+                        <attributedString key="attributedTitle">
+                            <fragment content="중복">
+                                <attributes>
+                                    <color key="NSColor" red="0.79607843137254897" green="0.81568627450980391" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <font key="NSFont" size="13" name="AppleSDGothicNeo-Regular"/>
+                                    <font key="NSOriginalFont" size="13" name="AppleSDGothicNeo-Regular"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                            <fragment content=" ">
+                                <attributes>
+                                    <color key="NSColor" red="0.79607843137254897" green="0.81568627450980391" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <font key="NSFont" size="13" name="AppleSDGothicNeo-Regular"/>
+                                    <font key="NSOriginalFont" size="13" name="AppleSDGothicNeo-Regular"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                            <fragment content="확인">
+                                <attributes>
+                                    <color key="NSColor" red="0.79607843137254897" green="0.81568627450980391" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <font key="NSFont" size="13" name="AppleSDGothicNeo-Regular"/>
+                                    <font key="NSOriginalFont" size="13" name="AppleSDGothicNeo-Regular"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                    </state>
                     <connections>
-                        <action selector="repetCheckTapped:" destination="-1" eventType="touchUpInside" id="QbC-MX-qUn"/>
+                        <action selector="repeatedCheckBtnTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Bf1-Ts-7Bp"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQj-7b-xSz">
-                    <rect key="frame" x="358" y="202" width="28" height="17"/>
+                    <rect key="frame" x="358" y="206" width="28" height="17"/>
                     <attributedString key="attributedText">
                         <fragment content="0 / 5">
                             <attributes>
@@ -79,10 +108,11 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3A9-zZ-iT1">
-                    <rect key="frame" x="28" y="203.5" width="137" height="17"/>
+                    <rect key="frame" x="28" y="207.5" width="137" height="17"/>
                     <attributedString key="attributedText">
                         <fragment content="일반적으로는 안보여야함">
                             <attributes>
+                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                             </attributes>
@@ -92,7 +122,7 @@
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="KQj-7b-xSz" firstAttribute="top" secondItem="6Fh-DS-dRd" secondAttribute="bottom" constant="6" id="6Vh-0J-UJZ"/>
                 <constraint firstItem="hZF-Lf-G50" firstAttribute="centerY" secondItem="6Fh-DS-dRd" secondAttribute="centerY" id="8O5-u2-wue"/>
@@ -108,12 +138,15 @@
                 <constraint firstItem="6Fh-DS-dRd" firstAttribute="trailing" secondItem="hZF-Lf-G50" secondAttribute="trailing" constant="6" id="r4g-fV-zhZ"/>
                 <constraint firstItem="7wv-kw-YOn" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="27" id="wQd-NJ-K9W"/>
             </constraints>
+            <connections>
+                <outlet property="errorMessageLabel" destination="3A9-zZ-iT1" id="3e0-Tf-8cV"/>
+                <outlet property="initialCount" destination="KQj-7b-xSz" id="aqE-FG-wmR"/>
+                <outlet property="mainTitleLabel" destination="7wv-kw-YOn" id="aia-YV-z78"/>
+                <outlet property="repeatedCheckBtn" destination="hZF-Lf-G50" id="z6Y-wb-OnH"/>
+                <outlet property="subTitleLabel" destination="pBO-RO-MZg" id="rAf-ax-Fh9"/>
+                <outlet property="textField" destination="6Fh-DS-dRd" id="jf1-na-bez"/>
+            </connections>
             <point key="canvasLocation" x="139" y="104"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>
