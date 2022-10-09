@@ -140,6 +140,8 @@ class NicknameView: UIView  {
         var canNext : Bool = true
         
         if canNext{
+            errorMessageLabel.text = "사용가능한 닉네임 입니다."
+            errorMessageLabel.textColor = .Main_30
             self.delegate?.isNextBtnEnabled()
         }
         else{

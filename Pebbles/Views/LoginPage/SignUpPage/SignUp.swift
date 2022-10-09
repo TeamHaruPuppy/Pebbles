@@ -3,7 +3,7 @@ import SnapKit
 import Then
 
 class SignUp: UIViewController{
-
+    
     public enum checkBtn {
         case next
         case complete
@@ -92,6 +92,13 @@ class SignUp: UIViewController{
             let compOffset = CGPoint(x: UIScreen.main.bounds.width, y: 0)
             scrollView.setContentOffset(compOffset, animated: true)
             check = .complete
+            DispatchQueue.global(qos: .userInteractive).async {
+                DispatchQueue.main.async {
+                    self.nextCompleBtn.setTitle("완료", for: .disabled)
+                }
+            }
+            
+            
             isNotNextBtnEnabled()
         case .complete:
             print("-------현재 상태는 comp에서 home으로 바뀌는 중-------")
@@ -121,7 +128,7 @@ class SignUp: UIViewController{
     @IBAction func viewTapped(_ sender: Any) {
         view.endEditing(true)
     }
-   
+    
     
     
     
@@ -149,7 +156,7 @@ class SignUp: UIViewController{
             if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
                 let keyboardRectangle = keyboardFrame.cgRectValue
                 let keyboardHeight = keyboardRectangle.height
-                self.btnView.frame.origin.y = (Constant.edgeHeight*400)
+                self.btnView.frame.origin.y = Device.height - keyboardHeight - 70
                 print("-------키보드가 나타나서 위로 올려줄거야-------")
                 print("현재 키보드의 Y값 : \(self.btnView.frame.origin.y)")
             }
