@@ -6,5 +6,6 @@ struct Constant {
     static let BASE_URL = " "
     static let edgeWidth = 375 / Device.width
     static let edgeHeight = 812 / Device.height
+    static let configuration = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular, scale: .small)
 }
 

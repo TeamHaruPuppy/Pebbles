@@ -26,7 +26,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="로고(투명배경)" translatesAutoresizingMaskIntoConstraints="NO" id="zjZ-GM-mu7">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainLogo" translatesAutoresizingMaskIntoConstraints="NO" id="zjZ-GM-mu7">
                     <rect key="frame" x="44" y="222" width="287" height="287"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lin-HN-Pac">
@@ -100,6 +100,6 @@
         <image name="btn_apple" width="335" height="50"/>
         <image name="btn_kakao" width="335" height="50"/>
         <image name="btn_naver" width="335" height="50"/>
-        <image name="로고(투명배경)" width="287" height="287"/>
+        <image name="mainLogo" width="287" height="287"/>
     </resources>
 </document>

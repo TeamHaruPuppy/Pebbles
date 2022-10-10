@@ -13,6 +13,7 @@ target 'Pebbles' do
   pod 'KakaoSDKCommon'
   pod 'KakaoSDKAuth'
   pod 'KakaoSDKUser'
+  pod 'FSCalendar'
   # Pods for Pebbles
 
 end

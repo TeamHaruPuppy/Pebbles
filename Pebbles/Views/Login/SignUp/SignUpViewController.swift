@@ -2,7 +2,7 @@ import UIKit
 import SnapKit
 import Then
 
-class SignUp: UIViewController{
+class SignUpViewController: UIViewController{
     
     public enum checkBtn {
         case next
@@ -92,13 +92,6 @@ class SignUp: UIViewController{
             let compOffset = CGPoint(x: UIScreen.main.bounds.width, y: 0)
             scrollView.setContentOffset(compOffset, animated: true)
             check = .complete
-            DispatchQueue.global(qos: .userInteractive).async {
-                DispatchQueue.main.async {
-                    self.nextCompleBtn.setTitle("완료", for: .disabled)
-                }
-            }
-            
-            
             isNotNextBtnEnabled()
         case .complete:
             print("-------현재 상태는 comp에서 home으로 바뀌는 중-------")
@@ -109,7 +102,6 @@ class SignUp: UIViewController{
     @IBAction func nextCompleBtnTapped(_ sender: Any) {
         checkState()
         self.view.endEditing(true)
-        
     }
     
     
@@ -190,14 +182,21 @@ class SignUp: UIViewController{
     
 }
 
-extension SignUp : ChangeBtnDelegate {
+extension SignUpViewController : ChangeBtnDelegate {
     func isNextBtnEnabled(){
         nextCompleBtn.isEnabled = true
         self.nextCompleBtn.tintColor = .Main_30
     }
     
     func isNotNextBtnEnabled() {
-        nextCompleBtn.isEnabled = false
-        self.nextCompleBtn.tintColor = .Gray_30
+        
+        let baseTabBarController = BaseTabBarViewController()
+        self.changeRootViewController(baseTabBarController)
+        
+        
+        //        API동기화 시키면 적용
+        //        nextCompleBtn.isEnabled = false
+        //        self.nextCompleBtn.tintColor = .Gray_30
+        //        self.nextCompleBtn.setTitle("완료", for: .normal)
     }
 }

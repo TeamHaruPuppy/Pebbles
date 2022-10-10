@@ -3,10 +3,12 @@ import UIKit
 
 class GoalView: UIView {
 
+    weak var delegate : ChangeBtnDelegate?
+    
     @IBOutlet weak var mainTitleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
-    
+
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -62,6 +64,8 @@ extension GoalView : UITextViewDelegate {
             textView.textColor = .black
         }else{
             textView.layer.borderColor = UIColor.Main_30.cgColor
+            self.delegate?.isNextBtnEnabled()
+            
         }
     }
     func textViewDidEndEditing(_ textView: UITextView) {

@@ -81,7 +81,7 @@ class LoginViewController: UIViewController {
     @IBAction func kakaoBtnTapped(_ sender: Any) {
         
         // 원래는 kakaoAPI호출해서 토큰 받아오는 작업 필요
-        let signUpViewController = SignUp(nibName: "SignUp", bundle: nil)
+        let signUpViewController = SignUpViewController(nibName: "SignUpViewController", bundle: nil)
         signUpViewController.modalTransitionStyle = .coverVertical
         signUpViewController.modalPresentationStyle = .overFullScreen
         self.present(signUpViewController, animated: true, completion: nil)
