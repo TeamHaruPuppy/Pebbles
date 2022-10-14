@@ -283,7 +283,6 @@
 		847B794328EC4BEB000DC20A /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				847B794828EC4CBF000DC20A /* SignUpViewController.swift */,
 				847B794928EC4CBF000DC20A /* SignUpViewController.xib */,
 				847B799D28ECCE8C000DC20A /* WriteInfo */,
 			);
@@ -317,6 +316,7 @@
 		847B799D28ECCE8C000DC20A /* WriteInfo */ = {
 			isa = PBXGroup;
 			children = (
+				847B794828EC4CBF000DC20A /* SignUpViewController.swift */,
 				847B799E28ECCEA5000DC20A /* NicknameView.swift */,
 				847B79A228ECCEC2000DC20A /* NicknameView.xib */,
 				847B79A028ECCEB3000DC20A /* GoalView.swift */,
