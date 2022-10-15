@@ -106,7 +106,7 @@ class HomeViewController: UIViewController {
         self.shadow.snp.makeConstraints{
             $0.top.equalTo(logoImageView.snp.bottom).offset(Constant.edgeHeight*(-8))
             $0.leading.trailing.equalToSuperview().inset(Constant.edgeWidth*20)
-            $0.height.equalTo(330)
+            $0.height.equalTo(350)
         }
         
         self.backView.snp.makeConstraints{
