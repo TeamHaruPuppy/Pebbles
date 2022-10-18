@@ -92,10 +92,14 @@ class SignUpViewController: UIViewController{
             let compOffset = CGPoint(x: UIScreen.main.bounds.width, y: 0)
             scrollView.setContentOffset(compOffset, animated: true)
             check = .complete
-            isNotNextBtnEnabled()
+            //isNotNextBtnEnabled()
         case .complete:
             print("-------현재 상태는 comp에서 home으로 바뀌는 중-------")
             dismiss(animated: true)
+            
+            let baseTabBarController = BaseTabBarViewController()
+            self.changeRootViewController(baseTabBarController)
+            
         }
     }
     
@@ -190,13 +194,26 @@ extension SignUpViewController : ChangeBtnDelegate {
     
     func isNotNextBtnEnabled() {
         
-        let baseTabBarController = BaseTabBarViewController()
-        self.changeRootViewController(baseTabBarController)
         
         
         //        API동기화 시키면 적용
-        //        nextCompleBtn.isEnabled = false
-        //        self.nextCompleBtn.tintColor = .Gray_30
-        //        self.nextCompleBtn.setTitle("완료", for: .normal)
+        print("----들어왔니----")
+        self.nextCompleBtn.setTitle("완료", for: .normal)
+        nextCompleBtn.isEnabled = false
+        self.nextCompleBtn.tintColor = .Gray_30
+        
+    }
+}
+
+extension SignUpViewController : CompleteBtnDelegate {
+    func isCompBtnEnabled() {
+        print("여기 들어왔니,,,?")
+        nextCompleBtn.isEnabled = true
+        self.nextCompleBtn.tintColor = .Main_30
+    }
+    func isNotCompBtnEnabled() {
+        nextCompleBtn.isEnabled = false
+        self.nextCompleBtn.tintColor = .Gray_30
+        self.nextCompleBtn.setTitle("완료", for: .normal)
     }
 }

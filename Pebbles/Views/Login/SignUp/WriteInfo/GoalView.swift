@@ -1,9 +1,16 @@
 import SnapKit
 import UIKit
 
+
+protocol CompleteBtnDelegate : class {
+    func isCompBtnEnabled()
+    func isNotCompBtnEnabled()
+}
+
+
 class GoalView: UIView {
 
-    weak var delegate : ChangeBtnDelegate?
+    weak var delegate : CompleteBtnDelegate?
     
     @IBOutlet weak var mainTitleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
@@ -62,10 +69,6 @@ extension GoalView : UITextViewDelegate {
         if textView.text == "예시) 베스트셀러 작가, 매년 1억 버는 사람, 사람 다운 사람 등 자유롭게 적어보세요" {
             textView.text = nil
             textView.textColor = .black
-        }else{
-            textView.layer.borderColor = UIColor.Main_30.cgColor
-            self.delegate?.isNextBtnEnabled()
-            
         }
     }
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -74,4 +77,11 @@ extension GoalView : UITextViewDelegate {
             textView.textColor = .Gray_30
         }
     }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        textView.layer.borderColor = UIColor.Main_30.cgColor
+        self.delegate?.isCompBtnEnabled()
+    }
+    
 }
+
