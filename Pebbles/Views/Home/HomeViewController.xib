@@ -34,14 +34,8 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" image="week"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbX-jt-gYD">
-                    <rect key="frame" x="200" y="384" width="12.5" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" image="chevron.left" catalog="system"/>
                     <connections>
-                        <action selector="preventBtnTapped:" destination="-1" eventType="touchUpInside" id="l6v-L2-ShA"/>
+                        <action selector="weekMonthBtnTapped:" destination="-1" eventType="touchUpInside" id="EqC-i9-0yE"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="404-t7-baQ">
@@ -51,6 +45,15 @@
                     <state key="normal" image="chevron.right" catalog="system"/>
                     <connections>
                         <action selector="nextBtnTapped:" destination="-1" eventType="touchUpInside" id="aJk-7o-dtQ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbX-jt-gYD">
+                    <rect key="frame" x="83" y="167" width="12.5" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="chevron.left" catalog="system"/>
+                    <connections>
+                        <action selector="preventBtnTapped:" destination="-1" eventType="touchUpInside" id="l6v-L2-ShA"/>
                     </connections>
                 </button>
             </subviews>

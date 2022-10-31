@@ -78,6 +78,13 @@ class LoginViewController: UIViewController {
         }
     }
     
+    @IBAction func appleBtnTapped(_ sender: Any) {
+        //MARK: 임시로 만든 액션
+        let tempViewController = TempViewController(nibName: "TempViewController", bundle: nil)
+        tempViewController.modalTransitionStyle = .coverVertical
+        tempViewController.modalPresentationStyle = .overFullScreen
+        self.present(tempViewController, animated: true, completion: nil)
+    }
     @IBAction func kakaoBtnTapped(_ sender: Any) {
         
         // 원래는 kakaoAPI호출해서 토큰 받아오는 작업 필요

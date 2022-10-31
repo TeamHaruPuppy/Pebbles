@@ -10,8 +10,13 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var preventBtn: UIButton!
     @IBOutlet weak var nextBtn: UIButton!
     
+    private var calendarHeight: NSLayoutConstraint?
+    
+    private var weekMonthCheck = false
     
     private var customView = UIView()
+    
+    
     
     private var currentPage: Date?
     private lazy var today: Date = {
@@ -24,11 +29,16 @@ class HomeViewController: UIViewController {
         df.dateFormat = "yyyy년 M월"
         return df
     }()
-        
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-            
-        setCalendar()
+        calendarView.delegate = self
+        calendarView.headerHeight = 0
+        calendarView.scope = .month
+        calendarHeight = calendarView.heightAnchor.constraint(equalToConstant: 300)
+        calendarHeight?.isActive = true
+        headerLabel.text = self.dateFormatter.string(from: calendarView.currentPage)
+        
     }
     
     private let logoImageView = UIImageView().then{
@@ -40,12 +50,31 @@ class HomeViewController: UIViewController {
         $0.setImage(UIImage(named: "option.png"), for: .normal)
     }
     
+    private var collectionView = UICollectionView(
+        frame: .zero,
+        collectionViewLayout: UICollectionViewFlowLayout().then{
+            $0.scrollDirection = .horizontal
+            $0.minimumLineSpacing = 12
+            $0.minimumInteritemSpacing = 8
+        }
+    ).then{
+        $0.isScrollEnabled = true
+        $0.showsHorizontalScrollIndicator = false
+        $0.backgroundColor = .white
+        $0.register(HabitCell.self, forCellWithReuseIdentifier: HabitCell.id)
+    }
+    
     private var calendarView = FSCalendar().then{
         $0.backgroundColor = .white
-        $0.appearance.titleDefaultColor = .black
-        $0.appearance.titleWeekendColor = .red
+        $0.appearance.titleDefaultColor = .Gray_30
+        $0.appearance.titleWeekendColor = .Gray_30
         $0.appearance.headerTitleColor = .Gray_60
-        $0.appearance.weekdayTextColor = .Gray_40
+        $0.appearance.weekdayTextColor = .Gray_60
+        $0.appearance.todayColor = .Main_BG
+        $0.appearance.titleTodayColor = .Gray_50
+        $0.appearance.titlePlaceholderColor = .Gray_10
+        $0.appearance.selectionColor = .Main_10
+        //        $0.placeholderType = .none
         
         $0.appearance.headerTitleFont = UIFont(name: "AppleSDGothicNeo-Bold", size: 15)
         $0.appearance.weekdayFont = UIFont(name :"AppleSDGothicNeo-Medium", size: 13)
@@ -67,7 +96,7 @@ class HomeViewController: UIViewController {
         $0.layer.borderWidth = 0
         $0.layer.cornerRadius = 14
     }
-
+    
     private var shadow = UIView().then{
         $0.layer.shadowOffset = .zero
         $0.layer.shadowRadius = 14
@@ -106,7 +135,7 @@ class HomeViewController: UIViewController {
         self.shadow.snp.makeConstraints{
             $0.top.equalTo(logoImageView.snp.bottom).offset(Constant.edgeHeight*(-8))
             $0.leading.trailing.equalToSuperview().inset(Constant.edgeWidth*20)
-            $0.height.equalTo(350)
+            $0.height.equalTo(calendarView.snp.height).offset(50)
         }
         
         self.backView.snp.makeConstraints{
@@ -136,7 +165,7 @@ class HomeViewController: UIViewController {
         }
         
         self.calendarView.snp.makeConstraints{
-            $0.height.equalTo(315)
+            $0.height.equalTo(300)
             $0.left.right.equalToSuperview().inset(Constant.edgeWidth*12)
             $0.top.equalTo(headerLabel.snp.bottom).offset(Constant.edgeHeight*15)
             
@@ -158,9 +187,18 @@ class HomeViewController: UIViewController {
         
         
         
-       
+        
     }
     
+    @IBAction func weekMonthBtnTapped(_ sender: Any) {
+        if weekMonthCheck == true {
+            self.calendarView.setScope(.month, animated: true)
+            weekMonthCheck = false
+        }else{
+            self.calendarView.setScope(.week, animated: true)
+            weekMonthCheck = true
+        }
+    }
     @IBAction func preventBtnTapped(_ sender: Any) {
         scrollCurrentPage(isPrev: true)
     }
@@ -173,7 +211,7 @@ class HomeViewController: UIViewController {
         let cal = Calendar.current
         var dateComponents = DateComponents()
         dateComponents.month = isPrev ? -1 : 1
-            
+        
         self.currentPage = cal.date(byAdding: dateComponents, to: self.currentPage ?? self.today)
         self.calendarView.setCurrentPage(self.currentPage!, animated: true)
     }
@@ -181,15 +219,103 @@ class HomeViewController: UIViewController {
 
 
 extension HomeViewController : FSCalendarDelegate , FSCalendarDataSource, FSCalendarDelegateAppearance{
-    func setCalendar() {
-            calendarView.delegate = self
-            calendarView.headerHeight = 0
-            calendarView.scope = .month
-            headerLabel.text = self.dateFormatter.string(from: calendarView.currentPage)
-        }
+    
+    
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        self.headerLabel.text = self.dateFormatter.string(from: calendar.currentPage)
+    }
+    
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool){
         
-        func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-            self.headerLabel.text = self.dateFormatter.string(from: calendar.currentPage)
+        calendarHeight?.constant = bounds.height
+        self.view.layoutIfNeeded ()
+    }
+    
+    
+    //MARK: 해빗의 성취도에 따라서 날짜별로 색을 칠해주는 코드
+    //    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
+    //
+    //
+    //        if thisDay.first != nil {
+    //                    guard let fillDay = thisDay.first else { return UIColor.clear }
+    //
+    //                    switch fillDay.achievement {
+    //                    case "A":
+    //                        return UIColor.achievementColor(.A)
+    //                    case "B":
+    //                        return UIColor.achievementColor(.B)
+    //                    case "C":
+    //                        return UIColor.achievementColor(.C)
+    //                    case "D":
+    //                        return UIColor.achievementColor(.D)
+    //                    case "E":
+    //                        return UIColor.achievementColor(.E)
+    //                    default:
+    //                        return UIColor.clear
+    //                    }
+    //                }else{
+    //                    return UIColor.clear
+    //                }
+    //    }
+    
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderDefaultColorFor date: Date) -> UIColor? {
+        let imageDateFormatter = DateFormatter()
+        let todayDateFormatter = DateFormatter()
+        imageDateFormatter.dateFormat = "yyyyMMdd"
+        todayDateFormatter.dateFormat = "yyyyMMdd"
+        var dateStr = imageDateFormatter.string(from: date)
+        var todayDateStr = todayDateFormatter.string(from: Date())
+        let startIdx = dateStr.index(dateStr.startIndex, offsetBy: 4)
+        let monthStartIdx = calendar.currentPage.toString().index(calendar.currentPage.toString().startIndex, offsetBy: 5)
+        let endIdx = dateStr.index(dateStr.startIndex, offsetBy: 6)
+        let monthEndIdx = calendar.currentPage.toString().index(calendar.currentPage.toString().startIndex, offsetBy: 7)
+        var sliced_str = dateStr[startIdx ..< endIdx]
+        var sliced_monthSrt = calendar.currentPage.toString()[monthStartIdx ..< monthEndIdx]
+        
+        if sliced_str == sliced_monthSrt {
+            return .Gray_20
         }
+        else if today == imageDateFormatter.date(from: date.text){
+            return .Gray_50
+        }
+        return .Gray_10
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderRadiusFor date: Date) -> CGFloat {
+        return 15
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderSelectionColorFor date: Date) -> UIColor? {
+        return .Main_10
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
+        
+        calendar.currentPage
+        
+        
+        let imageDateFormatter = DateFormatter()
+        let todayDateFormatter = DateFormatter()
+        imageDateFormatter.dateFormat = "yyyyMMdd"
+        
+        //        if calendar.appearance.
+        todayDateFormatter.dateFormat = "yyyyMMdd"
+        var dateStr = imageDateFormatter.string(from: date)
+        var todayDateStr = todayDateFormatter.string(from: Date())
+        let startIdx = dateStr.index(dateStr.startIndex, offsetBy: 4)
+        let monthStartIdx = calendar.currentPage.toString().index(calendar.currentPage.toString().startIndex, offsetBy: 5)
+        let endIdx = dateStr.index(dateStr.startIndex, offsetBy: 6)
+        let monthEndIdx = calendar.currentPage.toString().index(calendar.currentPage.toString().startIndex, offsetBy: 7)
+        var sliced_str = dateStr[startIdx ..< endIdx]
+        var sliced_monthSrt = calendar.currentPage.toString()[monthStartIdx ..< monthEndIdx]
+        
+        print("자른 요일이야 ~~ \(sliced_monthSrt)")
+        if sliced_str == sliced_monthSrt {
+            return .white
+        }
+        return .Gray_10
+    }
+    
     
 }

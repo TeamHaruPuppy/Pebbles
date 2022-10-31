@@ -46,6 +46,13 @@
 		84A64C2528F427E700BB2325 /* PebbleManageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A64C2328F427E700BB2325 /* PebbleManageViewController.xib */; };
 		84A64C2928F4282000BB2325 /* MyStoneTowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A64C2728F4282000BB2325 /* MyStoneTowerViewController.swift */; };
 		84A64C2A28F4282000BB2325 /* MyStoneTowerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A64C2828F4282000BB2325 /* MyStoneTowerViewController.xib */; };
+		84C22CAD290EA09B002699E4 /* HabitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C22CAC290EA09B002699E4 /* HabitCell.swift */; };
+		84C22CBB290EA6A0002699E4 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C22CBA290EA6A0002699E4 /* SignUpModel.swift */; };
+		84C22CBD290EA6A8002699E4 /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C22CBC290EA6A8002699E4 /* SignInModel.swift */; };
+		84C22CBF290EA6B7002699E4 /* SignUpDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C22CBE290EA6B7002699E4 /* SignUpDataManager.swift */; };
+		84C22CC1290EA6C2002699E4 /* SignInDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C22CC0290EA6C2002699E4 /* SignInDataManager.swift */; };
+		84C22CC4290EA9C6002699E4 /* TempViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C22CC2290EA9C6002699E4 /* TempViewController.swift */; };
+		84C22CC5290EA9C6002699E4 /* TempViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C22CC3290EA9C6002699E4 /* TempViewController.xib */; };
 		84F4765828EF830300B6F755 /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F4765728EF830300B6F755 /* UIScrollView.swift */; };
 		F510E6A562B3BB2AA7547786 /* Pods_Pebbles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A174502E8721EB5D2107F2B /* Pods_Pebbles.framework */; };
 /* End PBXBuildFile section */
@@ -94,6 +101,13 @@
 		84A64C2328F427E700BB2325 /* PebbleManageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PebbleManageViewController.xib; sourceTree = "<group>"; };
 		84A64C2728F4282000BB2325 /* MyStoneTowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStoneTowerViewController.swift; sourceTree = "<group>"; };
 		84A64C2828F4282000BB2325 /* MyStoneTowerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyStoneTowerViewController.xib; sourceTree = "<group>"; };
+		84C22CAC290EA09B002699E4 /* HabitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCell.swift; sourceTree = "<group>"; };
+		84C22CBA290EA6A0002699E4 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
+		84C22CBC290EA6A8002699E4 /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
+		84C22CBE290EA6B7002699E4 /* SignUpDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDataManager.swift; sourceTree = "<group>"; };
+		84C22CC0290EA6C2002699E4 /* SignInDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDataManager.swift; sourceTree = "<group>"; };
+		84C22CC2290EA9C6002699E4 /* TempViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempViewController.swift; sourceTree = "<group>"; };
+		84C22CC3290EA9C6002699E4 /* TempViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TempViewController.xib; sourceTree = "<group>"; };
 		84D5A57114568676E81C6FE6 /* Pods-Pebbles.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pebbles.debug.xcconfig"; path = "Target Support Files/Pods-Pebbles/Pods-Pebbles.debug.xcconfig"; sourceTree = "<group>"; };
 		84F4765728EF830300B6F755 /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -224,6 +238,7 @@
 		847B78E128E9F98E000DC20A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				84C22CB8290EA679002699E4 /* Login */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -259,6 +274,8 @@
 			children = (
 				847B792D28EB6E34000DC20A /* LoginViewController.swift */,
 				847B792E28EB6E34000DC20A /* LoginViewController.xib */,
+				84C22CC2290EA9C6002699E4 /* TempViewController.swift */,
+				84C22CC3290EA9C6002699E4 /* TempViewController.xib */,
 				847B794328EC4BEB000DC20A /* SignUp */,
 			);
 			path = Login;
@@ -284,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				847B794928EC4CBF000DC20A /* SignUpViewController.xib */,
+				847B794828EC4CBF000DC20A /* SignUpViewController.swift */,
 				847B799D28ECCE8C000DC20A /* WriteInfo */,
 			);
 			path = SignUp;
@@ -309,6 +327,7 @@
 		847B799C28ECCABC000DC20A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				84C22CB9290EA67C002699E4 /* Login */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -316,7 +335,6 @@
 		847B799D28ECCE8C000DC20A /* WriteInfo */ = {
 			isa = PBXGroup;
 			children = (
-				847B794828EC4CBF000DC20A /* SignUpViewController.swift */,
 				847B799E28ECCEA5000DC20A /* NicknameView.swift */,
 				847B79A228ECCEC2000DC20A /* NicknameView.xib */,
 				847B79A028ECCEB3000DC20A /* GoalView.swift */,
@@ -328,6 +346,7 @@
 		84A64C1B28F4278E00BB2325 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				84C22CA7290E9FC9002699E4 /* HabitCell */,
 				84A64C1E28F427D500BB2325 /* HomeViewController.swift */,
 				84A64C1F28F427D500BB2325 /* HomeViewController.xib */,
 			);
@@ -350,6 +369,32 @@
 				84A64C2828F4282000BB2325 /* MyStoneTowerViewController.xib */,
 			);
 			path = MyStoneTower;
+			sourceTree = "<group>";
+		};
+		84C22CA7290E9FC9002699E4 /* HabitCell */ = {
+			isa = PBXGroup;
+			children = (
+				84C22CAC290EA09B002699E4 /* HabitCell.swift */,
+			);
+			path = HabitCell;
+			sourceTree = "<group>";
+		};
+		84C22CB8290EA679002699E4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				84C22CBA290EA6A0002699E4 /* SignUpModel.swift */,
+				84C22CBC290EA6A8002699E4 /* SignInModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		84C22CB9290EA67C002699E4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				84C22CBE290EA6B7002699E4 /* SignUpDataManager.swift */,
+				84C22CC0290EA6C2002699E4 /* SignInDataManager.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		DEC977D147129968330FF911 /* Pods */ = {
@@ -424,6 +469,7 @@
 				847B794B28EC4CBF000DC20A /* SignUpViewController.xib in Resources */,
 				84A64C2528F427E700BB2325 /* PebbleManageViewController.xib in Resources */,
 				84A64C2A28F4282000BB2325 /* MyStoneTowerViewController.xib in Resources */,
+				84C22CC5290EA9C6002699E4 /* TempViewController.xib in Resources */,
 				847B78B028E5E8D6000DC20A /* LaunchScreen.storyboard in Resources */,
 				847B79A328ECCEC2000DC20A /* NicknameView.xib in Resources */,
 				847B79A528ECCEC9000DC20A /* GoalView.xib in Resources */,
@@ -489,18 +535,23 @@
 				847B78D228E9DAD6000DC20A /* UINavigationBar.swift in Sources */,
 				847B78DC28E9DAFE000DC20A /* Device.swift in Sources */,
 				847B78D028E9DAC3000DC20A /* UIViewController.swift in Sources */,
+				84C22CAD290EA09B002699E4 /* HabitCell.swift in Sources */,
 				847B78CC28E9DAA6000DC20A /* String.swift in Sources */,
 				847B798128EC757C000DC20A /* WriteFutureViewModel.swift in Sources */,
 				847B78C028E9DA65000DC20A /* BaseViewController.swift in Sources */,
+				84C22CC1290EA6C2002699E4 /* SignInDataManager.swift in Sources */,
 				847B792F28EB6E34000DC20A /* LoginViewController.swift in Sources */,
+				84C22CBD290EA6A8002699E4 /* SignInModel.swift in Sources */,
 				847B78D628E9DAE7000DC20A /* UIImage.swift in Sources */,
 				847B794228EB95A7000DC20A /* Secret.swift in Sources */,
 				847B78C828E9DA94000DC20A /* Date.swift in Sources */,
 				847B78D828E9DAED000DC20A /* UIImageView.swift in Sources */,
 				847B78CA28E9DA9B000DC20A /* UIColor.swift in Sources */,
+				84C22CBF290EA6B7002699E4 /* SignUpDataManager.swift in Sources */,
 				847B799F28ECCEA6000DC20A /* NicknameView.swift in Sources */,
 				847B78D428E9DADC000DC20A /* UIFont.swift in Sources */,
 				847B794A28EC4CBF000DC20A /* SignUpViewController.swift in Sources */,
+				84C22CBB290EA6A0002699E4 /* SignUpModel.swift in Sources */,
 				847B793B28EB78FB000DC20A /* SceneDelegate.swift in Sources */,
 				847B78DA28E9DAF1000DC20A /* UIView.swift in Sources */,
 				84A64C2028F427D500BB2325 /* HomeViewController.swift in Sources */,
@@ -510,6 +561,7 @@
 				8439D46328F0B97000D9161C /* UITextField.swift in Sources */,
 				847B797F28EC7556000DC20A /* WriteNickNameViewModel.swift in Sources */,
 				847B79A128ECCEB3000DC20A /* GoalView.swift in Sources */,
+				84C22CC4290EA9C6002699E4 /* TempViewController.swift in Sources */,
 				847B78C228E9DA72000DC20A /* BaseTabbarViewController.swift in Sources */,
 				84A64C2428F427E700BB2325 /* PebbleManageViewController.swift in Sources */,
 				847B78BE28E9DA54000DC20A /* Constant.swift in Sources */,

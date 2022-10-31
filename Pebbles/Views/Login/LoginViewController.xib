@@ -27,10 +27,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainLogo" translatesAutoresizingMaskIntoConstraints="NO" id="zjZ-GM-mu7">
-                    <rect key="frame" x="44" y="222" width="287" height="287"/>
+                    <rect key="frame" x="44" y="175" width="287" height="287"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lin-HN-Pac">
-                    <rect key="frame" x="41.666666666666657" y="560" width="292" height="17"/>
+                    <rect key="frame" x="41.666666666666657" y="513" width="292" height="17"/>
                     <attributedString key="attributedText">
                         <fragment content="간단한 회원가입">
                             <attributes>
@@ -54,9 +54,12 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain"/>
+                    <connections>
+                        <action selector="appleBtnTapped:" destination="-1" eventType="touchUpInside" id="aM8-BK-9Oh"/>
+                    </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="btn_apple" translatesAutoresizingMaskIntoConstraints="NO" id="RgV-3q-VIQ">
-                    <rect key="frame" x="20" y="612" width="335" height="50"/>
+                    <rect key="frame" x="20" y="565" width="335" height="50"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1IK-uh-gnx" userLabel="btn_kakao_action">
                     <rect key="frame" x="185" y="688" width="24" height="14"/>
@@ -68,7 +71,7 @@
                     </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="btn_kakao" translatesAutoresizingMaskIntoConstraints="NO" id="sZz-9I-myd">
-                    <rect key="frame" x="20" y="672" width="335" height="50"/>
+                    <rect key="frame" x="20" y="625" width="335" height="50"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehe-iL-RgU" userLabel="btn_naver_action">
                     <rect key="frame" x="185" y="748" width="24" height="14"/>
@@ -78,7 +81,7 @@
                     <buttonConfiguration key="configuration" style="plain"/>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="btn_naver" translatesAutoresizingMaskIntoConstraints="NO" id="9Qj-kt-ICR">
-                    <rect key="frame" x="20" y="732" width="335" height="50"/>
+                    <rect key="frame" x="20" y="685" width="335" height="50"/>
                 </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
