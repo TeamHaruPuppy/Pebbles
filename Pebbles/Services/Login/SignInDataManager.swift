@@ -4,12 +4,12 @@ import Alamofire
 class SignInDataManager{
     func signIn(_ username : String, _ password : String, _ viewController : UIViewController, completion: @escaping (_ data: SignInResult) -> Void){
         var headers: HTTPHeaders = [
-                    "Content-Type":"application/json",
-                    "Accept": "application/json"
+            "Content-Type":"application/json",
+            "Accept": "application/json"
         ]
         var param : Parameters = [
-                "loginId" : "\(username)",
-                "password" : "\(password)",
+            "password": "\(password)",
+            "username": "\(username)"
         ]
         
         AF.request("\(Constant.BASE_URL)/auth/login", method: .post, parameters: param ,encoding: JSONEncoding.default, headers: headers)
@@ -65,7 +65,7 @@ class SignInDataManager{
                     print("로그인 실패")
                     debugPrint(error)
                 }
-
+                
             }
         
     }

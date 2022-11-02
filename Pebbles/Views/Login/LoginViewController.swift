@@ -80,10 +80,17 @@ class LoginViewController: UIViewController {
     
     @IBAction func appleBtnTapped(_ sender: Any) {
         //MARK: 임시로 만든 액션
-        let tempViewController = TempViewController(nibName: "TempViewController", bundle: nil)
-        tempViewController.modalTransitionStyle = .coverVertical
-        tempViewController.modalPresentationStyle = .overFullScreen
-        self.present(tempViewController, animated: true, completion: nil)
+        
+        GetHomeDataManager().getHome(self) { data in
+            Constant.homeResult = data
+            let baseTabBarController = BaseTabBarViewController()
+            self.changeRootViewController(baseTabBarController)
+        }
+        
+//        let tempViewController = TempViewController(nibName: "TempViewController", bundle: nil)
+//        tempViewController.modalTransitionStyle = .coverVertical
+//        tempViewController.modalPresentationStyle = .overFullScreen
+//        self.present(tempViewController, animated: true, completion: nil)
     }
     @IBAction func kakaoBtnTapped(_ sender: Any) {
         

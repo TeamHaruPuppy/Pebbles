@@ -5,30 +5,44 @@ import FSCalendar
 
 class HomeViewController: UIViewController {
     
+    struct TodayHabit {
+        // todoCount => 해빗을 달성하기 위해 필요한 todo의 수 | habits => 오늘 해야하는 habit들
+        var todoCount : [Int] = []
+        var habits : [Habit] = []
+        init(){
+            for idx in Constant.homeResult.habits {
+                if idx.today == Constant.homeResult.today{
+                    habits.append(idx)
+                    todoCount.append(idx.todos.count)
+                }
+            }
+        }
+    }
+    
+    
+    
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var weekMonthBtn: UIButton!
     @IBOutlet weak var preventBtn: UIButton!
     @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet weak var habitCollectionView: UICollectionView!
     
+    private var todayHabit = TodayHabit()
     private var calendarHeight: NSLayoutConstraint?
-    
     private var weekMonthCheck = false
-    
     private var customView = UIView()
-    
-    
-    
     private var currentPage: Date?
     private lazy var today: Date = {
         return Date()
     }()
-    
     private lazy var dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.locale = Locale(identifier: "ko_KR")
         df.dateFormat = "yyyy년 M월"
         return df
     }()
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -41,6 +55,7 @@ class HomeViewController: UIViewController {
         
     }
     
+    
     private let logoImageView = UIImageView().then{
         $0.image = UIImage(named: "mainLogo.png")!
         $0.contentMode = .scaleAspectFill
@@ -50,19 +65,6 @@ class HomeViewController: UIViewController {
         $0.setImage(UIImage(named: "option.png"), for: .normal)
     }
     
-    private var collectionView = UICollectionView(
-        frame: .zero,
-        collectionViewLayout: UICollectionViewFlowLayout().then{
-            $0.scrollDirection = .horizontal
-            $0.minimumLineSpacing = 12
-            $0.minimumInteritemSpacing = 8
-        }
-    ).then{
-        $0.isScrollEnabled = true
-        $0.showsHorizontalScrollIndicator = false
-        $0.backgroundColor = .white
-        $0.register(HabitCell.self, forCellWithReuseIdentifier: HabitCell.id)
-    }
     
     private var calendarView = FSCalendar().then{
         $0.backgroundColor = .white
@@ -106,9 +108,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        calendarView.delegate = self
-        calendarView.dataSource = self
-        
+    
         self.view.addSubview(logoImageView)
         self.view.addSubview(optionBtn)
         self.view.addSubview(shadow)
@@ -118,11 +118,27 @@ class HomeViewController: UIViewController {
         self.backView.addSubview(nextBtn)
         self.backView.addSubview(preventBtn)
         self.backView.addSubview(calendarView)
-        
+        self.registerXib()
+        self.registerDelegate()
         self.configure()
         
+        calendarView.tag = 1
+        habitCollectionView.tag = 2
         
     }
+    
+    private func registerXib(){
+        let storyNib = UINib(nibName: HabitCollectionViewCell.identifier, bundle: nil)
+        habitCollectionView.register(storyNib, forCellWithReuseIdentifier: HabitCollectionViewCell.identifier)
+    }
+    
+    private func registerDelegate(){
+        habitCollectionView.delegate = self
+        habitCollectionView.dataSource = self
+        calendarView.delegate = self
+        calendarView.dataSource = self
+    }
+    
     
     func configure(){
         self.view.backgroundColor = .Main_BG
@@ -130,6 +146,7 @@ class HomeViewController: UIViewController {
         self.headerLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
         self.preventBtn.tintColor = .Main_10
         self.nextBtn.tintColor = .Main_10
+        habitCollectionView.backgroundColor = .Main_BG
         
         
         self.shadow.snp.makeConstraints{
@@ -184,20 +201,33 @@ class HomeViewController: UIViewController {
             $0.right.equalToSuperview().inset(Constant.edgeWidth*20)
         }
         
+        self.habitCollectionView.snp.makeConstraints{
+            $0.top.equalTo(calendarView.snp.bottom).offset(20)
+            $0.left.right.bottom.equalToSuperview()
+        }
         
-        
-        
-        
+
     }
     
-    @IBAction func weekMonthBtnTapped(_ sender: Any) {
-        if weekMonthCheck == true {
-            self.calendarView.setScope(.month, animated: true)
-            weekMonthCheck = false
-        }else{
+    @IBAction func weekMonthBtnTapped(_ sender: UIButton) {
+        sender.isSelected.toggle()
+        
+        if sender.isSelected == true{
             self.calendarView.setScope(.week, animated: true)
-            weekMonthCheck = true
+            
         }
+        else{
+            self.calendarView.setScope(.month, animated: true)
+        }
+        
+//
+//        if weekMonthCheck == true {
+//            self.calendarView.setScope(.month, animated: true)
+//            weekMonthCheck = false
+//        }else{
+//            self.calendarView.setScope(.week, animated: true)
+//            weekMonthCheck = true
+//        }
     }
     @IBAction func preventBtnTapped(_ sender: Any) {
         scrollCurrentPage(isPrev: true)
@@ -310,12 +340,41 @@ extension HomeViewController : FSCalendarDelegate , FSCalendarDataSource, FSCale
         var sliced_str = dateStr[startIdx ..< endIdx]
         var sliced_monthSrt = calendar.currentPage.toString()[monthStartIdx ..< monthEndIdx]
         
-        print("자른 요일이야 ~~ \(sliced_monthSrt)")
+//        print("자른 요일이야 ~~ \(sliced_monthSrt)")
         if sliced_str == sliced_monthSrt {
             return .white
         }
         return .Gray_10
     }
+    
+}
+
+extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView.tag == 1{
+            return 1
+        }
+        return todayHabit.habits.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HabitCollectionViewCell.identifier, for: indexPath) as? HabitCollectionViewCell else { return UICollectionViewCell() }
+        cell.setData(userData : todayHabit.habits[indexPath.row])
+                return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let flow = collectionViewLayout as? UICollectionViewFlowLayout else {
+            return CGSize()
+        }
+        flow.minimumLineSpacing = 20
+        flow.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 20, right: 20)
+        let width = UIScreen.main.bounds.width - 40
+        let countHeight = Float(todayHabit.habits[indexPath.row].todos.count)
+        print("[\(indexPath.row)번째 투두의 개수] : \(todayHabit.habits[indexPath.row].todos.count)")
+        return CGSize(width: width, height: 50*CGFloat(countHeight) + 50 )
+    }
+    
     
     
 }
