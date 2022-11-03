@@ -20,6 +20,12 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    var onlyMonthText: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM"
+        return dateFormatter.string(from: self)
+    }
+    
     var detailText: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"

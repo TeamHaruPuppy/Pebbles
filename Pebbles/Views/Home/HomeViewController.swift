@@ -11,7 +11,7 @@ class HomeViewController: UIViewController {
         var habits : [Habit] = []
         init(){
             for idx in Constant.homeResult.habits {
-                if idx.today == Constant.homeResult.today{
+                if Constant.selectDay == Constant.homeResult.today{
                     habits.append(idx)
                     todoCount.append(idx.todos.count)
                 }
@@ -20,16 +20,17 @@ class HomeViewController: UIViewController {
     }
     
     
+    @IBOutlet var upSwipeRecognizer: UISwipeGestureRecognizer!
     
-    @IBOutlet weak var headerLabel: UILabel!
-    @IBOutlet weak var weekMonthBtn: UIButton!
-    @IBOutlet weak var preventBtn: UIButton!
-    @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var habitCollectionView: UICollectionView!
+    
+    @IBOutlet weak var weekChangeImg: UIImageView!
+    @IBOutlet weak var weekChangeBtn: UIButton!
+    
+    
     
     private var todayHabit = TodayHabit()
     private var calendarHeight: NSLayoutConstraint?
-    private var weekMonthCheck = false
     private var customView = UIView()
     private var currentPage: Date?
     private lazy var today: Date = {
@@ -47,11 +48,10 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         calendarView.delegate = self
-        calendarView.headerHeight = 0
+        calendarView.headerHeight = 50
         calendarView.scope = .month
         calendarHeight = calendarView.heightAnchor.constraint(equalToConstant: 300)
         calendarHeight?.isActive = true
-        headerLabel.text = self.dateFormatter.string(from: calendarView.currentPage)
         
     }
     
@@ -72,23 +72,22 @@ class HomeViewController: UIViewController {
         $0.appearance.titleWeekendColor = .Gray_30
         $0.appearance.headerTitleColor = .Gray_60
         $0.appearance.weekdayTextColor = .Gray_60
-        $0.appearance.todayColor = .Main_BG
         $0.appearance.titleTodayColor = .Gray_50
         $0.appearance.titlePlaceholderColor = .Gray_10
-        $0.appearance.selectionColor = .Main_10
-        //        $0.placeholderType = .none
-        
-        $0.appearance.headerTitleFont = UIFont(name: "AppleSDGothicNeo-Bold", size: 15)
+        $0.appearance.headerTitleFont = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
         $0.appearance.weekdayFont = UIFont(name :"AppleSDGothicNeo-Medium", size: 13)
         $0.appearance.titleFont = UIFont(name: "AppleSDGothicNeo-Medium", size: 15)
+        $0.appearance.selectionColor = .Main_10
+        
         $0.appearance.headerTitleColor = .Gray_60
         $0.appearance.headerMinimumDissolvedAlpha = 0.0
-        $0.appearance.headerTitleAlignment = .left
+        $0.appearance.headerTitleAlignment = .center
         $0.appearance.borderRadius = 14
         $0.clipsToBounds = true
-        $0.appearance.headerDateFormat = "YYYY년 M월"
+        $0.appearance.headerDateFormat = "YYYY년 MM월"
         $0.locale = Locale(identifier: "ko_KR")
         
+
         
     }
     
@@ -113,10 +112,8 @@ class HomeViewController: UIViewController {
         self.view.addSubview(optionBtn)
         self.view.addSubview(shadow)
         self.shadow.addSubview(backView)
-        self.backView.addSubview(headerLabel)
-        self.backView.addSubview(weekMonthBtn)
-        self.backView.addSubview(nextBtn)
-        self.backView.addSubview(preventBtn)
+        self.backView.addSubview(weekChangeBtn)
+        self.backView.addSubview(weekChangeImg)
         self.backView.addSubview(calendarView)
         self.registerXib()
         self.registerDelegate()
@@ -124,6 +121,7 @@ class HomeViewController: UIViewController {
         
         calendarView.tag = 1
         habitCollectionView.tag = 2
+        
         
     }
     
@@ -142,52 +140,9 @@ class HomeViewController: UIViewController {
     
     func configure(){
         self.view.backgroundColor = .Main_BG
-        self.headerLabel.textColor = .Gray_60
-        self.headerLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
-        self.preventBtn.tintColor = .Main_10
-        self.nextBtn.tintColor = .Main_10
-        habitCollectionView.backgroundColor = .Main_BG
+       habitCollectionView.backgroundColor = .Main_BG
         
-        
-        self.shadow.snp.makeConstraints{
-            $0.top.equalTo(logoImageView.snp.bottom).offset(Constant.edgeHeight*(-8))
-            $0.leading.trailing.equalToSuperview().inset(Constant.edgeWidth*20)
-            $0.height.equalTo(calendarView.snp.height).offset(50)
-        }
-        
-        self.backView.snp.makeConstraints{
-            $0.top.bottom.leading.trailing.equalToSuperview()
-        }
-        
-        self.headerLabel.snp.makeConstraints{
-            $0.leading.equalTo(calendarView)
-            $0.top.equalToSuperview().offset(Constant.edgeHeight*15)
-        }
-        
-        self.nextBtn.snp.makeConstraints{
-            $0.trailing.equalToSuperview().inset(Constant.edgeWidth*26)
-            $0.top.equalToSuperview().inset(Constant.edgeHeight*18)
-            $0.height.width.equalTo(headerLabel.snp.height)
-        }
-        
-        self.preventBtn.snp.makeConstraints{
-            $0.trailing.equalTo(nextBtn.snp.leading).inset(Constant.edgeWidth*(-12))
-            $0.centerY.equalTo(nextBtn)
-            $0.height.width.equalTo(36)
-        }
-        self.weekMonthBtn.snp.makeConstraints{
-            $0.trailing.equalTo(nextBtn.snp.leading).inset(Constant.edgeWidth*(-144))
-            $0.centerY.equalTo(nextBtn)
-            $0.height.width.equalTo(16)
-        }
-        
-        self.calendarView.snp.makeConstraints{
-            $0.height.equalTo(300)
-            $0.left.right.equalToSuperview().inset(Constant.edgeWidth*12)
-            $0.top.equalTo(headerLabel.snp.bottom).offset(Constant.edgeHeight*15)
-            
-        }
-        
+        weekChangeImg.tintColor = .Gray_40
         
         self.logoImageView.snp.makeConstraints{
             $0.height.width.equalTo(104)
@@ -201,49 +156,63 @@ class HomeViewController: UIViewController {
             $0.right.equalToSuperview().inset(Constant.edgeWidth*20)
         }
         
+        
+        self.shadow.snp.makeConstraints{
+            $0.top.equalTo(logoImageView.snp.bottom).offset(Constant.edgeHeight*(-8))
+            $0.leading.trailing.equalToSuperview().inset(Constant.edgeWidth*20)
+            $0.height.equalTo(calendarView.snp.height).offset(40)
+        }
+        
+        self.backView.snp.makeConstraints{
+            $0.top.bottom.leading.trailing.equalToSuperview()
+        }
+        
+        
+        self.calendarView.snp.makeConstraints{
+            $0.height.equalTo(350)
+            $0.left.right.equalToSuperview().inset(Constant.edgeWidth*12)
+            $0.top.equalToSuperview()
+        }
+        
+        self.weekChangeBtn.snp.makeConstraints{
+            $0.height.width.equalTo(40)
+            $0.top.equalTo(calendarView.snp.bottom)
+            $0.centerX.equalToSuperview()
+        }
+        self.weekChangeImg.snp.makeConstraints{
+            $0.width.height.equalTo(20)
+            $0.centerX.centerY.equalTo(weekChangeBtn)
+        }
+        
+        
+        
         self.habitCollectionView.snp.makeConstraints{
-            $0.top.equalTo(calendarView.snp.bottom).offset(20)
+            $0.top.equalTo(backView.snp.bottom).offset(20)
             $0.left.right.bottom.equalToSuperview()
         }
         
 
     }
     
+    
+    
     @IBAction func weekMonthBtnTapped(_ sender: UIButton) {
         sender.isSelected.toggle()
         
         if sender.isSelected == true{
             self.calendarView.setScope(.week, animated: true)
-            
+            DispatchQueue.main.async {
+                self.weekChangeImg.image = UIImage(systemName: "chevron.down")
+            }
         }
         else{
             self.calendarView.setScope(.month, animated: true)
+            DispatchQueue.main.async {
+                self.weekChangeImg.image = UIImage(systemName: "chevron.up")
+                
+            }
         }
         
-//
-//        if weekMonthCheck == true {
-//            self.calendarView.setScope(.month, animated: true)
-//            weekMonthCheck = false
-//        }else{
-//            self.calendarView.setScope(.week, animated: true)
-//            weekMonthCheck = true
-//        }
-    }
-    @IBAction func preventBtnTapped(_ sender: Any) {
-        scrollCurrentPage(isPrev: true)
-    }
-    
-    @IBAction func nextBtnTapped(_ sender: Any) {
-        scrollCurrentPage(isPrev: false)
-    }
-    
-    private func scrollCurrentPage(isPrev: Bool) {
-        let cal = Calendar.current
-        var dateComponents = DateComponents()
-        dateComponents.month = isPrev ? -1 : 1
-        
-        self.currentPage = cal.date(byAdding: dateComponents, to: self.currentPage ?? self.today)
-        self.calendarView.setCurrentPage(self.currentPage!, animated: true)
     }
 }
 
@@ -251,100 +220,73 @@ class HomeViewController: UIViewController {
 extension HomeViewController : FSCalendarDelegate , FSCalendarDataSource, FSCalendarDelegateAppearance{
     
     
-    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        self.headerLabel.text = self.dateFormatter.string(from: calendar.currentPage)
-    }
-    
+    //MARK: - 주간, 월간 바뀔 때 자연스러운 애니메이션 부여
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool){
-        
         calendarHeight?.constant = bounds.height
         self.view.layoutIfNeeded ()
     }
     
     
-    //MARK: 해빗의 성취도에 따라서 날짜별로 색을 칠해주는 코드
-    //    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
-    //
-    //
-    //        if thisDay.first != nil {
-    //                    guard let fillDay = thisDay.first else { return UIColor.clear }
-    //
-    //                    switch fillDay.achievement {
-    //                    case "A":
-    //                        return UIColor.achievementColor(.A)
-    //                    case "B":
-    //                        return UIColor.achievementColor(.B)
-    //                    case "C":
-    //                        return UIColor.achievementColor(.C)
-    //                    case "D":
-    //                        return UIColor.achievementColor(.D)
-    //                    case "E":
-    //                        return UIColor.achievementColor(.E)
-    //                    default:
-    //                        return UIColor.clear
-    //                    }
-    //                }else{
-    //                    return UIColor.clear
-    //                }
-    //    }
-    
-    
-    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderDefaultColorFor date: Date) -> UIColor? {
-        let imageDateFormatter = DateFormatter()
-        let todayDateFormatter = DateFormatter()
-        imageDateFormatter.dateFormat = "yyyyMMdd"
-        todayDateFormatter.dateFormat = "yyyyMMdd"
-        var dateStr = imageDateFormatter.string(from: date)
-        var todayDateStr = todayDateFormatter.string(from: Date())
-        let startIdx = dateStr.index(dateStr.startIndex, offsetBy: 4)
-        let monthStartIdx = calendar.currentPage.toString().index(calendar.currentPage.toString().startIndex, offsetBy: 5)
-        let endIdx = dateStr.index(dateStr.startIndex, offsetBy: 6)
-        let monthEndIdx = calendar.currentPage.toString().index(calendar.currentPage.toString().startIndex, offsetBy: 7)
-        var sliced_str = dateStr[startIdx ..< endIdx]
-        var sliced_monthSrt = calendar.currentPage.toString()[monthStartIdx ..< monthEndIdx]
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        Constant.selectDay = date.text
         
-        if sliced_str == sliced_monthSrt {
-            return .Gray_20
+        todayHabit.habits.removeAll()
+        todayHabit.todoCount.removeAll()
+        for idx in Constant.homeResult.habits {
+            if Constant.selectDay == Constant.homeResult.today{
+                todayHabit.habits.append(idx)
+                todayHabit.todoCount.append(idx.todos.count)
+            }
         }
-        else if today == imageDateFormatter.date(from: date.text){
-            return .Gray_50
-        }
-        return .Gray_10
+        habitCollectionView.reloadData()
     }
     
+    //MARK: - 각 날짜의 테두리 둥글기 조절(radius)
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderRadiusFor date: Date) -> CGFloat {
         return 15
     }
     
-    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderSelectionColorFor date: Date) -> UIColor? {
-        return .Main_10
+    //MARK: - 각 날짜의 테두리 색상 조절
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderDefaultColorFor date: Date) -> UIColor? {
+        
+        let baseMonth = calendar.currentPage.onlyMonthText
+        let currMonth = date.onlyMonthText
+        let findToday = Date().text
+        let today = date.text
+        
+        
+        print("----------------헤더로 적혀있는 월은 : \(calendar.currentPage)----------------")
+        print("전체 날짜는 : \(baseMonth)")
+        print("오늘의 월은 : \(currMonth)")
+        
+        if findToday == today {
+            return .Gray_50
+        }
+        
+        if baseMonth == currMonth {
+            return .Gray_30
+        }
+        else{
+            return .Gray_10
+        }
     }
     
+    //MARK: - 각 날짜의 내부 채우기 색상 조절
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
         
-        calendar.currentPage
+        let baseMonth = calendar.currentPage.onlyMonthText
+        let currMonth = date.onlyMonthText
         
-        
-        let imageDateFormatter = DateFormatter()
-        let todayDateFormatter = DateFormatter()
-        imageDateFormatter.dateFormat = "yyyyMMdd"
-        
-        //        if calendar.appearance.
-        todayDateFormatter.dateFormat = "yyyyMMdd"
-        var dateStr = imageDateFormatter.string(from: date)
-        var todayDateStr = todayDateFormatter.string(from: Date())
-        let startIdx = dateStr.index(dateStr.startIndex, offsetBy: 4)
-        let monthStartIdx = calendar.currentPage.toString().index(calendar.currentPage.toString().startIndex, offsetBy: 5)
-        let endIdx = dateStr.index(dateStr.startIndex, offsetBy: 6)
-        let monthEndIdx = calendar.currentPage.toString().index(calendar.currentPage.toString().startIndex, offsetBy: 7)
-        var sliced_str = dateStr[startIdx ..< endIdx]
-        var sliced_monthSrt = calendar.currentPage.toString()[monthStartIdx ..< monthEndIdx]
-        
-//        print("자른 요일이야 ~~ \(sliced_monthSrt)")
-        if sliced_str == sliced_monthSrt {
-            return .white
+        if baseMonth == currMonth {
+            return .White
         }
-        return .Gray_10
+        else{
+            return .Gray_10
+        }
+    }
+    
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        calendar.reloadData()
     }
     
 }
@@ -362,7 +304,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         cell.setData(userData : todayHabit.habits[indexPath.row])
                 return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard let flow = collectionViewLayout as? UICollectionViewFlowLayout else {
             return CGSize()

@@ -83,6 +83,7 @@ class LoginViewController: UIViewController {
         
         GetHomeDataManager().getHome(self) { data in
             Constant.homeResult = data
+            Constant.selectDay = data.today
             let baseTabBarController = BaseTabBarViewController()
             self.changeRootViewController(baseTabBarController)
         }

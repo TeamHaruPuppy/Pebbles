@@ -12,5 +12,6 @@ struct Constant {
     
     //MARK: - Home 관련 데이터
     static var homeResult : HomeResult = HomeResult(habits: [], today: "")
+    static var selectDay = ""
 }
 
