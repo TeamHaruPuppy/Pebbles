@@ -73,7 +73,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhv-6P-rr9">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhv-6P-rr9">
                     <rect key="frame" x="20" y="96" width="335" height="682"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -120,6 +120,28 @@
                             </attributedString>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j8J-3s-VmO">
+                            <rect key="frame" x="209" y="134" width="24" height="14"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Button">
+                                <attributedString key="attributedTitle"/>
+                            </state>
+                            <state key="disabled">
+                                <attributedString key="attributedTitle"/>
+                            </state>
+                            <state key="selected">
+                                <attributedString key="attributedTitle"/>
+                            </state>
+                            <state key="highlighted">
+                                <attributedString key="attributedTitle"/>
+                            </state>
+                            <connections>
+                                <action selector="dupBtnTapped:" destination="-1" eventType="touchUpInside" id="3t1-o7-c8r"/>
+                            </connections>
+                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSx-xM-dKQ">
                             <rect key="frame" x="0.0" y="469" width="101.66666666666669" height="13.333333333333343"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -226,28 +248,6 @@
                                 <action selector="compleBtnTapped:" destination="-1" eventType="touchUpInside" id="NBL-C6-Xxm"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j8J-3s-VmO">
-                            <rect key="frame" x="209" y="134" width="24" height="14"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="Button">
-                                <attributedString key="attributedTitle"/>
-                            </state>
-                            <state key="disabled">
-                                <attributedString key="attributedTitle"/>
-                            </state>
-                            <state key="selected">
-                                <attributedString key="attributedTitle"/>
-                            </state>
-                            <state key="highlighted">
-                                <attributedString key="attributedTitle"/>
-                            </state>
-                            <connections>
-                                <action selector="dupBtnTapped:" destination="-1" eventType="touchUpInside" id="3t1-o7-c8r"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <viewLayoutGuide key="contentLayoutGuide" id="xUc-ws-6rr"/>
                     <viewLayoutGuide key="frameLayoutGuide" id="eQf-H0-BUc"/>
@@ -258,11 +258,6 @@
             <gestureRecognizers/>
             <point key="canvasLocation" x="136.80000000000001" y="102.70935960591133"/>
         </view>
-        <tapGestureRecognizer id="NAJ-TX-DkF">
-            <connections>
-                <action selector="viewTapped:" destination="-1" id="Fqu-jA-6CY"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="chevron.left" catalog="system" width="97" height="128"/>

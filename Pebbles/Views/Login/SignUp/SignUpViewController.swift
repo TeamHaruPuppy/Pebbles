@@ -20,10 +20,17 @@ class SignUpViewController: UIViewController{
         case validPassword
     }
     
+    enum rePasswordError {
+        case unCorrect
+        case validRePassword
+    }
+    
     // T : 글자 수 에러 & F : 정규화 에러
     var isNicknameError : [nicknameError] = []
     var isPasswordError : [passwordError] = []
-    var nicknameCount = 0
+    var isRePasswordError : [rePasswordError] = []
+//    var nicknameCount = 0
+    var keyBoardUpDown = false
     
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var signUpLabel: UILabel!
@@ -54,12 +61,16 @@ class SignUpViewController: UIViewController{
         self.setConstants()
         self.setAttribute()
         self.setTextFieldSync()
+        self.setKeyboardObserver()
+        
         
         nicknameTextField.delegate = self
         passwordTextField.delegate = self
+        rePasswordTextField.delegate = self
         
         nicknameTextField.tag = 1
         passwordTextField.tag = 2
+        rePasswordTextField.tag = 3
         
         let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyTapMethod))
         singleTapGestureRecognizer.numberOfTapsRequired = 1
@@ -69,12 +80,19 @@ class SignUpViewController: UIViewController{
     }
     @objc func MyTapMethod(sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
+        nicknameTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        rePasswordTextField.resignFirstResponder()
     }
     
     func setAttribute(){
         backBtn.tintColor = .Gray_50
         signUpLabel.textColor = .Gray_60
         introLabel.textColor = .Gray_60
+        
+        nicknameTextField.returnKeyType = .done
+        passwordTextField.returnKeyType = .done
+        rePasswordTextField.returnKeyType = .done
         
         nicknameLabel.font = UIFont(name: "AppleSDGothicNeo-SemiBold", size: 15)
         nicknameLabel.textColor = .Gray_50
@@ -121,6 +139,10 @@ class SignUpViewController: UIViewController{
         compleBtn.isEnabled = false
     }
     
+    func setKeyboardObserver(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
     
     func setConstants(){
         
@@ -214,14 +236,43 @@ class SignUpViewController: UIViewController{
             $0.height.equalTo(50)
             $0.top.equalTo(rePasswordErrorMessage.snp.bottom).offset(100)
         }
+        
+       
     }
     
     
     func setTextFieldSync(){
         self.nicknameTextField.addTarget(self, action: #selector(self.nicknameTextFieldDidChange(_ :)), for: .allEditingEvents)
         self.passwordTextField.addTarget(self, action: #selector(self.passwordTextFieldDidChange(_ :)), for: .allEditingEvents)
-        //        self.rePasswordTextField.addTarget(self, action: #selector(self.rePasswordTextFieldDidChange(_ :)), for: .allEditingEvents)
+                self.rePasswordTextField.addTarget(self, action: #selector(self.rePasswordTextFieldDidChange(_ :)), for: .allEditingEvents)
     }
+    
+    @objc func rePasswordTextFieldDidChange(_ sender : Any) -> Void{
+        guard let rePassword = rePasswordTextField.text else {return}
+        
+        if rePassword.count == 0 {
+            rePasswordTextField.layer.borderColor = UIColor.Gray_30.cgColor
+            rePasswordErrorMessage.textColor = .Gray_60
+            rePasswordErrorMessage.text = ""
+            return;
+        }
+        
+        switch isRePasswordError.last{
+        case .unCorrect :
+            self.rePasswordErrorMessage.textColor = .alart
+            self.rePasswordErrorMessage.text = "비밀번호가 일치하지 않습니다."
+            self.rePasswordTextField.layer.borderColor = UIColor.alart.cgColor
+            break;
+        default:
+            self.rePasswordErrorMessage.textColor = .Main_30
+            self.rePasswordErrorMessage.text = "비밀번호가 일치합니다."
+            self.rePasswordTextField.layer.borderColor = UIColor.Main_30.cgColor
+            self.isRePasswordError.popLast()
+            self.isRePasswordError.append(.validRePassword)
+            break;
+        }
+    }
+    
     @objc func passwordTextFieldDidChange(_ sender : Any) -> Void{
         guard let password = passwordTextField.text else {return}
         
@@ -239,17 +290,28 @@ class SignUpViewController: UIViewController{
             self.passwordErrorMessage.text = "비밀번호는 8글자 이상이어야 합니다."
             self.passwordTextField.layer.borderColor = UIColor.alart.cgColor
             break;
-        case .allIn:
+        case .noSpecial:
+            self.passwordErrorMessage.textColor = .alart
+            self.passwordErrorMessage.text = "적어도 하나의 특수문자,영문,숫자를 포함해야합니다."
+            self.passwordTextField.layer.borderColor = UIColor.alart.cgColor
+            break;
+        case .noEng:
+            self.passwordErrorMessage.textColor = .alart
+            self.passwordErrorMessage.text = "적어도 하나의 특수문자,영문,숫자를 포함해야합니다."
+            self.passwordTextField.layer.borderColor = UIColor.alart.cgColor
+            break;
+        case .noNum:
+            self.passwordErrorMessage.textColor = .alart
+            self.passwordErrorMessage.text = "적어도 하나의 특수문자,영문,숫자를 포함해야합니다."
+            self.passwordTextField.layer.borderColor = UIColor.alart.cgColor
+            break;
+        default:
             self.passwordErrorMessage.textColor = .Main_30
             self.passwordErrorMessage.text = "사용가능한 비밀번호 입니다."
             self.passwordTextField.layer.borderColor = UIColor.Main_30.cgColor
             self.isPasswordError.popLast()
             self.isPasswordError.append(.validPassword)
             break;
-        default:
-            self.passwordErrorMessage.textColor = .alart
-            self.passwordErrorMessage.text = "적어도 하나의 특수문자,영문,숫자를 포함해야합니다."
-            self.passwordTextField.layer.borderColor = UIColor.alart.cgColor
         }
         
        //MARK: - 8글자 미만일 때
@@ -302,6 +364,25 @@ class SignUpViewController: UIViewController{
         }
     }
     
+    @objc func keyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            print("키보드 높이 : \(keyboardSize.height)")
+            if !keyBoardUpDown {
+                return
+            }
+            if self.view.frame.origin.y == 0 {
+                self.scrollView.contentOffset.y += keyboardSize.height
+            }
+        }
+    }
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.scrollView.contentOffset.y != 0 {
+            self.scrollView.contentOffset.y = 0
+            keyBoardUpDown = false
+        }
+    }
+    
     @IBAction func dupBtnTapped(_ sender: Any) {
         self.showIndicator()
         DuplicateDataManager().duplicateNickname(nicknameTextField.text ?? "", self) { data in
@@ -339,9 +420,6 @@ class SignUpViewController: UIViewController{
         dismiss(animated: true)
     }
     
-    @IBAction func viewTapped(_ sender: Any) {
-        view.endEditing(true)
-    }
     
     
     
@@ -349,12 +427,84 @@ class SignUpViewController: UIViewController{
 
 extension SignUpViewController : UITextFieldDelegate {
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.tag == 1 {
+            if isNicknameError.last == .validName
+                && isPasswordError.last == .validPassword
+                && isRePasswordError.last == .validRePassword{
+                self.compleBtn.isEnabled.toggle()
+                self.compleBtn.backgroundColor = .Main_30
+            }
+        }
+        if textField.tag == 2 {
+            if isNicknameError.last == .validName
+                && isPasswordError.last == .validPassword
+                && isRePasswordError.last == .validRePassword{
+                self.compleBtn.isEnabled.toggle()
+                self.compleBtn.backgroundColor = .Main_30
+            }
+        }
+        if textField.tag == 3 {
+            if isNicknameError.last == .validName
+                && isPasswordError.last == .validPassword
+                && isRePasswordError.last == .validRePassword{
+                self.compleBtn.isEnabled.toggle()
+                self.compleBtn.backgroundColor = .Main_30
+            }
+        }
+    }
+    
+  
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.tag == 1 {
+            isPasswordError.removeAll()
+            textField.text = ""
+        }
+        if textField.tag == 2{
+            isPasswordError.removeAll()
+        }
+        if textField.tag == 3{
+            self.keyBoardUpDown = true
+            isRePasswordError.removeAll()
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let utf8Char = string.cString(using: .utf8)
         let isBackSpace = strcmp(utf8Char, "\\b")
         
+        if textField.tag == 3{
+            let input = NSString(string: textField.text ?? "")
+            let rePassword = input.replacingCharacters(in: range, with: string)
+            
+            if isBackSpace == -92{
+                if isRePasswordError.count > 0{
+                    isRePasswordError.removeLast()
+                    print("에러배열 하나 지움. 현재 에러배열 크기 :\(isRePasswordError.count)")
+                    print("마지막 에러 종류는: \(String(describing: isRePasswordError.last))")
+                }
+                return true
+            }
+            
+            if rePassword == passwordTextField.text{
+                print("마지막 에러 종류는: \(String(describing: isRePasswordError.last))")
+                isRePasswordError.append(.validRePassword)
+                return true
+            }
+            else{
+                print("마지막 에러 종류는: \(String(describing: isRePasswordError.last))")
+                isRePasswordError.append(.unCorrect)
+                return true
+            }
+        }
+        
         if textField.tag == 2{
-            let input = NSString(string: passwordTextField.text ?? "")
+            let input = NSString(string: textField.text ?? "")
             let password = input.replacingCharacters(in: range, with: string)
             
             let numPattern = "(?=.*[0-9])"
@@ -396,6 +546,8 @@ extension SignUpViewController : UITextFieldDelegate {
                 return true
             }
             isPasswordError.append(.allIn)
+            print("모든 조건 충족. 현재 에러배열 크기 :\(isPasswordError.count)")
+            print("마지막 에러 종류는: \(String(describing: isPasswordError.last))")
             return true
             
         }
