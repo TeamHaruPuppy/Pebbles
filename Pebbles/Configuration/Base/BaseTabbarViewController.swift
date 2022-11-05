@@ -31,6 +31,7 @@ class BaseTabBarViewController : UITabBarController, UITabBarControllerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.tabBar.tintColor = .Main_30
         let homeViewContoller = UINavigationController(rootViewController: homeViewContoller)
         let pebbleManageViewContoller = UINavigationController(rootViewController: pebbleManageViewContoller)
@@ -41,6 +42,10 @@ class BaseTabBarViewController : UITabBarController, UITabBarControllerDelegate{
         pebbleManageViewContoller.tabBarItem = pebbleManageTabBarItem
         myStoneTowerViewContoller.tabBarItem = myStoneTowerTabBarItem
 
+        homeViewContoller.isNavigationBarHidden = true
+        
+        
+        
         self.viewControllers = [homeViewContoller,pebbleManageViewContoller,myStoneTowerViewContoller]
         self.delegate = self
         

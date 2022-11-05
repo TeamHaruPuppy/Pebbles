@@ -20,7 +20,6 @@ class HomeViewController: UIViewController {
     }
     
     
-    @IBOutlet var upSwipeRecognizer: UISwipeGestureRecognizer!
     
     @IBOutlet weak var habitCollectionView: UICollectionView!
     
@@ -28,7 +27,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var weekChangeBtn: UIButton!
     
     
-    
+    private var currOffsetY = 0.0
+    private var touchEndOffsetY = 0.0
     private var todayHabit = TodayHabit()
     private var calendarHeight: NSLayoutConstraint?
     private var customView = UIView()
@@ -43,10 +43,29 @@ class HomeViewController: UIViewController {
         return df
     }()
     
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.view.addSubview(logoImageView)
+        self.view.addSubview(optionBtn)
+        self.view.addSubview(shadow)
+        self.shadow.addSubview(backView)
+        self.backView.addSubview(weekChangeBtn)
+        self.backView.addSubview(weekChangeImg)
+        self.backView.addSubview(calendarView)
+        self.registerXib()
+        self.registerDelegate()
+        self.configure()
+        
+        calendarView.tag = 1
+        habitCollectionView.tag = 2
+        
+        
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         calendarView.delegate = self
         calendarView.headerHeight = 50
         calendarView.scope = .month
@@ -87,7 +106,7 @@ class HomeViewController: UIViewController {
         $0.appearance.headerDateFormat = "YYYY년 MM월"
         $0.locale = Locale(identifier: "ko_KR")
         
-
+        
         
     }
     
@@ -105,26 +124,6 @@ class HomeViewController: UIViewController {
     }
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    
-        self.view.addSubview(logoImageView)
-        self.view.addSubview(optionBtn)
-        self.view.addSubview(shadow)
-        self.shadow.addSubview(backView)
-        self.backView.addSubview(weekChangeBtn)
-        self.backView.addSubview(weekChangeImg)
-        self.backView.addSubview(calendarView)
-        self.registerXib()
-        self.registerDelegate()
-        self.configure()
-        
-        calendarView.tag = 1
-        habitCollectionView.tag = 2
-        
-        
-    }
-    
     private func registerXib(){
         let storyNib = UINib(nibName: HabitCollectionViewCell.identifier, bundle: nil)
         habitCollectionView.register(storyNib, forCellWithReuseIdentifier: HabitCollectionViewCell.identifier)
@@ -133,17 +132,22 @@ class HomeViewController: UIViewController {
     private func registerDelegate(){
         habitCollectionView.delegate = self
         habitCollectionView.dataSource = self
+        
         calendarView.delegate = self
         calendarView.dataSource = self
+        
     }
     
     
     func configure(){
         self.view.backgroundColor = .Main_BG
-       habitCollectionView.backgroundColor = .Main_BG
+        
+        habitCollectionView.backgroundColor = .Main_BG
         
         weekChangeImg.tintColor = .Gray_40
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
+        //MARK: - 제약조건 설정
         self.logoImageView.snp.makeConstraints{
             $0.height.width.equalTo(104)
             $0.top.equalToSuperview().offset(Constant.edgeHeight*32)
@@ -191,9 +195,19 @@ class HomeViewController: UIViewController {
             $0.left.right.bottom.equalToSuperview()
         }
         
-
+        
     }
     
+    //    @objc func upSwipping(_ gesture: UIGestureRecognizer){
+    //        print("위로 올리는 즁~~")
+    //        if weekChangeBtn.isSelected == false{
+    //            self.calendarView.setScope(.week, animated: true)
+    //            DispatchQueue.main.async {
+    //                self.weekChangeImg.image = UIImage(systemName: "chevron.down")
+    //            }
+    //            weekChangeBtn.isSelected.toggle()
+    //        }
+    //    }
     
     
     @IBAction func weekMonthBtnTapped(_ sender: UIButton) {
@@ -212,8 +226,33 @@ class HomeViewController: UIViewController {
                 
             }
         }
+    }
+    
+    func changeBar(hidden:Bool){
+        guard let tabBar = self.tabBarController?.tabBar else {
+            return;
+        }
+        // 탭바가 사라져 있다면 애니메이션(사라지는)효과를 주지 않음
+        if tabBar.isHidden == hidden{
+            return;
+        }
+        let frame = tabBar.frame;
+        let offset = hidden ? (frame.size.height) : -(frame.size.height)
+        let duration:TimeInterval = 0.5
+        tabBar.isHidden = false;
+        UIView.animate(withDuration: duration, animations: {
+            ()-> Void in
+            tabBar.frame = frame.offsetBy(dx: 0, dy: offset)
+        }, completion: {(isTrue) -> Void in
+            if isTrue{
+                tabBar.isHidden = hidden;
+                print("탭바 isHidden의 상태는 ?? : \(hidden)")
+            }
+        });
+        
         
     }
+    
 }
 
 
@@ -232,6 +271,7 @@ extension HomeViewController : FSCalendarDelegate , FSCalendarDataSource, FSCale
         
         todayHabit.habits.removeAll()
         todayHabit.todoCount.removeAll()
+        print()
         for idx in Constant.homeResult.habits {
             if Constant.selectDay == Constant.homeResult.today{
                 todayHabit.habits.append(idx)
@@ -302,9 +342,9 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HabitCollectionViewCell.identifier, for: indexPath) as? HabitCollectionViewCell else { return UICollectionViewCell() }
         cell.setData(userData : todayHabit.habits[indexPath.row])
-                return cell
+        return cell
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard let flow = collectionViewLayout as? UICollectionViewFlowLayout else {
             return CGSize()
@@ -313,10 +353,41 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         flow.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 20, right: 20)
         let width = UIScreen.main.bounds.width - 40
         let countHeight = Float(todayHabit.habits[indexPath.row].todos.count)
-        print("[\(indexPath.row)번째 투두의 개수] : \(todayHabit.habits[indexPath.row].todos.count)")
+//        print("[\(indexPath.row)번째 투두의 개수] : \(todayHabit.habits[indexPath.row].todos.count)")
         return CGSize(width: width, height: 50*CGFloat(countHeight) + 50 )
     }
     
     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        currOffsetY = scrollView.contentOffset.y
+//        print("---------------------------------------")
+//        print("스크롤 시작 오프셋 : \(currOffsetY)")
+    }
     
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        touchEndOffsetY = scrollView.contentOffset.y
+//        print("스크롤 끝난 오프셋 : \(touchEndOffsetY)")
+        
+        if touchEndOffsetY > currOffsetY, currOffsetY >= 0{
+            if weekChangeBtn.isSelected == false{
+                self.calendarView.setScope(.week, animated: true)
+                DispatchQueue.main.async {
+                    self.weekChangeImg.image = UIImage(systemName: "chevron.down")
+                }
+                weekChangeBtn.isSelected.toggle()
+            }
+            changeBar(hidden: true)
+//            print("hidden값 : true")
+        }else if touchEndOffsetY < currOffsetY{
+            changeBar(hidden: false)
+//            print("hidden값 : false")
+        }
+    }
+}
+
+extension HomeViewController {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("터치 끝남")
+        touchEndOffsetY = habitCollectionView.contentOffset.y
+    }
 }

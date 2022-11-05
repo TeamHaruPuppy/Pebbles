@@ -10,14 +10,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Pebbles" customModuleProvider="target">
             <connections>
-                <outlet property="appleBtn" destination="RgV-3q-VIQ" id="Yw9-Ub-jYN"/>
-                <outlet property="btn_apple_action" destination="Brb-d7-rx8" id="kvf-k6-Dou"/>
-                <outlet property="btn_kakao_action" destination="1IK-uh-gnx" id="Y77-Km-7UX"/>
-                <outlet property="btn_naver_action" destination="ehe-iL-RgU" id="wAY-Hv-ixe"/>
-                <outlet property="kakaoBtn" destination="sZz-9I-myd" id="gcb-W7-dYY"/>
+                <outlet property="alreadySignUpLabel" destination="T9L-3P-fwm" id="89g-2o-lqy"/>
                 <outlet property="logo" destination="zjZ-GM-mu7" id="sel-fg-9c6"/>
-                <outlet property="naverBtn" destination="9Qj-kt-ICR" id="1jh-Hi-sU6"/>
+                <outlet property="signInBtn" destination="QnM-rh-Wt0" id="eQ7-fm-shA"/>
                 <outlet property="signUpLabel" destination="Lin-HN-Pac" id="scI-u1-gIE"/>
+                <outlet property="stackView" destination="Sol-gX-ePf" id="mAW-Kq-UTv"/>
+                <outlet property="startBtn" destination="Brb-d7-rx8" id="Qhb-Un-xye"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,83 +24,83 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainLogo" translatesAutoresizingMaskIntoConstraints="NO" id="zjZ-GM-mu7">
-                    <rect key="frame" x="44" y="175" width="287" height="287"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mainLogo" translatesAutoresizingMaskIntoConstraints="NO" id="zjZ-GM-mu7">
+                    <rect key="frame" x="44" y="222" width="287" height="198"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lin-HN-Pac">
-                    <rect key="frame" x="41.666666666666657" y="513" width="292" height="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lin-HN-Pac">
+                    <rect key="frame" x="101.66666666666667" y="471" width="171.66666666666663" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <attributedString key="attributedText">
-                        <fragment content="간단한 회원가입">
+                        <fragment content="목표를 위한 오늘 관리">
                             <attributes>
-                                <color key="NSColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <font key="NSFont" size="14" name="AppleSDGothicNeo-SemiBold"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                            </attributes>
-                        </fragment>
-                        <fragment content="으로 오늘의 조약돌을 시작 해볼까요?">
-                            <attributes>
-                                <color key="NSColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <font key="NSFont" size="20" name="AppleSDGothicNeo-Regular"/>
+                                <font key="NSOriginalFont" size="14" name="AppleSDGothicNeo-Regular"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>
                     </attributedString>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Brb-d7-rx8" userLabel="btn_apple_action">
-                    <rect key="frame" x="144" y="628" width="24" height="14"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Brb-d7-rx8" userLabel="startBtn">
+                    <rect key="frame" x="144" y="628" width="161" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain"/>
+                    <buttonConfiguration key="configuration" style="plain">
+                        <attributedString key="attributedTitle">
+                            <fragment content="시작하기">
+                                <attributes>
+                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <font key="NSFont" size="17" name="AppleSDGothicNeo-SemiBold"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                    </buttonConfiguration>
                     <connections>
-                        <action selector="appleBtnTapped:" destination="-1" eventType="touchUpInside" id="aM8-BK-9Oh"/>
+                        <action selector="startBtnTapped:" destination="-1" eventType="touchUpInside" id="6gF-xo-iPp"/>
                     </connections>
                 </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="btn_apple" translatesAutoresizingMaskIntoConstraints="NO" id="RgV-3q-VIQ">
-                    <rect key="frame" x="20" y="565" width="335" height="50"/>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1IK-uh-gnx" userLabel="btn_kakao_action">
-                    <rect key="frame" x="185" y="688" width="24" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain"/>
-                    <connections>
-                        <action selector="kakaoBtnTapped:" destination="-1" eventType="touchUpInside" id="eFY-a9-Bf9"/>
-                    </connections>
-                </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="btn_kakao" translatesAutoresizingMaskIntoConstraints="NO" id="sZz-9I-myd">
-                    <rect key="frame" x="20" y="625" width="335" height="50"/>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehe-iL-RgU" userLabel="btn_naver_action">
-                    <rect key="frame" x="185" y="748" width="24" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain"/>
-                </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="btn_naver" translatesAutoresizingMaskIntoConstraints="NO" id="9Qj-kt-ICR">
-                    <rect key="frame" x="20" y="685" width="335" height="50"/>
-                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Sol-gX-ePf">
+                    <rect key="frame" x="129" y="607" width="182" height="30"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9L-3P-fwm">
+                            <rect key="frame" x="0.0" y="0.0" width="107" height="30"/>
+                            <attributedString key="attributedText">
+                                <fragment content="이미 가입하셨나요?">
+                                    <attributes>
+                                        <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QnM-rh-Wt0">
+                            <rect key="frame" x="117" y="0.0" width="65" height="30"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal">
+                                <attributedString key="attributedTitle">
+                                    <fragment content="로그인하기">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <font key="NSFont" size="15" name="AppleSDGothicNeo-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <integer key="NSUnderline" value="1"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                            </state>
+                        </button>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-            <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zjZ-GM-mu7" secondAttribute="trailing" constant="44" id="6dO-DO-ncJ"/>
-                <constraint firstItem="RgV-3q-VIQ" firstAttribute="top" secondItem="Lin-HN-Pac" secondAttribute="bottom" constant="35" id="EKP-OC-ipX"/>
-                <constraint firstItem="Lin-HN-Pac" firstAttribute="top" secondItem="zjZ-GM-mu7" secondAttribute="bottom" constant="51" id="EQo-o9-qmy"/>
-                <constraint firstItem="zjZ-GM-mu7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="175" id="IaO-BO-a4C"/>
-                <constraint firstItem="9Qj-kt-ICR" firstAttribute="top" secondItem="sZz-9I-myd" secondAttribute="bottom" constant="10" id="VVK-G5-xz6"/>
-                <constraint firstItem="zjZ-GM-mu7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="44" id="b5j-Xw-PPw"/>
-                <constraint firstItem="sZz-9I-myd" firstAttribute="top" secondItem="RgV-3q-VIQ" secondAttribute="bottom" constant="10" id="dh2-w0-mbT"/>
-                <constraint firstItem="Lin-HN-Pac" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="tKR-KC-C5c"/>
-            </constraints>
             <point key="canvasLocation" x="138.40000000000001" y="138.91625615763547"/>
         </view>
     </objects>
     <resources>
-        <image name="btn_apple" width="335" height="50"/>
-        <image name="btn_kakao" width="335" height="50"/>
-        <image name="btn_naver" width="335" height="50"/>
-        <image name="mainLogo" width="287" height="287"/>
+        <image name="mainLogo" width="198" height="198"/>
     </resources>
 </document>
