@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840684172916A9E200A30517 /* DuplicateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840684162916A9E200A30517 /* DuplicateModel.swift */; };
+		840684192916A9F100A30517 /* DuplicateDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840684182916A9F100A30517 /* DuplicateDataManager.swift */; };
 		8439D46328F0B97000D9161C /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439D46228F0B96F00D9161C /* UITextField.swift */; };
 		847B78A428E5E8D3000DC20A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B78A328E5E8D3000DC20A /* AppDelegate.swift */; };
 		847B78AD28E5E8D6000DC20A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847B78AC28E5E8D6000DC20A /* Assets.xcassets */; };
@@ -36,10 +38,6 @@
 		847B797F28EC7556000DC20A /* WriteNickNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B797E28EC7556000DC20A /* WriteNickNameViewModel.swift */; };
 		847B798128EC757C000DC20A /* WriteFutureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B798028EC757C000DC20A /* WriteFutureViewModel.swift */; };
 		847B799B28ECA90B000DC20A /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B799A28ECA90B000DC20A /* XibView.swift */; };
-		847B799F28ECCEA6000DC20A /* NicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B799E28ECCEA5000DC20A /* NicknameView.swift */; };
-		847B79A128ECCEB3000DC20A /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B79A028ECCEB3000DC20A /* GoalView.swift */; };
-		847B79A328ECCEC2000DC20A /* NicknameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847B79A228ECCEC2000DC20A /* NicknameView.xib */; };
-		847B79A528ECCEC9000DC20A /* GoalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847B79A428ECCEC9000DC20A /* GoalView.xib */; };
 		84A64C2028F427D500BB2325 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A64C1E28F427D500BB2325 /* HomeViewController.swift */; };
 		84A64C2128F427D500BB2325 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A64C1F28F427D500BB2325 /* HomeViewController.xib */; };
 		84A64C2428F427E700BB2325 /* PebbleManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A64C2228F427E700BB2325 /* PebbleManageViewController.swift */; };
@@ -56,6 +54,8 @@
 		84CC3F4F2911F3A400E151E1 /* TodoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CC3F4D2911F3A400E151E1 /* TodoCollectionViewCell.xib */; };
 		84CC3F5229128E7D00E151E1 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CC3F5129128E7D00E151E1 /* HomeModel.swift */; };
 		84CC3F572912A0CC00E151E1 /* GetHomeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CC3F562912A0CC00E151E1 /* GetHomeDataManager.swift */; };
+		84CC3F642916729C00E151E1 /* NicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CC3F622916729C00E151E1 /* NicknameView.swift */; };
+		84CC3F652916729C00E151E1 /* NicknameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CC3F632916729C00E151E1 /* NicknameView.xib */; };
 		84F4765828EF830300B6F755 /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F4765728EF830300B6F755 /* UIScrollView.swift */; };
 		F510E6A562B3BB2AA7547786 /* Pods_Pebbles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A174502E8721EB5D2107F2B /* Pods_Pebbles.framework */; };
 /* End PBXBuildFile section */
@@ -63,6 +63,8 @@
 /* Begin PBXFileReference section */
 		4A174502E8721EB5D2107F2B /* Pods_Pebbles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pebbles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68D1D21C981C4D61E61FB5E9 /* Pods-Pebbles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pebbles.release.xcconfig"; path = "Target Support Files/Pods-Pebbles/Pods-Pebbles.release.xcconfig"; sourceTree = "<group>"; };
+		840684162916A9E200A30517 /* DuplicateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateModel.swift; sourceTree = "<group>"; };
+		840684182916A9F100A30517 /* DuplicateDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateDataManager.swift; sourceTree = "<group>"; };
 		8439D46228F0B96F00D9161C /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		847B78A028E5E8D3000DC20A /* Pebbles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pebbles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847B78A328E5E8D3000DC20A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,10 +96,6 @@
 		847B797E28EC7556000DC20A /* WriteNickNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteNickNameViewModel.swift; sourceTree = "<group>"; };
 		847B798028EC757C000DC20A /* WriteFutureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteFutureViewModel.swift; sourceTree = "<group>"; };
 		847B799A28ECA90B000DC20A /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
-		847B799E28ECCEA5000DC20A /* NicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameView.swift; sourceTree = "<group>"; };
-		847B79A028ECCEB3000DC20A /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
-		847B79A228ECCEC2000DC20A /* NicknameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NicknameView.xib; sourceTree = "<group>"; };
-		847B79A428ECCEC9000DC20A /* GoalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalView.xib; sourceTree = "<group>"; };
 		84A64C1E28F427D500BB2325 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		84A64C1F28F427D500BB2325 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		84A64C2228F427E700BB2325 /* PebbleManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PebbleManageViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +112,8 @@
 		84CC3F4D2911F3A400E151E1 /* TodoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoCollectionViewCell.xib; sourceTree = "<group>"; };
 		84CC3F5129128E7D00E151E1 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		84CC3F562912A0CC00E151E1 /* GetHomeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHomeDataManager.swift; sourceTree = "<group>"; };
+		84CC3F622916729C00E151E1 /* NicknameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NicknameView.swift; sourceTree = "<group>"; };
+		84CC3F632916729C00E151E1 /* NicknameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NicknameView.xib; sourceTree = "<group>"; };
 		84D5A57114568676E81C6FE6 /* Pods-Pebbles.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pebbles.debug.xcconfig"; path = "Target Support Files/Pods-Pebbles/Pods-Pebbles.debug.xcconfig"; sourceTree = "<group>"; };
 		84F4765728EF830300B6F755 /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -307,7 +307,8 @@
 			children = (
 				847B794828EC4CBF000DC20A /* SignUpViewController.swift */,
 				847B794928EC4CBF000DC20A /* SignUpViewController.xib */,
-				847B799D28ECCE8C000DC20A /* WriteInfo */,
+				84CC3F622916729C00E151E1 /* NicknameView.swift */,
+				84CC3F632916729C00E151E1 /* NicknameView.xib */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -336,17 +337,6 @@
 				84C22CB9290EA67C002699E4 /* Login */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		847B799D28ECCE8C000DC20A /* WriteInfo */ = {
-			isa = PBXGroup;
-			children = (
-				847B799E28ECCEA5000DC20A /* NicknameView.swift */,
-				847B79A228ECCEC2000DC20A /* NicknameView.xib */,
-				847B79A028ECCEB3000DC20A /* GoalView.swift */,
-				847B79A428ECCEC9000DC20A /* GoalView.xib */,
-			);
-			path = WriteInfo;
 			sourceTree = "<group>";
 		};
 		84A64C1B28F4278E00BB2325 /* Home */ = {
@@ -392,6 +382,7 @@
 			children = (
 				84C22CBA290EA6A0002699E4 /* SignUpModel.swift */,
 				84C22CBC290EA6A8002699E4 /* SignInModel.swift */,
+				840684162916A9E200A30517 /* DuplicateModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -401,6 +392,7 @@
 			children = (
 				84C22CBE290EA6B7002699E4 /* SignUpDataManager.swift */,
 				84C22CC0290EA6C2002699E4 /* SignInDataManager.swift */,
+				840684182916A9F100A30517 /* DuplicateDataManager.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -500,12 +492,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				847B794B28EC4CBF000DC20A /* SignUpViewController.xib in Resources */,
+				84CC3F652916729C00E151E1 /* NicknameView.xib in Resources */,
 				84A64C2528F427E700BB2325 /* PebbleManageViewController.xib in Resources */,
 				84A64C2A28F4282000BB2325 /* MyStoneTowerViewController.xib in Resources */,
 				84CC3F4F2911F3A400E151E1 /* TodoCollectionViewCell.xib in Resources */,
 				847B78B028E5E8D6000DC20A /* LaunchScreen.storyboard in Resources */,
-				847B79A328ECCEC2000DC20A /* NicknameView.xib in Resources */,
-				847B79A528ECCEC9000DC20A /* GoalView.xib in Resources */,
 				847B793D28EB7A6B000DC20A /* LaunchScreen.png in Resources */,
 				847B78AD28E5E8D6000DC20A /* Assets.xcassets in Resources */,
 				847B793028EB6E34000DC20A /* LoginViewController.xib in Resources */,
@@ -574,6 +565,7 @@
 				847B78CC28E9DAA6000DC20A /* String.swift in Sources */,
 				847B798128EC757C000DC20A /* WriteFutureViewModel.swift in Sources */,
 				847B78C028E9DA65000DC20A /* BaseViewController.swift in Sources */,
+				840684172916A9E200A30517 /* DuplicateModel.swift in Sources */,
 				84CC3F4E2911F3A400E151E1 /* TodoCollectionViewCell.swift in Sources */,
 				84C22CC1290EA6C2002699E4 /* SignInDataManager.swift in Sources */,
 				847B792F28EB6E34000DC20A /* LoginViewController.swift in Sources */,
@@ -583,9 +575,9 @@
 				847B794228EB95A7000DC20A /* Secret.swift in Sources */,
 				847B78C828E9DA94000DC20A /* Date.swift in Sources */,
 				847B78D828E9DAED000DC20A /* UIImageView.swift in Sources */,
+				84CC3F642916729C00E151E1 /* NicknameView.swift in Sources */,
 				847B78CA28E9DA9B000DC20A /* UIColor.swift in Sources */,
 				84C22CBF290EA6B7002699E4 /* SignUpDataManager.swift in Sources */,
-				847B799F28ECCEA6000DC20A /* NicknameView.swift in Sources */,
 				847B78D428E9DADC000DC20A /* UIFont.swift in Sources */,
 				847B794A28EC4CBF000DC20A /* SignUpViewController.swift in Sources */,
 				84C22CBB290EA6A0002699E4 /* SignUpModel.swift in Sources */,
@@ -597,8 +589,8 @@
 				847B799B28ECA90B000DC20A /* XibView.swift in Sources */,
 				8439D46328F0B97000D9161C /* UITextField.swift in Sources */,
 				847B797F28EC7556000DC20A /* WriteNickNameViewModel.swift in Sources */,
-				847B79A128ECCEB3000DC20A /* GoalView.swift in Sources */,
 				847B78C228E9DA72000DC20A /* BaseTabbarViewController.swift in Sources */,
+				840684192916A9F100A30517 /* DuplicateDataManager.swift in Sources */,
 				84A64C2428F427E700BB2325 /* PebbleManageViewController.swift in Sources */,
 				847B78BE28E9DA54000DC20A /* Constant.swift in Sources */,
 			);

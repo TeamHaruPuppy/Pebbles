@@ -46,7 +46,7 @@ class NicknameView: UIView  {
     
     //MARK: 커스텀한 뷰의 IBOutlet등의 초기화를 담당하는 함수 (ViewController의 ViewDidLoad와 같은 역할)
     override func awakeFromNib() {
-        textField.delegate = self
+//        textField.delegate = self
         configure()
         self.textField.addTarget(self, action: #selector(self.textFieldDidChange(_ :)), for: .allEditingEvents)
     }
@@ -156,30 +156,30 @@ class NicknameView: UIView  {
     
 }
 
-extension NicknameView : UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let utf8Char = string.cString(using: .utf8)
-        let isBackSpace = strcmp(utf8Char, "\\b")
-        
-        if isBackSpace == -92{
-            self.delegate?.isNotNextBtnEnabled()
-            if isNicknameError.count > 0{
-                isNicknameError.removeLast()
-                print("에러배열 하나 지움. 현재 에러배열 크기 :\(isNicknameError.count)")
-                print("마지막 에러 종류는: \(isNicknameError.last)")
-            }
-        }else if !string.hasCharacters(){
-            isNicknameError.append(false)
-            print("특수문자 집어넣음. 현재 에러배열 크기 : \(isNicknameError.count)")
-            print("마지막 에러 종류는: \(isNicknameError.last)")
-        }else {
-            let nickname = textField.text ?? ""
-            if nickname.count >= 5 {isNicknameError.append(true)}
-            print("5글자 이상임. 현재 에러배열 크기 : \(isNicknameError.count)")
-            print("마지막 에러 종류는: \(isNicknameError.last)")
-        }
-        return true
-    }
-}
+//extension NicknameView : UITextFieldDelegate {
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        let utf8Char = string.cString(using: .utf8)
+//        let isBackSpace = strcmp(utf8Char, "\\b")
+//
+//        if isBackSpace == -92{
+//            self.delegate?.isNotNextBtnEnabled()
+//            if isNicknameError.count > 0{
+//                isNicknameError.removeLast()
+//                print("에러배열 하나 지움. 현재 에러배열 크기 :\(isNicknameError.count)")
+//                print("마지막 에러 종류는: \(isNicknameError.last)")
+//            }
+//        }else if !string.hasCharacters(){
+//            isNicknameError.append(false)
+//            print("특수문자 집어넣음. 현재 에러배열 크기 : \(isNicknameError.count)")
+//            print("마지막 에러 종류는: \(isNicknameError.last)")
+//        }else {
+//            let nickname = textField.text ?? ""
+//            if nickname.count >= 5 {isNicknameError.append(true)}
+//            print("5글자 이상임. 현재 에러배열 크기 : \(isNicknameError.count)")
+//            print("마지막 에러 종류는: \(isNicknameError.last)")
+//        }
+//        return true
+//    }
+//}
 
 

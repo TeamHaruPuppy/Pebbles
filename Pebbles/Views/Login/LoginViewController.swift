@@ -64,7 +64,6 @@ class LoginViewController: UIViewController {
         
         let vc = SignUpViewController()
         vc.modalPresentationStyle = .fullScreen
-        vc.modalTransitionStyle = .crossDissolve
         self.present(vc, animated: true)
         
 //        GetHomeDataManager().getHome(self) { data in
