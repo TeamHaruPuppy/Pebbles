@@ -9,6 +9,19 @@
 /* Begin PBXBuildFile section */
 		840684172916A9E200A30517 /* DuplicateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840684162916A9E200A30517 /* DuplicateModel.swift */; };
 		840684192916A9F100A30517 /* DuplicateDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840684182916A9F100A30517 /* DuplicateDataManager.swift */; };
+		840684212916E67F00A30517 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406841F2916E67F00A30517 /* SignInViewController.swift */; };
+		840684222916E67F00A30517 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840684202916E67F00A30517 /* SignInViewController.xib */; };
+		840684262919EF7300A30517 /* AddRockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840684242919EF7300A30517 /* AddRockViewController.swift */; };
+		840684272919EF7300A30517 /* AddRockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840684252919EF7300A30517 /* AddRockViewController.xib */; };
+		8406842F2919F8AD00A30517 /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406842E2919F8AD00A30517 /* UIWindow.swift */; };
+		840684322919FB9600A30517 /* AddPebblesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840684302919FB9600A30517 /* AddPebblesViewController.swift */; };
+		840684332919FB9600A30517 /* AddPebblesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840684312919FB9600A30517 /* AddPebblesViewController.xib */; };
+		84068438291A039100A30517 /* CalendarPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84068436291A039100A30517 /* CalendarPopUpViewController.swift */; };
+		84068439291A039100A30517 /* CalendarPopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84068437291A039100A30517 /* CalendarPopUpViewController.xib */; };
+		8406843D291A41B600A30517 /* PostHighlightReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406843C291A41B600A30517 /* PostHighlightReq.swift */; };
+		8406843F291A41C400A30517 /* PostHighlightRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406843E291A41C400A30517 /* PostHighlightRes.swift */; };
+		84068443291A83ED00A30517 /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84068441291A83ED00A30517 /* OptionViewController.swift */; };
+		84068444291A83ED00A30517 /* OptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84068442291A83ED00A30517 /* OptionViewController.xib */; };
 		8439D46328F0B97000D9161C /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439D46228F0B96F00D9161C /* UITextField.swift */; };
 		847B78A428E5E8D3000DC20A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B78A328E5E8D3000DC20A /* AppDelegate.swift */; };
 		847B78AD28E5E8D6000DC20A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847B78AC28E5E8D6000DC20A /* Assets.xcassets */; };
@@ -63,6 +76,19 @@
 		68D1D21C981C4D61E61FB5E9 /* Pods-Pebbles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pebbles.release.xcconfig"; path = "Target Support Files/Pods-Pebbles/Pods-Pebbles.release.xcconfig"; sourceTree = "<group>"; };
 		840684162916A9E200A30517 /* DuplicateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateModel.swift; sourceTree = "<group>"; };
 		840684182916A9F100A30517 /* DuplicateDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateDataManager.swift; sourceTree = "<group>"; };
+		8406841F2916E67F00A30517 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		840684202916E67F00A30517 /* SignInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
+		840684242919EF7300A30517 /* AddRockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRockViewController.swift; sourceTree = "<group>"; };
+		840684252919EF7300A30517 /* AddRockViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddRockViewController.xib; sourceTree = "<group>"; };
+		8406842E2919F8AD00A30517 /* UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
+		840684302919FB9600A30517 /* AddPebblesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPebblesViewController.swift; sourceTree = "<group>"; };
+		840684312919FB9600A30517 /* AddPebblesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPebblesViewController.xib; sourceTree = "<group>"; };
+		84068436291A039100A30517 /* CalendarPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPopUpViewController.swift; sourceTree = "<group>"; };
+		84068437291A039100A30517 /* CalendarPopUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarPopUpViewController.xib; sourceTree = "<group>"; };
+		8406843C291A41B600A30517 /* PostHighlightReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHighlightReq.swift; sourceTree = "<group>"; };
+		8406843E291A41C400A30517 /* PostHighlightRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHighlightRes.swift; sourceTree = "<group>"; };
+		84068441291A83ED00A30517 /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
+		84068442291A83ED00A30517 /* OptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionViewController.xib; sourceTree = "<group>"; };
 		8439D46228F0B96F00D9161C /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		847B78A028E5E8D3000DC20A /* Pebbles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pebbles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847B78A328E5E8D3000DC20A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +158,77 @@
 				4A174502E8721EB5D2107F2B /* Pods_Pebbles.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8406841A2916E5DB00A30517 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				8406841F2916E67F00A30517 /* SignInViewController.swift */,
+				840684202916E67F00A30517 /* SignInViewController.xib */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		840684232919EF3E00A30517 /* AddRock */ = {
+			isa = PBXGroup;
+			children = (
+				8406842D2919F58200A30517 /* Sand */,
+				8406842C2919F57200A30517 /* Pebbles */,
+				8406842A2919F55B00A30517 /* Rock */,
+			);
+			path = AddRock;
+			sourceTree = "<group>";
+		};
+		8406842A2919F55B00A30517 /* Rock */ = {
+			isa = PBXGroup;
+			children = (
+				840684242919EF7300A30517 /* AddRockViewController.swift */,
+				840684252919EF7300A30517 /* AddRockViewController.xib */,
+				84068436291A039100A30517 /* CalendarPopUpViewController.swift */,
+				84068437291A039100A30517 /* CalendarPopUpViewController.xib */,
+			);
+			path = Rock;
+			sourceTree = "<group>";
+		};
+		8406842C2919F57200A30517 /* Pebbles */ = {
+			isa = PBXGroup;
+			children = (
+				840684302919FB9600A30517 /* AddPebblesViewController.swift */,
+				840684312919FB9600A30517 /* AddPebblesViewController.xib */,
+			);
+			path = Pebbles;
+			sourceTree = "<group>";
+		};
+		8406842D2919F58200A30517 /* Sand */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sand;
+			sourceTree = "<group>";
+		};
+		8406843A291A417D00A30517 /* AddRock */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AddRock;
+			sourceTree = "<group>";
+		};
+		8406843B291A419900A30517 /* AddRock */ = {
+			isa = PBXGroup;
+			children = (
+				8406843C291A41B600A30517 /* PostHighlightReq.swift */,
+				8406843E291A41C400A30517 /* PostHighlightRes.swift */,
+			);
+			path = AddRock;
+			sourceTree = "<group>";
+		};
+		84068440291A83D700A30517 /* Option */ = {
+			isa = PBXGroup;
+			children = (
+				84068441291A83ED00A30517 /* OptionViewController.swift */,
+				84068442291A83ED00A30517 /* OptionViewController.xib */,
+			);
+			path = Option;
 			sourceTree = "<group>";
 		};
 		847B789728E5E8D3000DC20A = {
@@ -205,6 +302,7 @@
 				847B78D928E9DAF1000DC20A /* UIView.swift */,
 				84F4765728EF830300B6F755 /* UIScrollView.swift */,
 				8439D46228F0B96F00D9161C /* UITextField.swift */,
+				8406842E2919F8AD00A30517 /* UIWindow.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -240,6 +338,7 @@
 		847B78E128E9F98E000DC20A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8406843B291A419900A30517 /* AddRock */,
 				84CC3F5029128E4000E151E1 /* Home */,
 				84C22CB8290EA679002699E4 /* Login */,
 			);
@@ -278,6 +377,7 @@
 				847B792D28EB6E34000DC20A /* LoginViewController.swift */,
 				847B792E28EB6E34000DC20A /* LoginViewController.xib */,
 				847B794328EC4BEB000DC20A /* SignUp */,
+				8406841A2916E5DB00A30517 /* SignIn */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -327,6 +427,7 @@
 		847B799C28ECCABC000DC20A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8406843A291A417D00A30517 /* AddRock */,
 				84CC3F552912A0B700E151E1 /* Home */,
 				84C22CB9290EA67C002699E4 /* Login */,
 			);
@@ -336,6 +437,8 @@
 		84A64C1B28F4278E00BB2325 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				84068440291A83D700A30517 /* Option */,
+				840684232919EF3E00A30517 /* AddRock */,
 				84C22CA7290E9FC9002699E4 /* HabitCell */,
 				84A64C1E28F427D500BB2325 /* HomeViewController.swift */,
 				84A64C1F28F427D500BB2325 /* HomeViewController.xib */,
@@ -486,13 +589,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				847B794B28EC4CBF000DC20A /* SignUpViewController.xib in Resources */,
+				840684272919EF7300A30517 /* AddRockViewController.xib in Resources */,
+				840684332919FB9600A30517 /* AddPebblesViewController.xib in Resources */,
 				84A64C2528F427E700BB2325 /* PebbleManageViewController.xib in Resources */,
+				84068444291A83ED00A30517 /* OptionViewController.xib in Resources */,
 				84A64C2A28F4282000BB2325 /* MyStoneTowerViewController.xib in Resources */,
 				84CC3F4F2911F3A400E151E1 /* TodoCollectionViewCell.xib in Resources */,
 				847B78B028E5E8D6000DC20A /* LaunchScreen.storyboard in Resources */,
 				847B793D28EB7A6B000DC20A /* LaunchScreen.png in Resources */,
 				847B78AD28E5E8D6000DC20A /* Assets.xcassets in Resources */,
 				847B793028EB6E34000DC20A /* LoginViewController.xib in Resources */,
+				840684222916E67F00A30517 /* SignInViewController.xib in Resources */,
+				84068439291A039100A30517 /* CalendarPopUpViewController.xib in Resources */,
 				84A64C2128F427D500BB2325 /* HomeViewController.xib in Resources */,
 				84CC3F462911F00100E151E1 /* HabitCollectionViewCell.xib in Resources */,
 			);
@@ -552,6 +660,7 @@
 				84A64C2928F4282000BB2325 /* MyStoneTowerViewController.swift in Sources */,
 				847B78D228E9DAD6000DC20A /* UINavigationBar.swift in Sources */,
 				84CC3F5229128E7D00E151E1 /* HomeModel.swift in Sources */,
+				840684212916E67F00A30517 /* SignInViewController.swift in Sources */,
 				84CC3F572912A0CC00E151E1 /* GetHomeDataManager.swift in Sources */,
 				847B78DC28E9DAFE000DC20A /* Device.swift in Sources */,
 				847B78D028E9DAC3000DC20A /* UIViewController.swift in Sources */,
@@ -567,7 +676,9 @@
 				847B78D628E9DAE7000DC20A /* UIImage.swift in Sources */,
 				847B794228EB95A7000DC20A /* Secret.swift in Sources */,
 				847B78C828E9DA94000DC20A /* Date.swift in Sources */,
+				840684262919EF7300A30517 /* AddRockViewController.swift in Sources */,
 				847B78D828E9DAED000DC20A /* UIImageView.swift in Sources */,
+				8406843D291A41B600A30517 /* PostHighlightReq.swift in Sources */,
 				847B78CA28E9DA9B000DC20A /* UIColor.swift in Sources */,
 				84C22CBF290EA6B7002699E4 /* SignUpDataManager.swift in Sources */,
 				847B78D428E9DADC000DC20A /* UIFont.swift in Sources */,
@@ -575,16 +686,21 @@
 				84C22CBB290EA6A0002699E4 /* SignUpModel.swift in Sources */,
 				847B793B28EB78FB000DC20A /* SceneDelegate.swift in Sources */,
 				847B78DA28E9DAF1000DC20A /* UIView.swift in Sources */,
+				840684322919FB9600A30517 /* AddPebblesViewController.swift in Sources */,
+				8406842F2919F8AD00A30517 /* UIWindow.swift in Sources */,
 				84A64C2028F427D500BB2325 /* HomeViewController.swift in Sources */,
 				847B78CE28E9DAAE000DC20A /* UIButton.swift in Sources */,
 				84F4765828EF830300B6F755 /* UIScrollView.swift in Sources */,
 				847B799B28ECA90B000DC20A /* XibView.swift in Sources */,
+				8406843F291A41C400A30517 /* PostHighlightRes.swift in Sources */,
 				8439D46328F0B97000D9161C /* UITextField.swift in Sources */,
 				847B797F28EC7556000DC20A /* WriteNickNameViewModel.swift in Sources */,
 				847B78C228E9DA72000DC20A /* BaseTabbarViewController.swift in Sources */,
 				840684192916A9F100A30517 /* DuplicateDataManager.swift in Sources */,
 				84A64C2428F427E700BB2325 /* PebbleManageViewController.swift in Sources */,
 				847B78BE28E9DA54000DC20A /* Constant.swift in Sources */,
+				84068438291A039100A30517 /* CalendarPopUpViewController.swift in Sources */,
+				84068443291A83ED00A30517 /* OptionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,7 +848,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -762,7 +878,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

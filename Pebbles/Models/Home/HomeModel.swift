@@ -8,13 +8,11 @@ struct HomeModel: Codable {
     let message: String
     let result: HomeResult
 }
-
 // MARK: - Result
 struct HomeResult: Codable {
     let habits: [Habit]
     let today: String
 }
-
 // MARK: - Habit
 struct Habit: Codable {
     let consDays: Int
@@ -24,7 +22,7 @@ struct Habit: Codable {
     let seq: Int
     let start, status, today, todayStatus: String
     let todos: [Todo]
-    let weeks: String
+    let weeks: Weeks
 
     enum CodingKeys: String, CodingKey {
         case consDays = "cons_days"
@@ -33,11 +31,15 @@ struct Habit: Codable {
         case todos, weeks
     }
 }
-
 // MARK: - Todo
 struct Todo: Codable {
     let id: Int
     let name: String
     let seq: Int
     let status: String
+}
+// MARK: - Weeks
+struct Weeks: Codable {
+    let fri, mon, sat, sun: Bool
+    let thu, tue, wed: Bool
 }

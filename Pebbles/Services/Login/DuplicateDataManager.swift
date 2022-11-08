@@ -1,6 +1,8 @@
 import Foundation
 import Alamofire
 
+
+//MARK: - 쿼리스트링으로 데이터 넘길 때는 encoding: URLEncoding(destination: .queryString) 사용하기
 class DuplicateDataManager{
     func duplicateNickname(_ username : String, _ viewController : UIViewController, completion: @escaping (_ data: DuplicateModel) -> Void){
         var headers: HTTPHeaders = [
@@ -8,7 +10,10 @@ class DuplicateDataManager{
             "Accept": "application/json"
         ]
         
-        AF.request("\(Constant.BASE_URL)/api/duplicate/username?username=\(username)", method: .post ,encoding: JSONEncoding.default, headers: headers)
+        var param : Parameters = [
+            "username" : "\(username)"
+        ]
+        AF.request("\(Constant.BASE_URL)/api/duplicate/username", method: .post , parameters: param ,encoding: URLEncoding(destination: .queryString), headers: headers)
             .responseDecodable(of: DuplicateModel.self){response in
                 switch response.result {
                 case .success(let response):

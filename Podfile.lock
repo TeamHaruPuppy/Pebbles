@@ -21,6 +21,7 @@ PODS:
   - RxSwift (6.5.0)
   - SnapKit (5.6.0)
   - Then (3.0.0)
+  - UIWindowTransitions (1.0.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - RxSwift
   - SnapKit
   - Then
+  - UIWindowTransitions
 
 SPEC REPOS:
   trunk:
@@ -47,6 +49,7 @@ SPEC REPOS:
     - RxSwift
     - SnapKit
     - Then
+    - UIWindowTransitions
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
@@ -60,7 +63,8 @@ SPEC CHECKSUMS:
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
+  UIWindowTransitions: 2237083382e11f100db7de934041bba0c4669c86
 
-PODFILE CHECKSUM: c8f45e19dd8e014e7d46f6b9b00aa6dc8e982d24
+PODFILE CHECKSUM: b85e0834f83773223ba11bee81cd53bbe80a96ac
 
 COCOAPODS: 1.11.2

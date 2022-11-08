@@ -5,6 +5,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "HabitCollectionViewCell"
     var todos : [Todo] = []
+    var todoCount : Int = 0
     
     @IBOutlet weak var habitLabelBackgroundView: UIView!
     @IBOutlet weak var habitTitle: UILabel!
@@ -30,6 +31,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
         habitTitle.contentMode = .center
         habitTitle.textAlignment = .center
         separateView.backgroundColor = .Gray_20
+        habitLabelBackgroundView.backgroundColor = .Main_10
         
         habitLabelBackgroundView.snp.makeConstraints{
             $0.height.equalTo(50)
@@ -64,15 +66,17 @@ class HabitCollectionViewCell: UICollectionViewCell {
         todoList.dataSource = self
     }
     
-    func setData(userData : Habit){
+    func setData(userData : Habit, todoCount : Int){
         habitTitle.text = userData.name
         todos = userData.todos
+        self.todoCount = todoCount
     }
 }
 
 extension HabitCollectionViewCell : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return todos.count
+        
+        return todoCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

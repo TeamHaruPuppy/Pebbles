@@ -91,6 +91,9 @@
                                     </fragment>
                                 </attributedString>
                             </state>
+                            <connections>
+                                <action selector="loginBtnTapped:" destination="-1" eventType="touchUpInside" id="h8M-ZD-ars"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>

@@ -2,6 +2,7 @@ import UIKit
 import SnapKit
 import Then
 import FSCalendar
+import UIWindowTransitions
 
 class HomeViewController: UIViewController {
     
@@ -11,10 +12,13 @@ class HomeViewController: UIViewController {
         var habits : [Habit] = []
         init(){
             for idx in Constant.homeResult.habits {
-                if Constant.selectDay == Constant.homeResult.today{
-                    habits.append(idx)
-                    todoCount.append(idx.todos.count)
-                }
+                if Constant.selectDay == "Mon" && idx.weeks.mon {habits.append(idx); todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Tue" && idx.weeks.tue {habits.append(idx); todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Wed" && idx.weeks.wed {habits.append(idx); todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Thu" && idx.weeks.thu {habits.append(idx); todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Fri" && idx.weeks.fri {habits.append(idx); todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Sat" && idx.weeks.sat {habits.append(idx); todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Sun" && idx.weeks.sun {habits.append(idx); todoCount.append(idx.todos.count)}
             }
         }
     }
@@ -25,7 +29,8 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var weekChangeImg: UIImageView!
     @IBOutlet weak var weekChangeBtn: UIButton!
-    
+    @IBOutlet weak var addHabitBtn: UIButton!
+    @IBOutlet weak var addHabitImg: UIImageView!
     
     private var currOffsetY = 0.0
     private var touchEndOffsetY = 0.0
@@ -60,6 +65,7 @@ class HomeViewController: UIViewController {
         calendarView.tag = 1
         habitCollectionView.tag = 2
         
+        optionBtn.addTarget(self, action: #selector(showOptionView), for: .touchUpInside)
         
     }
     
@@ -147,6 +153,13 @@ class HomeViewController: UIViewController {
         weekChangeImg.tintColor = .Gray_40
         navigationController?.setNavigationBarHidden(true, animated: false)
         
+        addHabitBtn.backgroundColor = .clear
+        addHabitBtn.titleLabel?.text = ""
+        addHabitImg.layer.masksToBounds = true
+        addHabitImg.contentMode = .scaleToFill
+        
+        
+        
         //MARK: - 제약조건 설정
         self.logoImageView.snp.makeConstraints{
             $0.height.width.equalTo(104)
@@ -195,19 +208,19 @@ class HomeViewController: UIViewController {
             $0.left.right.bottom.equalToSuperview()
         }
         
+        self.addHabitBtn.snp.makeConstraints{
+            $0.right.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview().inset(20)
+            $0.height.width.equalTo(80)
+        }
+        
+        self.addHabitImg.snp.makeConstraints{
+            $0.centerX.centerY.equalTo(addHabitBtn)
+            $0.width.equalTo(Constant.edgeWidth*80)
+            $0.height.equalTo(Constant.edgeHeight*80)
+        }
         
     }
-    
-    //    @objc func upSwipping(_ gesture: UIGestureRecognizer){
-    //        print("위로 올리는 즁~~")
-    //        if weekChangeBtn.isSelected == false{
-    //            self.calendarView.setScope(.week, animated: true)
-    //            DispatchQueue.main.async {
-    //                self.weekChangeImg.image = UIImage(systemName: "chevron.down")
-    //            }
-    //            weekChangeBtn.isSelected.toggle()
-    //        }
-    //    }
     
     
     @IBAction func weekMonthBtnTapped(_ sender: UIButton) {
@@ -228,6 +241,24 @@ class HomeViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func addHabitBtnTapped(_ sender: Any) {
+//        let vc = AddRockViewController()
+//        vc.modalPresentationStyle = .fullScreen
+//        self.present(vc, animated: true)
+        
+        let rootVC = AddRockViewController()
+        let rootViewController = UINavigationController(rootViewController: rootVC)
+        UIApplication.shared.keyWindow?.switchRootViewController(rootViewController)
+        
+    }
+    
+    @objc func showOptionView(){
+        let pushVC = OptionViewController()
+        self.navigationController?.pushViewController(pushVC, animated: true)
+    }
+    
+    
     func changeBar(hidden:Bool){
         guard let tabBar = self.tabBarController?.tabBar else {
             return;
@@ -246,7 +277,6 @@ class HomeViewController: UIViewController {
         }, completion: {(isTrue) -> Void in
             if isTrue{
                 tabBar.isHidden = hidden;
-                print("탭바 isHidden의 상태는 ?? : \(hidden)")
             }
         });
         
@@ -267,17 +297,38 @@ extension HomeViewController : FSCalendarDelegate , FSCalendarDataSource, FSCale
     
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        Constant.selectDay = date.text
-        
+        Constant.selectDay = date.onlyWeek
+        Constant.selectFullDay = date.text
+        let today = Date()
         todayHabit.habits.removeAll()
         todayHabit.todoCount.removeAll()
-        print()
-        for idx in Constant.homeResult.habits {
-            if Constant.selectDay == Constant.homeResult.today{
-                todayHabit.habits.append(idx)
-                todayHabit.todoCount.append(idx.todos.count)
+        print("오늘 날짜 : \(today.text) vs 선택한 날짜 : \(date.text)")
+        if date.text != today.text{
+            for idx in Constant.homeResult.habits {
+                if Constant.selectDay == "Mon" && idx.weeks.mon {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
+                if Constant.selectDay == "Tue" && idx.weeks.tue {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
+                if Constant.selectDay == "Wed" && idx.weeks.wed {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
+                if Constant.selectDay == "Thu" && idx.weeks.thu {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
+                if Constant.selectDay == "Fri" && idx.weeks.fri {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
+                if Constant.selectDay == "Sat" && idx.weeks.sat {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
+                if Constant.selectDay == "Sun" && idx.weeks.sun {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
             }
         }
+        else{
+            for idx in Constant.homeResult.habits {
+                if Constant.selectDay == "Mon" && idx.weeks.mon {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Tue" && idx.weeks.tue {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Wed" && idx.weeks.wed {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Thu" && idx.weeks.thu {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Fri" && idx.weeks.fri {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Sat" && idx.weeks.sat {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Sun" && idx.weeks.sun {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
+            }
+        }
+        print("----------------------------------------")
+        print("선택한 날은 \(date.onlyWeek)요일 입니다")
+        print("오늘의 데이터는 : \(todayHabit.habits)")
+        print("----------------------------------------")
         habitCollectionView.reloadData()
     }
     
@@ -293,11 +344,6 @@ extension HomeViewController : FSCalendarDelegate , FSCalendarDataSource, FSCale
         let currMonth = date.onlyMonthText
         let findToday = Date().text
         let today = date.text
-        
-        
-        print("----------------헤더로 적혀있는 월은 : \(calendar.currentPage)----------------")
-        print("전체 날짜는 : \(baseMonth)")
-        print("오늘의 월은 : \(currMonth)")
         
         if findToday == today {
             return .Gray_50
@@ -341,7 +387,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HabitCollectionViewCell.identifier, for: indexPath) as? HabitCollectionViewCell else { return UICollectionViewCell() }
-        cell.setData(userData : todayHabit.habits[indexPath.row])
+        cell.setData(userData : todayHabit.habits[indexPath.row], todoCount: todayHabit.todoCount[indexPath.row])
         return cell
     }
     
@@ -352,21 +398,46 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         flow.minimumLineSpacing = 20
         flow.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 20, right: 20)
         let width = UIScreen.main.bounds.width - 40
-        let countHeight = Float(todayHabit.habits[indexPath.row].todos.count)
-//        print("[\(indexPath.row)번째 투두의 개수] : \(todayHabit.habits[indexPath.row].todos.count)")
+//        let countHeight = Float(todayHabit.habits[indexPath.row].todos.count)
+        let countHeight = Float(todayHabit.todoCount[indexPath.row])
+        
+//        let today = Date()
+//        todayHabit.habits.removeAll()
+//        todayHabit.todoCount.removeAll()
+//        if Constant.selectFullDay != today.text{
+//            for idx in Constant.homeResult.habits {
+//                if Constant.selectDay == "Mon" && idx.weeks.mon {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
+//                if Constant.selectDay == "Tue" && idx.weeks.tue {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
+//                if Constant.selectDay == "Wed" && idx.weeks.wed {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
+//                if Constant.selectDay == "Thu" && idx.weeks.thu {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
+//                if Constant.selectDay == "Fri" && idx.weeks.fri {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
+//                if Constant.selectDay == "Sat" && idx.weeks.sat {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
+//                if Constant.selectDay == "Sun" && idx.weeks.sun {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
+//            }
+//        }
+//        else{
+//            for idx in Constant.homeResult.habits {
+//                if Constant.selectDay == "Mon" && idx.weeks.mon {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
+//                if Constant.selectDay == "Tue" && idx.weeks.tue {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
+//                if Constant.selectDay == "Wed" && idx.weeks.wed {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
+//                if Constant.selectDay == "Thu" && idx.weeks.thu {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
+//                if Constant.selectDay == "Fri" && idx.weeks.fri {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
+//                if Constant.selectDay == "Sat" && idx.weeks.sat {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
+//                if Constant.selectDay == "Sun" && idx.weeks.sun {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
+//            }
+//        }
+        
         return CGSize(width: width, height: 50*CGFloat(countHeight) + 50 )
     }
     
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         currOffsetY = scrollView.contentOffset.y
-//        print("---------------------------------------")
-//        print("스크롤 시작 오프셋 : \(currOffsetY)")
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         touchEndOffsetY = scrollView.contentOffset.y
-//        print("스크롤 끝난 오프셋 : \(touchEndOffsetY)")
+        //        print("스크롤 끝난 오프셋 : \(touchEndOffsetY)")
         
         if touchEndOffsetY > currOffsetY, currOffsetY >= 0{
             if weekChangeBtn.isSelected == false{
@@ -377,17 +448,16 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
                 weekChangeBtn.isSelected.toggle()
             }
             changeBar(hidden: true)
-//            print("hidden값 : true")
+            //            print("hidden값 : true")
         }else if touchEndOffsetY < currOffsetY{
             changeBar(hidden: false)
-//            print("hidden값 : false")
+            //            print("hidden값 : false")
         }
     }
 }
 
 extension HomeViewController {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("터치 끝남")
         touchEndOffsetY = habitCollectionView.contentOffset.y
     }
 }

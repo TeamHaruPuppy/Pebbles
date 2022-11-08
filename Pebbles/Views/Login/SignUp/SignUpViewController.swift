@@ -29,13 +29,12 @@ class SignUpViewController: UIViewController{
     var isNicknameError : [nicknameError] = []
     var isPasswordError : [passwordError] = []
     var isRePasswordError : [rePasswordError] = []
-//    var nicknameCount = 0
     var keyBoardUpDown = false
     
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var signUpLabel: UILabel!
     @IBOutlet weak var appBar: UIView!
-    
+    @IBOutlet weak var backBtnImg: UIImageView!
     
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -78,6 +77,12 @@ class SignUpViewController: UIViewController{
         singleTapGestureRecognizer.cancelsTouchesInView = false
         scrollView.addGestureRecognizer(singleTapGestureRecognizer)
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     @objc func MyTapMethod(sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
         nicknameTextField.resignFirstResponder()
@@ -86,7 +91,7 @@ class SignUpViewController: UIViewController{
     }
     
     func setAttribute(){
-        backBtn.tintColor = .Gray_50
+        backBtnImg.tintColor = .Gray_50
         signUpLabel.textColor = .Gray_60
         introLabel.textColor = .Gray_60
         
@@ -131,6 +136,7 @@ class SignUpViewController: UIViewController{
         rePasswordTextField.layer.borderWidth = 1
         rePasswordTextField.layer.cornerRadius = 10
         rePasswordErrorMessage.text = ""
+        rePasswordTextField.textContentType = .password
         
         compleBtn.layer.masksToBounds = true
         compleBtn.layer.cornerRadius = 10
@@ -155,6 +161,10 @@ class SignUpViewController: UIViewController{
         backBtn.snp.makeConstraints{
             $0.centerY.equalTo(appBar.snp.centerY)
             $0.left.equalTo(appBar.snp.left).inset(20)
+        }
+        backBtnImg.snp.makeConstraints{
+            $0.centerX.centerY.equalTo(backBtn)
+            $0.height.width.equalTo(20)
         }
         signUpLabel.snp.makeConstraints{
             $0.centerY.equalTo(appBar.snp.centerY)
@@ -385,7 +395,8 @@ class SignUpViewController: UIViewController{
     
     @IBAction func dupBtnTapped(_ sender: Any) {
         self.showIndicator()
-        DuplicateDataManager().duplicateNickname(nicknameTextField.text ?? "", self) { data in
+        guard let username = nicknameTextField.text else {return;}
+        DuplicateDataManager().duplicateNickname(username, self) { data in
             self.dupVerificationBtn.isEnabled.toggle()
             if data.result == true {
                 self.nicknameErrorMessage.textColor = .Gray_60
@@ -408,11 +419,22 @@ class SignUpViewController: UIViewController{
         }
     }
     @IBAction func compleBtnTapped(_ sender: Any) {
-        dismiss(animated: true)
-        
-        let baseTabBarController = BaseTabBarViewController()
-        self.changeRootViewController(baseTabBarController)
-        self.view.endEditing(true)
+        guard let username = nicknameTextField.text else {return;}
+        guard let password = rePasswordTextField.text else {return;}
+            
+        SignUpDataManager().signUp(username, password, "", self) { data in
+            Constant.USER_ID = data.userID
+            Constant.USER_JWTTOKEN = data.jwt
+            GetHomeDataManager().getHome(self) { data in
+                Constant.homeResult = data
+                print("홈으로 가기 전 uid는? : \(Constant.USER_ID)")
+                print("홈으로 가기 전 JWT는? : \(Constant.USER_JWTTOKEN)")
+                print("홈 데이터 전부 보여줘 : \(Constant.homeResult)")
+                self.dismiss(animated: true)
+                let baseViewController = HomeViewController()
+                self.changeRootViewController(baseViewController)
+            }
+        }
     }
     
     
@@ -457,7 +479,7 @@ extension SignUpViewController : UITextFieldDelegate {
   
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField.tag == 1 {
-            isPasswordError.removeAll()
+            isNicknameError.removeAll()
             textField.text = ""
         }
         if textField.tag == 2{
@@ -582,6 +604,7 @@ extension SignUpViewController : UITextFieldDelegate {
                     textField.text = String(newString)
                     isNicknameError.append(.sevenChar)
                 }
+                
                 print("7글자 이상임. 현재 에러배열 크기 : \(isNicknameError.count)")
                 print("마지막 에러 종류는: \(isNicknameError.last)")
             }

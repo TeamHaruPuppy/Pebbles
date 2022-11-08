@@ -26,6 +26,12 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    var onlyWeek: String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E"
+        return dateFormatter.string(from: self)
+    }
+    
     var detailText: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
@@ -38,4 +44,24 @@ extension Date {
         dateFormatter.dateFormat = "yyyyMMddhhmmssSSS"
         return dateFormatter.string(from: self)
     }
+    
+    public func dateCompare(fromDate: Date) -> String {
+            var strDateMessage:String = ""
+            let result:ComparisonResult = self.compare(fromDate)
+            switch result {
+            case .orderedAscending:
+                strDateMessage = "Future"
+                break
+            case .orderedDescending:
+                strDateMessage = "Past"
+                break
+            case .orderedSame:
+                strDateMessage = "Same"
+                break
+            default:
+                strDateMessage = "Error"
+                break
+            }
+            return strDateMessage
+        }
 }

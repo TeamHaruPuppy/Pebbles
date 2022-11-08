@@ -6,7 +6,7 @@ struct SignInModel: Codable {
     let code: Int
     let isSuccess: Bool
     let message: String
-    let result: SignInResult
+    let result: SignInResult?
 }
 
 // MARK: - Result

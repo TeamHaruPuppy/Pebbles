@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="appBar" destination="mtt-UP-2cN" id="XaN-dN-OBD"/>
                 <outlet property="backBtn" destination="Uy7-2k-GOs" id="cLX-d7-M2P"/>
+                <outlet property="backBtnImg" destination="3tq-v0-N2J" id="31X-uw-K9H"/>
                 <outlet property="compleBtn" destination="L0c-6D-FYi" id="S2S-2D-Szg"/>
                 <outlet property="dupVerificationBtn" destination="j8J-3s-VmO" id="tSW-Zb-Jf4"/>
                 <outlet property="dupVerificationLabel" destination="ZPD-it-MVL" id="saH-Mx-mR2"/>

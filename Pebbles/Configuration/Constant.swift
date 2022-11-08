@@ -13,5 +13,20 @@ struct Constant {
     //MARK: - Home 관련 데이터
     static var homeResult : HomeResult = HomeResult(habits: [], today: "")
     static var selectDay = ""
+    static var selectFullDay = ""
+    
+    
+    //MARK: - POST할 때, 파라미터로 보내는 모델 객체
+    static var POST_HIGHLIGHT = HighlightPostModel(end: "", habits: [], name: "", start: "")
+    
+    //MARK: - home/addHighlight/addRock 변수
+    static var rockStartDay = Date()
+    static var rockEndDay = Date()
+    // false : 시작 | true : 끝
+    static var startOrEnd = false
+    
+    static var goalStatus = false
+    static var startStatus = false
+    static var endStatus = false
+    
 }
-

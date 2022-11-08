@@ -48,6 +48,7 @@ class TodoCollectionViewCell: UICollectionViewCell {
         todoLabel.textColor = .Gray_60
         todoLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 14)
         separateView.backgroundColor = .Gray_20
+        self.contentView.backgroundColor = .White
     }
 
     

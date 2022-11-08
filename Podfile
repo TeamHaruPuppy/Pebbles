@@ -14,6 +14,7 @@ target 'Pebbles' do
   pod 'KakaoSDKAuth'
   pod 'KakaoSDKUser'
   pod 'FSCalendar'
+  pod 'UIWindowTransitions'
   # Pods for Pebbles
 
 end

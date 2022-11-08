@@ -73,4 +73,37 @@ class LoginViewController: UIViewController {
 //            self.changeRootViewController(baseTabBarController)
 //        }
     }
+    
+    @IBAction func loginBtnTapped(_ sender: Any) {
+        
+        SignInDataManager().signIn("yj", "123", self) { data in
+            if data.isSuccess == true{
+                guard let data = data.result else {return;}
+                Constant.USER_JWTTOKEN = data.jwt
+                Constant.USER_ID = data.userID
+                GetHomeDataManager().getHome(self) { data in
+                    Constant.homeResult = data
+                    Constant.selectDay = Date().onlyWeek
+                    self.dismiss(animated: true)
+                    print("홈으로 가기 전 uid는? : \(Constant.USER_ID)")
+                    print("홈으로 가기 전 JWT는? : \(Constant.USER_JWTTOKEN)")
+                    print("홈 데이터 전부 보여줘 : \(Constant.homeResult)")
+                    let baseViewController = HomeViewController()
+                    self.changeRootViewController(baseViewController)
+                }
+            }else {
+//                self.idTextField.layer.borderColor = UIColor.alart.cgColor
+//                self.passwordTextField.layer.borderColor = UIColor.alart.cgColor
+//                self.passwordErrorMessageLabel.textColor = .alart
+//                self.passwordErrorMessageLabel.text = data.message
+//
+//                self.signInBtn.isEnabled.toggle()
+//                self.signInBtn.backgroundColor = .Gray_30
+            }
+        }
+//        let vc = SignInViewController()
+//        vc.modalPresentationStyle = .fullScreen
+//        self.present(vc, animated: true)
+    }
+    
 }

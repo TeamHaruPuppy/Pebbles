@@ -14,13 +14,14 @@ class SignUpDataManager{
                 
         ]
         
-        AF.request("\(Constant.BASE_URL)/auth/join", method: .post, parameters: param ,encoding: JSONEncoding.default, headers: headers)
+        AF.request("\(Constant.BASE_URL)/api/join", method: .post, parameters: param ,encoding: JSONEncoding.default, headers: headers)
             .responseDecodable(of: SignUpModel.self){response in
                 switch response.result {
                 case .success(let response):
                     print("성공")
                     switch response.code{
                     case 1000:
+                        print(response)
                         completion(response.result)
                     case 2103:
                         viewController.dismissIndicator()

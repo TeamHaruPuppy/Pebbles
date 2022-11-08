@@ -59,7 +59,7 @@ extension String {
     // MARK: 입력문제 제한 (특수문자, 이모티콘, 숫자)
     func hasCharacters() -> Bool{
             do{
-                let regex = try NSRegularExpression(pattern: "^[a-zA-Z가-힣ㄱ-ㅎㅏ-ㅣ\\s]$", options: .caseInsensitive)
+                let regex = try NSRegularExpression(pattern: "^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ\\s]$", options: .caseInsensitive)
                 if let _ = regex.firstMatch(in: self, options: NSRegularExpression.MatchingOptions.reportCompletion, range: NSMakeRange(0, self.count)){
                     return true
                 }
