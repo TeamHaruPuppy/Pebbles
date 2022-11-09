@@ -122,7 +122,6 @@ class CalendarPopUpViewController: UIViewController {
         else{
             Constant.rockEndDay = self.datePicker.date
         }
-        
         self.delegate?.updateDateTime(dateFormatter.string(from: self.datePicker.date))
         self.dismiss(animated: false)
     }

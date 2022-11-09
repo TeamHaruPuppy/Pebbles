@@ -2,7 +2,7 @@ import UIKit
 import SnapKit
 
 class SignInViewController: UIViewController {
-
+    
     @IBOutlet weak var appBar: UIView!
     @IBOutlet weak var appBarTitleLabel: UILabel!
     @IBOutlet weak var backBtnImg: UIImageView!
@@ -22,6 +22,10 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         self.setAttribute()
         self.setConfigure()
+        
+        if let userId = UserDefaults.standard.string(forKey: "id"),let pwd = UserDefaults.standard.string(forKey: "pwd"){
+            login(userId, pwd)
+        }
         
         idTextField.delegate = self
         passwordTextField.delegate = self
@@ -123,20 +127,21 @@ class SignInViewController: UIViewController {
         }
         
     }
-
-    @IBAction func backBtnTapped(_ sender: Any) {
-        self.dismiss(animated: true)
-    }
     
-    @IBAction func signInBtnTapped(_ sender: Any) {
-        guard let username = idTextField.text else {return;}
-        guard let password = passwordTextField.text else {return;}
+    func login(_ username : String?, _ password : String?){
+        guard let username = username else {return;}
+        guard let password = password else {return;}
         self.showIndicator()
         SignInDataManager().signIn(username, password, self) { data in
             if data.isSuccess == true{
                 guard let data = data.result else {return;}
                 Constant.USER_JWTTOKEN = data.jwt
                 Constant.USER_ID = data.userID
+                Constant.USER_NAME = username
+                UserDefaults.standard.set(username, forKey: "id")
+                UserDefaults.standard.set(password, forKey: "pwd")
+                UserDefaults.standard.set(true, forKey: "isAuthLogin")
+                
                 GetHomeDataManager().getHome(self) { data in
                     Constant.homeResult = data
                     Constant.selectDay = Date().onlyWeek
@@ -145,18 +150,26 @@ class SignInViewController: UIViewController {
                     print("홈으로 가기 전 JWT는? : \(Constant.USER_JWTTOKEN)")
                     print("홈 데이터 전부 보여줘 : \(Constant.homeResult)")
                     let baseViewController = HomeViewController()
-                    self.changeRootViewController(baseViewController)
+                    self.changeRootViewController(baseViewController, .transitionCrossDissolve)
                 }
             }else {
                 self.idTextField.layer.borderColor = UIColor.alart.cgColor
                 self.passwordTextField.layer.borderColor = UIColor.alart.cgColor
                 self.passwordErrorMessageLabel.textColor = .alart
                 self.passwordErrorMessageLabel.text = data.message
-             
+                
                 self.signInBtn.isEnabled.toggle()
                 self.signInBtn.backgroundColor = .Gray_30
             }
         }
+    }
+    
+    @IBAction func backBtnTapped(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
+    
+    @IBAction func signInBtnTapped(_ sender: Any) {
+        self.login(idTextField.text, passwordTextField.text)
     }
 }
 
@@ -189,7 +202,7 @@ extension SignInViewController : UITextFieldDelegate {
             self.signInBtn.isEnabled.toggle()
             self.signInBtn.backgroundColor = .Main_30
         }
-       
+        
     }
 }
 

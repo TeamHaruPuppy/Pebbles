@@ -6,6 +6,7 @@ target 'Pebbles' do
   use_frameworks!
   pod 'RxCocoa'
   pod 'RxSwift'
+  pod 'RxGesture'
   pod 'Alamofire'
   pod 'SnapKit'
   pod 'Then'

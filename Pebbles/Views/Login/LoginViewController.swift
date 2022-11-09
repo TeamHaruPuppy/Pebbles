@@ -6,7 +6,7 @@ import KakaoSDKUser
 import KakaoSDKCommon
 
 class LoginViewController: UIViewController {
-
+    
     
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var signUpLabel: UILabel!
@@ -22,7 +22,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         configurate()
     }
-
+    
+    
     func configurate(){
         startBtn.layer.backgroundColor = UIColor.Main_30.cgColor
         startBtn.layer.masksToBounds = true
@@ -60,50 +61,23 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func startBtnTapped(_ sender: Any) {
-        //MARK: 임시로 만든 액션
-        
-        let vc = SignUpViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
-        
-//        GetHomeDataManager().getHome(self) { data in
-//            Constant.homeResult = data
-//            Constant.selectDay = data.today
-//            let baseTabBarController = HomeViewController()
-//            self.changeRootViewController(baseTabBarController)
-//        }
+        if UserDefaults.standard.bool(forKey: "isFirstRun") == false{
+            let vc = OnboardingViewController()
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+            UserDefaults.standard.set(true, forKey: "isFirstRun")
+        }
+        else{
+            let vc = SignUpViewController()
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+        }
     }
     
     @IBAction func loginBtnTapped(_ sender: Any) {
-        
-        SignInDataManager().signIn("yj", "123", self) { data in
-            if data.isSuccess == true{
-                guard let data = data.result else {return;}
-                Constant.USER_JWTTOKEN = data.jwt
-                Constant.USER_ID = data.userID
-                GetHomeDataManager().getHome(self) { data in
-                    Constant.homeResult = data
-                    Constant.selectDay = Date().onlyWeek
-                    self.dismiss(animated: true)
-                    print("홈으로 가기 전 uid는? : \(Constant.USER_ID)")
-                    print("홈으로 가기 전 JWT는? : \(Constant.USER_JWTTOKEN)")
-                    print("홈 데이터 전부 보여줘 : \(Constant.homeResult)")
-                    let baseViewController = HomeViewController()
-                    self.changeRootViewController(baseViewController)
-                }
-            }else {
-//                self.idTextField.layer.borderColor = UIColor.alart.cgColor
-//                self.passwordTextField.layer.borderColor = UIColor.alart.cgColor
-//                self.passwordErrorMessageLabel.textColor = .alart
-//                self.passwordErrorMessageLabel.text = data.message
-//
-//                self.signInBtn.isEnabled.toggle()
-//                self.signInBtn.backgroundColor = .Gray_30
-            }
-        }
-//        let vc = SignInViewController()
-//        vc.modalPresentationStyle = .fullScreen
-//        self.present(vc, animated: true)
+        let vc = SignInViewController()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
     
 }

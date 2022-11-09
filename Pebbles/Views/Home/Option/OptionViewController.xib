@@ -14,9 +14,15 @@
                 <outlet property="appBar" destination="cq7-kl-dGP" id="FKl-bJ-IpF"/>
                 <outlet property="backBtn" destination="rjb-qI-xMS" id="gVM-3V-AZZ"/>
                 <outlet property="backImg" destination="MM1-jY-Qaq" id="pDR-8w-YSc"/>
+                <outlet property="logoutBtn" destination="zk9-Wa-4sX" id="ipY-gn-2gD"/>
+                <outlet property="logoutLabel" destination="xu4-AP-oKj" id="sms-9D-Lb7"/>
                 <outlet property="profileImg" destination="drw-ni-bYp" id="0rR-aR-vcG"/>
                 <outlet property="profileView" destination="cbF-pR-dMB" id="f0F-az-Qnw"/>
                 <outlet property="separateView" destination="uIf-pk-ETk" id="7eo-np-J4f"/>
+                <outlet property="signWithdrawalBtn" destination="iXG-bc-hER" id="2kI-A5-WLO"/>
+                <outlet property="signWithdrawalLabel" destination="mrS-WT-cZH" id="C6N-y6-5yY"/>
+                <outlet property="termAndConditionBtn" destination="XIH-b5-FLi" id="Jxc-qp-yvj"/>
+                <outlet property="termAndConditionLabel" destination="gmx-ph-amm" id="Nev-GJ-Zyf"/>
                 <outlet property="titleLabel" destination="abH-ty-sAE" id="ioa-73-mvr"/>
                 <outlet property="usernameLabel" destination="vSY-Po-hVN" id="O4g-6K-jAc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -45,7 +51,7 @@
                             </attributedString>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrow_back_ios" translatesAutoresizingMaskIntoConstraints="NO" id="MM1-jY-Qaq">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrow_back_grey" translatesAutoresizingMaskIntoConstraints="NO" id="MM1-jY-Qaq">
                             <rect key="frame" x="19" y="18" width="24" height="20.333333333333329"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -89,54 +95,63 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K2R-pO-Sdz">
-                    <rect key="frame" x="16" y="246" width="75" height="35"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XIH-b5-FLi">
+                    <rect key="frame" x="27" y="246" width="75" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal">
-                        <attributedString key="attributedTitle">
-                            <fragment content="이용약관">
-                                <attributes>
-                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    <font key="NSFont" size="16" name="AppleSDGothicNeo-Medium"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
+                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="termAndConditionBtnTapped:" destination="-1" eventType="touchUpInside" id="fwX-HQ-y8v"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YyF-a4-HBi">
-                    <rect key="frame" x="16" y="325" width="75" height="35"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmx-ph-amm">
+                    <rect key="frame" x="171" y="329" width="42" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zk9-Wa-4sX">
+                    <rect key="frame" x="37" y="256" width="75" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal">
-                        <attributedString key="attributedTitle">
-                            <fragment content="회원탈퇴">
-                                <attributes>
-                                    <color key="NSColor" red="0.71520626183712122" green="0.67569136055125123" blue="0.66347564857526109" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    <font key="NSFont" size="14" name="AppleSDGothicNeo-Regular"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
+                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="logoutBtnTapped:" destination="-1" eventType="touchUpInside" id="Fu3-HK-emC"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Afp-RT-F0a">
-                    <rect key="frame" x="16" y="282" width="75" height="35"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xu4-AP-oKj">
+                    <rect key="frame" x="151" y="309" width="42" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXG-bc-hER">
+                    <rect key="frame" x="37" y="321" width="75" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal">
-                        <attributedString key="attributedTitle">
-                            <fragment content="로그아웃">
-                                <attributes>
-                                    <color key="NSColor" red="0.82614798497672037" green="0.11468790608435048" blue="0.074229203199144944" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    <font key="NSFont" size="14" name="AppleSDGothicNeo-Medium"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
+                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="signWithdrawalBtnTapped:" destination="-1" eventType="touchUpInside" id="oTe-xk-87B"/>
+                    </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrS-WT-cZH">
+                    <rect key="frame" x="161" y="319" width="42" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -144,7 +159,7 @@
         </view>
     </objects>
     <resources>
-        <image name="arrow_back_ios" width="24" height="24"/>
+        <image name="arrow_back_grey" width="24" height="24"/>
         <image name="mainLogo" width="198" height="198"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

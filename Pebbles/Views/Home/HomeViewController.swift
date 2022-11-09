@@ -243,19 +243,20 @@ class HomeViewController: UIViewController {
     
     
     @IBAction func addHabitBtnTapped(_ sender: Any) {
-//        let vc = AddRockViewController()
-//        vc.modalPresentationStyle = .fullScreen
-//        self.present(vc, animated: true)
-        
         let rootVC = AddRockViewController()
         let rootViewController = UINavigationController(rootViewController: rootVC)
-        UIApplication.shared.keyWindow?.switchRootViewController(rootViewController)
+        
+        rootViewController.modalPresentationStyle = .fullScreen
+        self.present(rootViewController, animated: true)
         
     }
     
     @objc func showOptionView(){
         let pushVC = OptionViewController()
-        self.navigationController?.pushViewController(pushVC, animated: true)
+        let viewController = UINavigationController(rootViewController: pushVC)
+        viewController.isNavigationBarHidden = true
+        viewController.modalPresentationStyle = .overFullScreen
+        self.present(viewController, animated: true)
     }
     
     

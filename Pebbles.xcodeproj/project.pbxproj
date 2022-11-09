@@ -22,9 +22,17 @@
 		8406843F291A41C400A30517 /* PostHighlightRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406843E291A41C400A30517 /* PostHighlightRes.swift */; };
 		84068443291A83ED00A30517 /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84068441291A83ED00A30517 /* OptionViewController.swift */; };
 		84068444291A83ED00A30517 /* OptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84068442291A83ED00A30517 /* OptionViewController.xib */; };
+		84068448291AA4ED00A30517 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84068446291AA4ED00A30517 /* LogoutViewController.swift */; };
+		84068449291AA4ED00A30517 /* LogoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84068447291AA4ED00A30517 /* LogoutViewController.xib */; };
+		8406844D291AB74B00A30517 /* SignWithdrawalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406844B291AB74B00A30517 /* SignWithdrawalViewController.swift */; };
+		8406844E291AB74B00A30517 /* SignWithdrawalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8406844C291AB74B00A30517 /* SignWithdrawalViewController.xib */; };
+		84068451291B2BF300A30517 /* SignWithdrawalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84068450291B2BF300A30517 /* SignWithdrawalModel.swift */; };
+		84068454291B2C6600A30517 /* PostSignWithdrawalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84068453291B2C6600A30517 /* PostSignWithdrawalDataManager.swift */; };
+		84068458291BA97800A30517 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84068456291BA97800A30517 /* OnboardingViewController.swift */; };
+		84068459291BA97800A30517 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84068457291BA97800A30517 /* OnboardingViewController.xib */; };
+		8406845A291BCA1900A30517 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847B78AC28E5E8D6000DC20A /* Assets.xcassets */; };
 		8439D46328F0B97000D9161C /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439D46228F0B96F00D9161C /* UITextField.swift */; };
 		847B78A428E5E8D3000DC20A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B78A328E5E8D3000DC20A /* AppDelegate.swift */; };
-		847B78AD28E5E8D6000DC20A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847B78AC28E5E8D6000DC20A /* Assets.xcassets */; };
 		847B78B028E5E8D6000DC20A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847B78AE28E5E8D6000DC20A /* LaunchScreen.storyboard */; };
 		847B78BE28E9DA54000DC20A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B78BD28E9DA54000DC20A /* Constant.swift */; };
 		847B78C028E9DA65000DC20A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B78BF28E9DA65000DC20A /* BaseViewController.swift */; };
@@ -89,6 +97,14 @@
 		8406843E291A41C400A30517 /* PostHighlightRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHighlightRes.swift; sourceTree = "<group>"; };
 		84068441291A83ED00A30517 /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
 		84068442291A83ED00A30517 /* OptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionViewController.xib; sourceTree = "<group>"; };
+		84068446291AA4ED00A30517 /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
+		84068447291AA4ED00A30517 /* LogoutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutViewController.xib; sourceTree = "<group>"; };
+		8406844B291AB74B00A30517 /* SignWithdrawalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignWithdrawalViewController.swift; sourceTree = "<group>"; };
+		8406844C291AB74B00A30517 /* SignWithdrawalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignWithdrawalViewController.xib; sourceTree = "<group>"; };
+		84068450291B2BF300A30517 /* SignWithdrawalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignWithdrawalModel.swift; sourceTree = "<group>"; };
+		84068453291B2C6600A30517 /* PostSignWithdrawalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSignWithdrawalDataManager.swift; sourceTree = "<group>"; };
+		84068456291BA97800A30517 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		84068457291BA97800A30517 /* OnboardingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
 		8439D46228F0B96F00D9161C /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		847B78A028E5E8D3000DC20A /* Pebbles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pebbles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847B78A328E5E8D3000DC20A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -225,10 +241,55 @@
 		84068440291A83D700A30517 /* Option */ = {
 			isa = PBXGroup;
 			children = (
+				8406844A291AB6F800A30517 /* SignWithdrawal */,
+				84068445291AA4DB00A30517 /* Logout */,
 				84068441291A83ED00A30517 /* OptionViewController.swift */,
 				84068442291A83ED00A30517 /* OptionViewController.xib */,
 			);
 			path = Option;
+			sourceTree = "<group>";
+		};
+		84068445291AA4DB00A30517 /* Logout */ = {
+			isa = PBXGroup;
+			children = (
+				84068446291AA4ED00A30517 /* LogoutViewController.swift */,
+				84068447291AA4ED00A30517 /* LogoutViewController.xib */,
+			);
+			path = Logout;
+			sourceTree = "<group>";
+		};
+		8406844A291AB6F800A30517 /* SignWithdrawal */ = {
+			isa = PBXGroup;
+			children = (
+				8406844B291AB74B00A30517 /* SignWithdrawalViewController.swift */,
+				8406844C291AB74B00A30517 /* SignWithdrawalViewController.xib */,
+			);
+			path = SignWithdrawal;
+			sourceTree = "<group>";
+		};
+		8406844F291B2BD400A30517 /* Option */ = {
+			isa = PBXGroup;
+			children = (
+				84068450291B2BF300A30517 /* SignWithdrawalModel.swift */,
+			);
+			path = Option;
+			sourceTree = "<group>";
+		};
+		84068452291B2C4B00A30517 /* Option */ = {
+			isa = PBXGroup;
+			children = (
+				84068453291B2C6600A30517 /* PostSignWithdrawalDataManager.swift */,
+			);
+			path = Option;
+			sourceTree = "<group>";
+		};
+		84068455291BA94700A30517 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				84068456291BA97800A30517 /* OnboardingViewController.swift */,
+				84068457291BA97800A30517 /* OnboardingViewController.xib */,
+			);
+			path = OnBoarding;
 			sourceTree = "<group>";
 		};
 		847B789728E5E8D3000DC20A = {
@@ -376,6 +437,7 @@
 			children = (
 				847B792D28EB6E34000DC20A /* LoginViewController.swift */,
 				847B792E28EB6E34000DC20A /* LoginViewController.xib */,
+				84068455291BA94700A30517 /* OnBoarding */,
 				847B794328EC4BEB000DC20A /* SignUp */,
 				8406841A2916E5DB00A30517 /* SignIn */,
 			);
@@ -507,6 +569,7 @@
 			isa = PBXGroup;
 			children = (
 				84CC3F5129128E7D00E151E1 /* HomeModel.swift */,
+				8406844F291B2BD400A30517 /* Option */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -515,6 +578,7 @@
 			isa = PBXGroup;
 			children = (
 				84CC3F562912A0CC00E151E1 /* GetHomeDataManager.swift */,
+				84068452291B2C4B00A30517 /* Option */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -590,18 +654,21 @@
 			files = (
 				847B794B28EC4CBF000DC20A /* SignUpViewController.xib in Resources */,
 				840684272919EF7300A30517 /* AddRockViewController.xib in Resources */,
+				84068449291AA4ED00A30517 /* LogoutViewController.xib in Resources */,
 				840684332919FB9600A30517 /* AddPebblesViewController.xib in Resources */,
 				84A64C2528F427E700BB2325 /* PebbleManageViewController.xib in Resources */,
+				84068459291BA97800A30517 /* OnboardingViewController.xib in Resources */,
 				84068444291A83ED00A30517 /* OptionViewController.xib in Resources */,
 				84A64C2A28F4282000BB2325 /* MyStoneTowerViewController.xib in Resources */,
+				8406844E291AB74B00A30517 /* SignWithdrawalViewController.xib in Resources */,
 				84CC3F4F2911F3A400E151E1 /* TodoCollectionViewCell.xib in Resources */,
 				847B78B028E5E8D6000DC20A /* LaunchScreen.storyboard in Resources */,
 				847B793D28EB7A6B000DC20A /* LaunchScreen.png in Resources */,
-				847B78AD28E5E8D6000DC20A /* Assets.xcassets in Resources */,
 				847B793028EB6E34000DC20A /* LoginViewController.xib in Resources */,
 				840684222916E67F00A30517 /* SignInViewController.xib in Resources */,
 				84068439291A039100A30517 /* CalendarPopUpViewController.xib in Resources */,
 				84A64C2128F427D500BB2325 /* HomeViewController.xib in Resources */,
+				8406845A291BCA1900A30517 /* Assets.xcassets in Resources */,
 				84CC3F462911F00100E151E1 /* HabitCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -656,6 +723,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				847B78DE28E9DB15000DC20A /* IndicatorView.swift in Sources */,
+				84068448291AA4ED00A30517 /* LogoutViewController.swift in Sources */,
 				847B78A428E5E8D3000DC20A /* AppDelegate.swift in Sources */,
 				84A64C2928F4282000BB2325 /* MyStoneTowerViewController.swift in Sources */,
 				847B78D228E9DAD6000DC20A /* UINavigationBar.swift in Sources */,
@@ -673,6 +741,7 @@
 				847B792F28EB6E34000DC20A /* LoginViewController.swift in Sources */,
 				84CC3F452911F00100E151E1 /* HabitCollectionViewCell.swift in Sources */,
 				84C22CBD290EA6A8002699E4 /* SignInModel.swift in Sources */,
+				84068454291B2C6600A30517 /* PostSignWithdrawalDataManager.swift in Sources */,
 				847B78D628E9DAE7000DC20A /* UIImage.swift in Sources */,
 				847B794228EB95A7000DC20A /* Secret.swift in Sources */,
 				847B78C828E9DA94000DC20A /* Date.swift in Sources */,
@@ -687,9 +756,12 @@
 				847B793B28EB78FB000DC20A /* SceneDelegate.swift in Sources */,
 				847B78DA28E9DAF1000DC20A /* UIView.swift in Sources */,
 				840684322919FB9600A30517 /* AddPebblesViewController.swift in Sources */,
+				84068451291B2BF300A30517 /* SignWithdrawalModel.swift in Sources */,
 				8406842F2919F8AD00A30517 /* UIWindow.swift in Sources */,
 				84A64C2028F427D500BB2325 /* HomeViewController.swift in Sources */,
+				84068458291BA97800A30517 /* OnboardingViewController.swift in Sources */,
 				847B78CE28E9DAAE000DC20A /* UIButton.swift in Sources */,
+				8406844D291AB74B00A30517 /* SignWithdrawalViewController.swift in Sources */,
 				84F4765828EF830300B6F755 /* UIScrollView.swift in Sources */,
 				847B799B28ECA90B000DC20A /* XibView.swift in Sources */,
 				8406843F291A41C400A30517 /* PostHighlightRes.swift in Sources */,

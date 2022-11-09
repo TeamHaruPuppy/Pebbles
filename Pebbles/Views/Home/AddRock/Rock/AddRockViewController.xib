@@ -194,19 +194,31 @@
                         <action selector="endDateBtnTapped:" destination="-1" eventType="touchUpInside" id="pnT-Rc-O90"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="DHe-tR-Tqp">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="DHe-tR-Tqp">
                     <rect key="frame" x="169" y="781" width="54" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain">
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Button">
                         <attributedString key="attributedTitle">
                             <fragment content="다음">
                                 <attributes>
+                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <font key="NSFont" size="17" name="AppleSDGothicNeo-SemiBold"/>
                                 </attributes>
                             </fragment>
                         </attributedString>
-                    </buttonConfiguration>
+                    </state>
+                    <state key="disabled">
+                        <attributedString key="attributedTitle">
+                            <fragment content="다음">
+                                <attributes>
+                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <font key="NSFont" size="17" name="AppleSDGothicNeo-SemiBold"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                    </state>
                     <connections>
                         <action selector="nextBtnTapped:" destination="-1" eventType="touchUpInside" id="q1E-tW-hWe"/>
                     </connections>

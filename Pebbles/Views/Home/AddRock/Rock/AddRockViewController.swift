@@ -189,6 +189,8 @@ class AddRockViewController: UIViewController{
         nextBtn.isEnabled = false
         nextBtn.isSelected = false
         nextBtn.tintColor = .White
+        nextBtn.setTitleColor(.White, for: .disabled)
+        nextBtn.setTitleColor(.White, for: .normal)
         nextBtn.backgroundColor = .Gray_30
         
         
@@ -215,15 +217,15 @@ class AddRockViewController: UIViewController{
         Constant.POST_HIGHLIGHT.name = "\(String(describing: goalTextField.text))"
         Constant.POST_HIGHLIGHT.start = "\(String(describing: startDate.text))"
         Constant.POST_HIGHLIGHT.end = "\(String(describing: endDate.text))"
-        let pebbles = AddPebblesViewController()
-        navigationController?.pushViewController(pebbles, animated: true)
+        
+        self.dismiss(animated: true)
+        
+//        let pebbles = AddPebblesViewController()
+//        navigationController?.pushViewController(pebbles, animated: true)
     }
     
     @IBAction func backBtnTapped(_ sender: Any) {
-        print("왜 안대")
-        let rootVC = HomeViewController()
-        let rootViewController = UINavigationController(rootViewController: rootVC)
-        UIApplication.shared.keyWindow?.switchRootViewController(rootViewController,options: .transitionCurlDown)
+        dismiss(animated: true)
     }
     
     
@@ -239,11 +241,11 @@ class AddRockViewController: UIViewController{
         
         if Constant.goalStatus && Constant.startStatus && Constant.endStatus{
             nextBtn.backgroundColor = .Main_30
-            nextBtn.isEnabled.toggle()
+            nextBtn.isEnabled = true
         }
         else {
             nextBtn.backgroundColor = .Gray_30
-            nextBtn.isEnabled.toggle()
+            nextBtn.isEnabled = false
         }
         
         print("지금 각 상태별 상황은? : 텍스트필드-> \(Constant.goalStatus) 시작날짜-> \(Constant.startStatus) 종료날짜-> \(Constant.endStatus)")
@@ -258,7 +260,7 @@ extension AddRockViewController : DateTimePickerVCDelegate{
             Constant.startStatus = true
             if Constant.goalStatus && Constant.startStatus && Constant.endStatus{
                 nextBtn.backgroundColor = .Main_30
-                nextBtn.isEnabled.toggle()
+                nextBtn.isEnabled = true
             }
             else {
                 nextBtn.backgroundColor = .Gray_30
@@ -272,7 +274,7 @@ extension AddRockViewController : DateTimePickerVCDelegate{
             Constant.endStatus = true
             if Constant.goalStatus && Constant.startStatus && Constant.endStatus{
                 nextBtn.backgroundColor = .Main_30
-                nextBtn.isEnabled.toggle()
+                nextBtn.isEnabled = true
             }
             else {
                 nextBtn.backgroundColor = .Gray_30
@@ -292,11 +294,11 @@ extension AddRockViewController : UITextFieldDelegate {
         
         if Constant.goalStatus && Constant.startStatus && Constant.endStatus{
             nextBtn.backgroundColor = .Main_30
-            nextBtn.isEnabled.toggle()
+            nextBtn.isEnabled = true
         }
         else {
             nextBtn.backgroundColor = .Gray_30
-            nextBtn.isEnabled.toggle()
+            nextBtn.isEnabled = false
         }
         
         print("지금 각 상태별 상황은? : 텍스트필드-> \(Constant.goalStatus) 시작날짜-> \(Constant.startStatus) 종료날짜-> \(Constant.endStatus)")

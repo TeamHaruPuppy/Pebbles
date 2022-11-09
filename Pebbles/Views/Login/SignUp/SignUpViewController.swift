@@ -136,6 +136,7 @@ class SignUpViewController: UIViewController{
         rePasswordTextField.layer.borderWidth = 1
         rePasswordTextField.layer.cornerRadius = 10
         rePasswordErrorMessage.text = ""
+        rePasswordTextField.isSecureTextEntry = true
         rePasswordTextField.textContentType = .password
         
         compleBtn.layer.masksToBounds = true
@@ -425,6 +426,7 @@ class SignUpViewController: UIViewController{
         SignUpDataManager().signUp(username, password, "", self) { data in
             Constant.USER_ID = data.userID
             Constant.USER_JWTTOKEN = data.jwt
+            Constant.USER_NAME = username
             GetHomeDataManager().getHome(self) { data in
                 Constant.homeResult = data
                 print("홈으로 가기 전 uid는? : \(Constant.USER_ID)")
@@ -432,7 +434,7 @@ class SignUpViewController: UIViewController{
                 print("홈 데이터 전부 보여줘 : \(Constant.homeResult)")
                 self.dismiss(animated: true)
                 let baseViewController = HomeViewController()
-                self.changeRootViewController(baseViewController)
+                self.changeRootViewController(baseViewController, .transitionCrossDissolve)
             }
         }
     }
