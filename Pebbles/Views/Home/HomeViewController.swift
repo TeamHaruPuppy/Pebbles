@@ -53,6 +53,7 @@ class HomeViewController: UIViewController {
         
         self.view.addSubview(logoImageView)
         self.view.addSubview(optionBtn)
+        self.view.addSubview(optionImageView)
         self.view.addSubview(shadow)
         self.shadow.addSubview(backView)
         self.backView.addSubview(weekChangeBtn)
@@ -82,12 +83,18 @@ class HomeViewController: UIViewController {
     
     
     private let logoImageView = UIImageView().then{
-        $0.image = UIImage(named: "mainLogo.png")!
+        $0.image = UIImage(named: "mainLogo_color.png")!
+        $0.contentMode = .scaleAspectFill
+    }
+    
+    private let optionImageView = UIImageView().then{
+        $0.image = UIImage(named: "option.png")!
         $0.contentMode = .scaleAspectFill
     }
     
     private let optionBtn = UIButton().then{
-        $0.setImage(UIImage(named: "option.png"), for: .normal)
+        $0.tintColor = .clear
+        $0.backgroundColor = .clear
     }
     
     
@@ -162,20 +169,26 @@ class HomeViewController: UIViewController {
         
         //MARK: - 제약조건 설정
         self.logoImageView.snp.makeConstraints{
-            $0.height.width.equalTo(104)
-            $0.top.equalToSuperview().offset(Constant.edgeHeight*32)
+            $0.height.equalTo(Constant.edgeHeight*64)
+            $0.width.equalTo(Constant.edgeWidth*64)
+            $0.top.equalToSuperview().offset(Constant.edgeHeight*44)
             $0.left.equalToSuperview().inset(Constant.edgeWidth*8)
         }
         
         self.optionBtn.snp.makeConstraints{
-            $0.height.equalTo(104)
+            $0.height.equalTo(44)
             $0.centerY.equalTo(logoImageView)
             $0.right.equalToSuperview().inset(Constant.edgeWidth*20)
         }
         
+        self.optionImageView.snp.makeConstraints{
+            $0.height.width.equalTo(32)
+            $0.centerY.centerX.equalTo(optionBtn)
+        }
+        
         
         self.shadow.snp.makeConstraints{
-            $0.top.equalTo(logoImageView.snp.bottom).offset(Constant.edgeHeight*(-8))
+            $0.top.equalTo(logoImageView.snp.bottom).offset(Constant.edgeHeight*8)
             $0.leading.trailing.equalToSuperview().inset(Constant.edgeWidth*20)
             $0.height.equalTo(calendarView.snp.height).offset(40)
         }
