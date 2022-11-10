@@ -30,7 +30,6 @@
 		84068454291B2C6600A30517 /* PostSignWithdrawalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84068453291B2C6600A30517 /* PostSignWithdrawalDataManager.swift */; };
 		84068458291BA97800A30517 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84068456291BA97800A30517 /* OnboardingViewController.swift */; };
 		84068459291BA97800A30517 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84068457291BA97800A30517 /* OnboardingViewController.xib */; };
-		8406845A291BCA1900A30517 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847B78AC28E5E8D6000DC20A /* Assets.xcassets */; };
 		8439D46328F0B97000D9161C /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439D46228F0B96F00D9161C /* UITextField.swift */; };
 		847B78A428E5E8D3000DC20A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B78A328E5E8D3000DC20A /* AppDelegate.swift */; };
 		847B78B028E5E8D6000DC20A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847B78AE28E5E8D6000DC20A /* LaunchScreen.storyboard */; };
@@ -59,6 +58,7 @@
 		847B797F28EC7556000DC20A /* WriteNickNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B797E28EC7556000DC20A /* WriteNickNameViewModel.swift */; };
 		847B798128EC757C000DC20A /* WriteFutureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B798028EC757C000DC20A /* WriteFutureViewModel.swift */; };
 		847B799B28ECA90B000DC20A /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B799A28ECA90B000DC20A /* XibView.swift */; };
+		8484EE15291C2A8C00F96E4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847B78AC28E5E8D6000DC20A /* Assets.xcassets */; };
 		84A64C2028F427D500BB2325 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A64C1E28F427D500BB2325 /* HomeViewController.swift */; };
 		84A64C2128F427D500BB2325 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A64C1F28F427D500BB2325 /* HomeViewController.xib */; };
 		84A64C2428F427E700BB2325 /* PebbleManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A64C2228F427E700BB2325 /* PebbleManageViewController.swift */; };
@@ -668,7 +668,7 @@
 				840684222916E67F00A30517 /* SignInViewController.xib in Resources */,
 				84068439291A039100A30517 /* CalendarPopUpViewController.xib in Resources */,
 				84A64C2128F427D500BB2325 /* HomeViewController.xib in Resources */,
-				8406845A291BCA1900A30517 /* Assets.xcassets in Resources */,
+				8484EE15291C2A8C00F96E4B /* Assets.xcassets in Resources */,
 				84CC3F462911F00100E151E1 /* HabitCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -840,7 +840,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -894,7 +894,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -910,13 +910,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6NXQDZ68FD;
+				DEVELOPMENT_TEAM = QDZ5VUDS9T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Pebbles/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -926,7 +929,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.harupuppy.Pebbles;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.harupuppyPebbles-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -943,13 +946,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6NXQDZ68FD;
+				DEVELOPMENT_TEAM = QDZ5VUDS9T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Pebbles/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -959,7 +965,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.harupuppy.Pebbles;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.harupuppyPebbles-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
