@@ -29,8 +29,6 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var weekChangeImg: UIImageView!
     @IBOutlet weak var weekChangeBtn: UIButton!
-    @IBOutlet weak var addHabitBtn: UIButton!
-    @IBOutlet weak var addHabitImg: UIImageView!
     
     private var currOffsetY = 0.0
     private var touchEndOffsetY = 0.0
@@ -160,10 +158,7 @@ class HomeViewController: UIViewController {
         weekChangeImg.tintColor = .Gray_40
         navigationController?.setNavigationBarHidden(true, animated: false)
         
-        addHabitBtn.backgroundColor = .clear
-        addHabitBtn.titleLabel?.text = ""
-        addHabitImg.layer.masksToBounds = true
-        addHabitImg.contentMode = .scaleToFill
+        
         
         
         
@@ -221,17 +216,7 @@ class HomeViewController: UIViewController {
             $0.left.right.bottom.equalToSuperview()
         }
         
-        self.addHabitBtn.snp.makeConstraints{
-            $0.right.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().inset(20)
-            $0.height.width.equalTo(80)
-        }
         
-        self.addHabitImg.snp.makeConstraints{
-            $0.centerX.centerY.equalTo(addHabitBtn)
-            $0.width.equalTo(Constant.edgeWidth*80)
-            $0.height.equalTo(Constant.edgeHeight*80)
-        }
         
     }
     
@@ -254,15 +239,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-    
-    @IBAction func addHabitBtnTapped(_ sender: Any) {
-        let rootVC = AddRockViewController()
-        let rootViewController = UINavigationController(rootViewController: rootVC)
-        
-        rootViewController.modalPresentationStyle = .fullScreen
-        self.present(rootViewController, animated: true)
-        
-    }
     
     @objc func showOptionView(){
         let pushVC = OptionViewController()

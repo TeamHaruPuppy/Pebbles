@@ -47,7 +47,6 @@ class LoginViewController: UIViewController {
         
         startBtn.snp.makeConstraints{
             $0.top.equalTo(signUpLabel.snp.bottom).offset(200)
-            //335, 50
             $0.centerX.equalToSuperview()
             $0.height.equalTo(Constant.edgeHeight*50)
             $0.width.equalTo(Constant.edgeWidth*335)

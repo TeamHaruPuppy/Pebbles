@@ -128,6 +128,27 @@ class SignInViewController: UIViewController {
         
     }
     
+    func getHome(){
+        GetHomeDataManager().getHome(self) { data in
+            Constant.homeResult = data
+            Constant.selectDay = Date().onlyWeek
+            print("홈으로 가기 전 uid는? : \(Constant.USER_ID)")
+            print("홈으로 가기 전 JWT는? : \(Constant.USER_JWTTOKEN)")
+            print("홈 데이터 전부 보여줘 : \(Constant.homeResult)")
+            
+            
+        }
+    }
+    
+    func getRockData(){
+        GetRockInfoDataManager().getRockInfo(self) { data in
+            Constant.rockResult = data
+            let rootVC = BaseTabBarViewController()
+            rootVC.modalPresentationStyle = .fullScreen
+            self.present(rootVC, animated: false)
+        }
+    }
+    
     func login(_ username : String?, _ password : String?){
         guard let username = username else {return;}
         guard let password = password else {return;}
@@ -141,17 +162,9 @@ class SignInViewController: UIViewController {
                 UserDefaults.standard.set(username, forKey: "id")
                 UserDefaults.standard.set(password, forKey: "pwd")
                 UserDefaults.standard.set(true, forKey: "isAuthLogin")
-                
-                GetHomeDataManager().getHome(self) { data in
-                    Constant.homeResult = data
-                    Constant.selectDay = Date().onlyWeek
-                    self.dismiss(animated: true)
-                    print("홈으로 가기 전 uid는? : \(Constant.USER_ID)")
-                    print("홈으로 가기 전 JWT는? : \(Constant.USER_JWTTOKEN)")
-                    print("홈 데이터 전부 보여줘 : \(Constant.homeResult)")
-                    let baseViewController = HomeViewController()
-                    self.changeRootViewController(baseViewController, .transitionCrossDissolve)
-                }
+                self.showIndicator()
+                self.getHome()
+                self.getRockData()
             }else {
                 self.idTextField.layer.borderColor = UIColor.alart.cgColor
                 self.passwordTextField.layer.borderColor = UIColor.alart.cgColor

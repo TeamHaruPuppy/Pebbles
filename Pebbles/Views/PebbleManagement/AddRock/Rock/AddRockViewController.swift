@@ -44,19 +44,21 @@ class AddRockViewController: UIViewController{
     
     func setConfigure(){
         appBar.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(44)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide)
             $0.left.right.equalToSuperview()
-            $0.height.equalTo(60)
+            $0.height.equalTo(Constant.edgeHeight*60)
             $0.centerX.equalToSuperview()
         }
         backBtn.snp.makeConstraints{
             $0.centerY.equalTo(appBar.snp.centerY)
-            $0.height.width.equalTo(28)
-            $0.left.equalTo(appBar.snp.left).inset(20)
+            $0.height.equalTo(Constant.edgeHeight*28)
+            $0.width.equalTo(Constant.edgeWidth*28)
+            $0.left.equalTo(appBar.snp.left).inset(Constant.edgeWidth*20)
         }
         backImg.snp.makeConstraints{
             $0.centerX.centerY.equalTo(backBtn)
-            $0.height.width.equalTo(20)
+            $0.height.equalTo(Constant.edgeHeight*20)
+            $0.width.equalTo(Constant.edgeWidth*20)
         }
         titleLabel.snp.makeConstraints{
             $0.centerY.equalTo(appBar.snp.centerY)
@@ -66,61 +68,63 @@ class AddRockViewController: UIViewController{
         
         introLabel.snp.makeConstraints{
             $0.top.equalTo(appBar.snp.bottom)
-            $0.left.equalToSuperview().inset(20)
+            $0.left.equalToSuperview().inset(Constant.edgeWidth*20)
         }
         
         goalLabel.snp.makeConstraints{
-            $0.top.equalTo(introLabel.snp.bottom).offset(20)
-            $0.left.equalToSuperview().inset(20)
+            $0.top.equalTo(introLabel.snp.bottom).offset(Constant.edgeHeight*20)
+            $0.left.equalToSuperview().inset(Constant.edgeWidth*20)
         }
         
         goalTextField.snp.makeConstraints{
-            $0.top.equalTo(goalLabel.snp.bottom).offset(10)
-            $0.left.equalToSuperview().inset(20)
-            $0.height.equalTo(50)
-            $0.width.equalTo(Device.width-40)
+            $0.top.equalTo(goalLabel.snp.bottom).offset(Constant.edgeHeight*10)
+            $0.left.equalToSuperview().inset(Constant.edgeWidth*20)
+            $0.height.equalTo(Constant.edgeHeight*50)
+            $0.width.equalTo(Device.width-(Constant.edgeWidth*40))
         }
         
         startDateLabel.snp.makeConstraints{
-            $0.top.equalTo(goalTextField.snp.bottom).offset(30)
-            $0.left.equalToSuperview().inset(20)
+            $0.top.equalTo(goalTextField.snp.bottom).offset(Constant.edgeHeight*30)
+            $0.left.equalToSuperview().inset(Constant.edgeWidth*20)
         }
         
         endDateLabel.snp.makeConstraints{
-            $0.top.equalTo(startDateLabel.snp.bottom).offset(28)
-            $0.left.equalToSuperview().inset(20)
+            $0.top.equalTo(startDateLabel.snp.bottom).offset(Constant.edgeHeight*28)
+            $0.left.equalToSuperview().inset(Constant.edgeWidth*20)
         }
         
         startStackView.snp.makeConstraints{
             $0.centerY.equalTo(startDateLabel)
-            $0.right.equalTo(goalTextField.snp.right).inset(20)
+            $0.right.equalTo(goalTextField.snp.right).inset(Constant.edgeWidth*20)
         }
         
         startSelectBtn.snp.makeConstraints{
-            $0.width.height.equalTo(20)
+            $0.width.equalTo(Constant.edgeWidth*20)
+            $0.height.equalTo(Constant.edgeHeight*20)
         }
         
         startHighlight.snp.makeConstraints{
-            $0.top.equalTo(startStackView.snp.bottom).offset(2)
+            $0.top.equalTo(startStackView.snp.bottom).offset(Constant.edgeHeight*2)
             $0.left.equalTo(startStackView.snp.left)
             $0.width.equalTo(startStackView.snp.width)
-            $0.height.equalTo(1)
+            $0.height.equalTo(Constant.edgeHeight*1)
         }
         
         endStackView.snp.makeConstraints{
             $0.centerY.equalTo(endDateLabel)
-            $0.right.equalTo(goalTextField.snp.right).inset(20)
+            $0.right.equalTo(goalTextField.snp.right).inset(Constant.edgeWidth*20)
         }
         
         endSelectBtn.snp.makeConstraints{
-            $0.width.height.equalTo(20)
+            $0.width.equalTo(Constant.edgeWidth*20)
+            $0.height.equalTo(Constant.edgeHeight*20)
         }
         
         endHighlight.snp.makeConstraints{
-            $0.top.equalTo(endStackView.snp.bottom).offset(2)
+            $0.top.equalTo(endStackView.snp.bottom).offset(Constant.edgeHeight*2)
             $0.left.equalTo(endStackView.snp.left)
             $0.width.equalTo(endStackView.snp.width)
-            $0.height.equalTo(1)
+            $0.height.equalTo(Constant.edgeHeight*1)
         }
         
         startCalendarBtn.snp.makeConstraints{
@@ -138,8 +142,8 @@ class AddRockViewController: UIViewController{
         
         nextBtn.snp.makeConstraints{
             $0.left.right.equalToSuperview()
-            $0.height.equalTo(50)
-            $0.bottom.equalToSuperview().inset(44)
+            $0.height.equalTo(Constant.edgeHeight*50)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
         
         
@@ -218,10 +222,8 @@ class AddRockViewController: UIViewController{
         Constant.POST_HIGHLIGHT.start = "\(String(describing: startDate.text))"
         Constant.POST_HIGHLIGHT.end = "\(String(describing: endDate.text))"
         
-        self.dismiss(animated: true)
-        
-//        let pebbles = AddPebblesViewController()
-//        navigationController?.pushViewController(pebbles, animated: true)
+        let pebbles = AddPebblesViewController()
+        navigationController?.pushViewController(pebbles, animated: true)
     }
     
     @IBAction func backBtnTapped(_ sender: Any) {

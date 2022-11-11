@@ -17,6 +17,9 @@ struct Constant {
     static var selectDay = ""
     static var selectFullDay = ""
     
+    //MARK: - RockManagement 관련 데이터
+    static var rockResult : [RockInfoResult] = []
+    
     
     //MARK: - POST할 때, 파라미터로 보내는 모델 객체
     static var POST_HIGHLIGHT = HighlightPostModel(end: "", habits: [], name: "", start: "")
@@ -31,6 +34,8 @@ struct Constant {
     static var startStatus = false
     static var endStatus = false
     
+    //MARK: - home/addHighlight/addPebble 변수
+    static var HABIT_COUNT = 1
     
     static func initConstantData(){
         
@@ -41,6 +46,8 @@ struct Constant {
         Constant.homeResult = HomeResult(habits: [], today: "")
         Constant.selectDay = ""
         Constant.selectFullDay = ""
+        
+        Constant.rockResult = []
         
         Constant.rockEndDay = Date()
         Constant.rockStartDay = Date()
