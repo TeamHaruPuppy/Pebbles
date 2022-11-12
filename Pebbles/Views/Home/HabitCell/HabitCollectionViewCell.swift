@@ -6,6 +6,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
     static let identifier = "HabitCollectionViewCell"
     var todos : [Todo] = []
     var todoCount : Int = 0
+    var today = false
     
     @IBOutlet weak var habitLabelBackgroundView: UIView!
     @IBOutlet weak var habitTitle: UILabel!
@@ -19,6 +20,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
         self.registerDelegate()
         self.configure()
         contentView.backgroundColor = .White
+        print("*********\(Constant.selectDay)*************")
         
     }
     
@@ -31,7 +33,8 @@ class HabitCollectionViewCell: UICollectionViewCell {
         habitTitle.contentMode = .center
         habitTitle.textAlignment = .center
         separateView.backgroundColor = .Gray_20
-        habitLabelBackgroundView.backgroundColor = .Main_10
+        habitLabelBackgroundView.backgroundColor = .White
+        habitTitle.textColor = .Gray_60
         
         habitLabelBackgroundView.snp.makeConstraints{
             $0.height.equalTo(50)
@@ -41,6 +44,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
             $0.centerY.equalToSuperview()
             $0.centerX.equalToSuperview()
         }
+        
         separateView.snp.makeConstraints{
             $0.height.equalTo(1)
             $0.width.equalToSuperview()
@@ -66,23 +70,33 @@ class HabitCollectionViewCell: UICollectionViewCell {
         todoList.dataSource = self
     }
     
-    func setData(userData : Habit, todoCount : Int){
+    func setData(userData : Habit, todoCount : Int, today : Bool){
         habitTitle.text = userData.name
         todos = userData.todos
         self.todoCount = todoCount
+        self.today = today
     }
 }
 
 extension HabitCollectionViewCell : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return todoCount
+        return self.todoCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodoCollectionViewCell.identifier, for: indexPath) as? TodoCollectionViewCell else { return UICollectionViewCell() }
-        cell.setData(userData : todos[indexPath.row], index: todos.count)
-        return cell
+        
+        if self.today{
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodoCollectionViewCell.identifier, for: indexPath) as? TodoCollectionViewCell else { return UICollectionViewCell() }
+            cell.setData(userData : todos[indexPath.row], index: todos.count, canAct: true)
+            return cell
+        }
+        else{
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodoCollectionViewCell.identifier, for: indexPath) as? TodoCollectionViewCell else { return UICollectionViewCell() }
+            cell.setData(userData : todos[indexPath.row], index: todos.count, canAct: false)
+            return cell
+        }
+       
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

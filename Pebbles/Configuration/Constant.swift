@@ -19,6 +19,7 @@ struct Constant {
     
     //MARK: - RockManagement 관련 데이터
     static var rockResult : [RockInfoResult] = []
+    static var rockDetailResult = HighlightDetailResult(end: "", getRockManageDetailHabitResList: [], id: 0, name: "", start: "")
     
     
     //MARK: - POST할 때, 파라미터로 보내는 모델 객체

@@ -8,6 +8,7 @@ class TodoCollectionViewCell: UICollectionViewCell {
     static let identifier = "TodoCollectionViewCell"
     var countSelect = 0
     var check = 0
+    var canAct = true
     
     @IBOutlet weak var todoLabel: UILabel!
     @IBOutlet weak var todoCheckImg: UIImageView!
@@ -38,12 +39,19 @@ class TodoCollectionViewCell: UICollectionViewCell {
             $0.top.bottom.right.equalToSuperview()
             $0.width.equalTo(Constant.edgeWidth*60)
         }
-        
         todoCheckImg.snp.makeConstraints{
             $0.right.equalTo(separateView.snp.right)
             $0.centerY.equalToSuperview()
         }
         
+       print("canAct는 ㅜ멀까용 : \(canAct)")
+        if self.canAct {
+            todoCheckBtn.isEnabled = true
+            
+        }
+        else{
+            todoCheckBtn.isEnabled = false
+        }
         todoLabel.backgroundColor = .white
         todoLabel.textColor = .Gray_60
         todoLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 14)
@@ -52,9 +60,10 @@ class TodoCollectionViewCell: UICollectionViewCell {
     }
 
     
-    func setData(userData : Todo, index : Int){
+    func setData(userData : Todo, index : Int, canAct : Bool){
         todoLabel.text = userData.name
         countSelect = index
+        self.canAct = canAct
     }
 
     

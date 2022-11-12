@@ -49,9 +49,9 @@ class OnboardingViewController: UIViewController {
         else{
             guard let pvc = self.presentingViewController else { return }
             self.dismiss(animated: true) {
-                let vc = SignUpViewController()
-                vc.modalPresentationStyle = .fullScreen
-                pvc.present(vc, animated: true)
+                let viewController = UINavigationController(rootViewController: FirstSignUpViewController())
+                viewController.modalPresentationStyle = .fullScreen
+                pvc.present(viewController, animated: true)
             }
         }
     }

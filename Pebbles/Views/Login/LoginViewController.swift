@@ -67,9 +67,9 @@ class LoginViewController: UIViewController {
             UserDefaults.standard.set(true, forKey: "isFirstRun")
         }
         else{
-            let vc = SignUpViewController()
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true)
+            let viewController = UINavigationController(rootViewController: FirstSignUpViewController())
+            viewController.modalPresentationStyle = .fullScreen
+            self.present(viewController, animated: true)
         }
     }
     

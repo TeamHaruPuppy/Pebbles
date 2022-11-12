@@ -1,11 +1,7 @@
-//
-//  RockCollectionViewCell.swift
-//  Pebbles
-//
-//  Created by admin on 2022/11/11.
-//
-
+import SnapKit
 import UIKit
+
+
 
 class RockCollectionViewCell: UICollectionViewCell {
 
@@ -13,6 +9,7 @@ class RockCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var fromStartToEndLabel: UILabel!
     @IBOutlet weak var rockTitleLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -54,5 +51,5 @@ class RockCollectionViewCell: UICollectionViewCell {
         self.rockTitleLabel.text = title
     }
     
-
 }
+

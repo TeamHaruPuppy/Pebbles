@@ -377,7 +377,14 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HabitCollectionViewCell.identifier, for: indexPath) as? HabitCollectionViewCell else { return UICollectionViewCell() }
-        cell.setData(userData : todayHabit.habits[indexPath.row], todoCount: todayHabit.todoCount[indexPath.row])
+        if Constant.selectFullDay == Date().text{
+            cell.setData(userData : todayHabit.habits[indexPath.row], todoCount: todayHabit.todoCount[indexPath.row], today: true)
+        }
+        else{
+            cell.setData(userData : todayHabit.habits[indexPath.row], todoCount: todayHabit.todoCount[indexPath.row], today: false)
+        }
+        
+        
         return cell
     }
     
@@ -388,8 +395,8 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         flow.minimumLineSpacing = 20
         flow.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 20, right: 20)
         let width = UIScreen.main.bounds.width - 40
-//        let countHeight = Float(todayHabit.habits[indexPath.row].todos.count)
-        let countHeight = Float(todayHabit.todoCount[indexPath.row])
+        let countHeight = Float(todayHabit.habits[indexPath.row].todos.count)
+//        let countHeight = Float(todayHabit.todoCount[indexPath.row])
         
 //        let today = Date()
 //        todayHabit.habits.removeAll()

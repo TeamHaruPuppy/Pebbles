@@ -77,6 +77,14 @@
 		84C22CBD290EA6A8002699E4 /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C22CBC290EA6A8002699E4 /* SignInModel.swift */; };
 		84C22CBF290EA6B7002699E4 /* SignUpDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C22CBE290EA6B7002699E4 /* SignUpDataManager.swift */; };
 		84C22CC1290EA6C2002699E4 /* SignInDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C22CC0290EA6C2002699E4 /* SignInDataManager.swift */; };
+		84C56361291E4BE200460FB9 /* PebbleDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5635F291E4BE200460FB9 /* PebbleDetailCollectionViewCell.swift */; };
+		84C56362291E4BE200460FB9 /* PebbleDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C56360291E4BE200460FB9 /* PebbleDetailCollectionViewCell.xib */; };
+		84C56365291E4BF200460FB9 /* SandDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C56363291E4BF200460FB9 /* SandDetailCollectionViewCell.swift */; };
+		84C56366291E4BF200460FB9 /* SandDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C56364291E4BF200460FB9 /* SandDetailCollectionViewCell.xib */; };
+		84C56369291E4CE200460FB9 /* HighlightDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C56368291E4CE200460FB9 /* HighlightDetailModel.swift */; };
+		84C5636C291E4DB800460FB9 /* GetHighlightDetailInfoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5636B291E4DB800460FB9 /* GetHighlightDetailInfoDataManager.swift */; };
+		84C5636F291E70E300460FB9 /* FirstSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5636D291E70E300460FB9 /* FirstSignUpViewController.swift */; };
+		84C56370291E70E300460FB9 /* FirstSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C5636E291E70E300460FB9 /* FirstSignUpViewController.xib */; };
 		84CC3F452911F00100E151E1 /* HabitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CC3F432911F00100E151E1 /* HabitCollectionViewCell.swift */; };
 		84CC3F462911F00100E151E1 /* HabitCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CC3F442911F00100E151E1 /* HabitCollectionViewCell.xib */; };
 		84CC3F4E2911F3A400E151E1 /* TodoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CC3F4C2911F3A400E151E1 /* TodoCollectionViewCell.swift */; };
@@ -162,6 +170,14 @@
 		84C22CBC290EA6A8002699E4 /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
 		84C22CBE290EA6B7002699E4 /* SignUpDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDataManager.swift; sourceTree = "<group>"; };
 		84C22CC0290EA6C2002699E4 /* SignInDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDataManager.swift; sourceTree = "<group>"; };
+		84C5635F291E4BE200460FB9 /* PebbleDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PebbleDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		84C56360291E4BE200460FB9 /* PebbleDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PebbleDetailCollectionViewCell.xib; sourceTree = "<group>"; };
+		84C56363291E4BF200460FB9 /* SandDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		84C56364291E4BF200460FB9 /* SandDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SandDetailCollectionViewCell.xib; sourceTree = "<group>"; };
+		84C56368291E4CE200460FB9 /* HighlightDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightDetailModel.swift; sourceTree = "<group>"; };
+		84C5636B291E4DB800460FB9 /* GetHighlightDetailInfoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHighlightDetailInfoDataManager.swift; sourceTree = "<group>"; };
+		84C5636D291E70E300460FB9 /* FirstSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSignUpViewController.swift; sourceTree = "<group>"; };
+		84C5636E291E70E300460FB9 /* FirstSignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstSignUpViewController.xib; sourceTree = "<group>"; };
 		84CC3F432911F00100E151E1 /* HabitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCollectionViewCell.swift; sourceTree = "<group>"; };
 		84CC3F442911F00100E151E1 /* HabitCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabitCollectionViewCell.xib; sourceTree = "<group>"; };
 		84CC3F4C2911F3A400E151E1 /* TodoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -302,7 +318,6 @@
 		846BA202291E1A660058A763 /* RockInfo */ = {
 			isa = PBXGroup;
 			children = (
-				846BA214291E316E0058A763 /* RockDetailInfo */,
 				846BA203291E1A8B0058A763 /* RockCollectionViewCell.swift */,
 				846BA204291E1A8B0058A763 /* RockCollectionViewCell.xib */,
 			);
@@ -322,6 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				846BA20A291E1D900058A763 /* RockInfoModel.swift */,
+				84C56367291E4CCC00460FB9 /* HighlightDetail */,
 			);
 			path = RockInfo;
 			sourceTree = "<group>";
@@ -339,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				846BA20E291E1DF90058A763 /* GetRockInfoDataManager.swift */,
+				84C5636A291E4D9600460FB9 /* HightlightDetailInfo */,
 			);
 			path = RockInfo;
 			sourceTree = "<group>";
@@ -348,6 +365,7 @@
 			children = (
 				846BA210291E31360058A763 /* RockDetailViewController.swift */,
 				846BA211291E31360058A763 /* RockDetailViewController.xib */,
+				84C5635E291E33D900460FB9 /* Cell */,
 			);
 			path = RockDetailInfo;
 			sourceTree = "<group>";
@@ -525,6 +543,8 @@
 			children = (
 				847B794828EC4CBF000DC20A /* SignUpViewController.swift */,
 				847B794928EC4CBF000DC20A /* SignUpViewController.xib */,
+				84C5636D291E70E300460FB9 /* FirstSignUpViewController.swift */,
+				84C5636E291E70E300460FB9 /* FirstSignUpViewController.xib */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -589,10 +609,11 @@
 		84A64C1C28F4279700BB2325 /* PebbleManagement */ = {
 			isa = PBXGroup;
 			children = (
-				840684232919EF3E00A30517 /* AddRock */,
-				846BA202291E1A660058A763 /* RockInfo */,
 				84A64C2228F427E700BB2325 /* PebbleManageViewController.swift */,
 				84A64C2328F427E700BB2325 /* PebbleManageViewController.xib */,
+				840684232919EF3E00A30517 /* AddRock */,
+				846BA214291E316E0058A763 /* RockDetailInfo */,
+				846BA202291E1A660058A763 /* RockInfo */,
 			);
 			path = PebbleManagement;
 			sourceTree = "<group>";
@@ -634,6 +655,33 @@
 				840684182916A9F100A30517 /* DuplicateDataManager.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		84C5635E291E33D900460FB9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				84C5635F291E4BE200460FB9 /* PebbleDetailCollectionViewCell.swift */,
+				84C56360291E4BE200460FB9 /* PebbleDetailCollectionViewCell.xib */,
+				84C56363291E4BF200460FB9 /* SandDetailCollectionViewCell.swift */,
+				84C56364291E4BF200460FB9 /* SandDetailCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		84C56367291E4CCC00460FB9 /* HighlightDetail */ = {
+			isa = PBXGroup;
+			children = (
+				84C56368291E4CE200460FB9 /* HighlightDetailModel.swift */,
+			);
+			path = HighlightDetail;
+			sourceTree = "<group>";
+		};
+		84C5636A291E4D9600460FB9 /* HightlightDetailInfo */ = {
+			isa = PBXGroup;
+			children = (
+				84C5636B291E4DB800460FB9 /* GetHighlightDetailInfoDataManager.swift */,
+			);
+			path = HightlightDetailInfo;
 			sourceTree = "<group>";
 		};
 		84CC3F472911F2F100E151E1 /* TodoCell */ = {
@@ -742,6 +790,8 @@
 				846BA213291E31360058A763 /* RockDetailViewController.xib in Resources */,
 				84A64C2A28F4282000BB2325 /* MyStoneTowerViewController.xib in Resources */,
 				8406844E291AB74B00A30517 /* SignWithdrawalViewController.xib in Resources */,
+				84C56366291E4BF200460FB9 /* SandDetailCollectionViewCell.xib in Resources */,
+				84C56370291E70E300460FB9 /* FirstSignUpViewController.xib in Resources */,
 				84CC3F4F2911F3A400E151E1 /* TodoCollectionViewCell.xib in Resources */,
 				847B78B028E5E8D6000DC20A /* LaunchScreen.storyboard in Resources */,
 				847B793D28EB7A6B000DC20A /* LaunchScreen.png in Resources */,
@@ -751,6 +801,7 @@
 				84A64C2128F427D500BB2325 /* HomeViewController.xib in Resources */,
 				8484EE15291C2A8C00F96E4B /* Assets.xcassets in Resources */,
 				846BA206291E1A8B0058A763 /* RockCollectionViewCell.xib in Resources */,
+				84C56362291E4BE200460FB9 /* PebbleDetailCollectionViewCell.xib in Resources */,
 				8484EE2B291D308300F96E4B /* AddPebblesViewController.xib in Resources */,
 				84CC3F462911F00100E151E1 /* HabitCollectionViewCell.xib in Resources */,
 			);
@@ -807,12 +858,15 @@
 			files = (
 				847B78DE28E9DB15000DC20A /* IndicatorView.swift in Sources */,
 				84068448291AA4ED00A30517 /* LogoutViewController.swift in Sources */,
+				84C56361291E4BE200460FB9 /* PebbleDetailCollectionViewCell.swift in Sources */,
 				847B78A428E5E8D3000DC20A /* AppDelegate.swift in Sources */,
 				84A64C2928F4282000BB2325 /* MyStoneTowerViewController.swift in Sources */,
 				847B78D228E9DAD6000DC20A /* UINavigationBar.swift in Sources */,
+				84C5636C291E4DB800460FB9 /* GetHighlightDetailInfoDataManager.swift in Sources */,
 				84CC3F5229128E7D00E151E1 /* HomeModel.swift in Sources */,
 				840684212916E67F00A30517 /* SignInViewController.swift in Sources */,
 				84CC3F572912A0CC00E151E1 /* GetHomeDataManager.swift in Sources */,
+				84C56365291E4BF200460FB9 /* SandDetailCollectionViewCell.swift in Sources */,
 				847B78DC28E9DAFE000DC20A /* Device.swift in Sources */,
 				847B78D028E9DAC3000DC20A /* UIViewController.swift in Sources */,
 				846BA212291E31360058A763 /* RockDetailViewController.swift in Sources */,
@@ -833,6 +887,7 @@
 				846BA205291E1A8B0058A763 /* RockCollectionViewCell.swift in Sources */,
 				847B78C828E9DA94000DC20A /* Date.swift in Sources */,
 				840684262919EF7300A30517 /* AddRockViewController.swift in Sources */,
+				84C5636F291E70E300460FB9 /* FirstSignUpViewController.swift in Sources */,
 				847B78D828E9DAED000DC20A /* UIImageView.swift in Sources */,
 				8406843D291A41B600A30517 /* PostHighlightReq.swift in Sources */,
 				847B78CA28E9DA9B000DC20A /* UIColor.swift in Sources */,
@@ -842,6 +897,7 @@
 				84C22CBB290EA6A0002699E4 /* SignUpModel.swift in Sources */,
 				847B793B28EB78FB000DC20A /* SceneDelegate.swift in Sources */,
 				847B78DA28E9DAF1000DC20A /* UIView.swift in Sources */,
+				84C56369291E4CE200460FB9 /* HighlightDetailModel.swift in Sources */,
 				84068451291B2BF300A30517 /* SignWithdrawalModel.swift in Sources */,
 				8406842F2919F8AD00A30517 /* UIWindow.swift in Sources */,
 				84A64C2028F427D500BB2325 /* HomeViewController.swift in Sources */,

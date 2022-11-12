@@ -1,16 +1,16 @@
 import Foundation
 import Alamofire
 
-class GetRockInfoDataManager{
-    func getRockInfo( _ viewController : UIViewController, _ completion: @escaping (_ data : [RockInfoResult]) -> Void){
+class GetHighlightDetailInfoDataManager{
+    func getHighlightDetailInfo( _ viewController : UIViewController, _ highlight_id : Int,_ completion: @escaping (_ data : HighlightDetailResult) -> Void){
         var headers: HTTPHeaders = [
                     "Content-Type":"application/json",
                     "Accept": "application/json",
                     "x-access-token" : Constant.USER_JWTTOKEN
         ]
         
-        AF.request("\(Constant.BASE_URL)/api/rock/manage/\(Constant.USER_ID)", method: .get ,encoding: JSONEncoding.default, headers: headers)
-            .responseDecodable(of: RockInfoModel.self){response in
+        AF.request("\(Constant.BASE_URL)/api/rock/manage/\(Constant.USER_ID)/\(highlight_id)", method: .get ,encoding: JSONEncoding.default, headers: headers)
+            .responseDecodable(of: HighlightDetailModel.self){response in
                 switch response.result {
                 case .success(let response):
                     print("성공")

@@ -1,6 +1,8 @@
 import UIKit
 import SnapKit
 
+
+
 class PebbleManageViewController: UIViewController {
     
     @IBOutlet weak var appBar: UIView!
@@ -18,8 +20,8 @@ class PebbleManageViewController: UIViewController {
         
     }
     func setInit(){
-        self.setConfigure()
         self.setAttribute()
+        self.setConfigure()
         self.registerXib()
         self.setDelegate()
     }
@@ -55,7 +57,7 @@ class PebbleManageViewController: UIViewController {
             $0.width.equalTo(Constant.edgeWidth*80)
             $0.height.equalTo(Constant.edgeHeight*80)
         }
-       
+        
     }
     func setAttribute(){
         self.view.backgroundColor = .Main_BG
@@ -80,7 +82,7 @@ class PebbleManageViewController: UIViewController {
     @IBAction func addBtnTapped(_ sender: Any) {
         let rootVC = AddRockViewController()
         let rootViewController = UINavigationController(rootViewController: rootVC)
-
+        
         rootViewController.modalPresentationStyle = .fullScreen
         self.present(rootViewController, animated: true)
     }
@@ -94,6 +96,8 @@ extension PebbleManageViewController : UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RockCollectionViewCell.identifier, for: indexPath) as? RockCollectionViewCell else { return UICollectionViewCell() }
         cell.setData(start: Constant.rockResult[indexPath.row].start, end: Constant.rockResult[indexPath.row].end, title: Constant.rockResult[indexPath.row].name)
+        
+        
         return cell
     }
     
@@ -108,6 +112,14 @@ extension PebbleManageViewController : UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        <#code#>
+        GetHighlightDetailInfoDataManager().getHighlightDetailInfo(self, Constant.rockResult[indexPath.row].id) { data in
+            Constant.rockDetailResult = data
+            let vc = RockDetailViewController()
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true) {
+                vc.setHeaderData(data.name, data.start, data.end)
+            }
+        }
     }
+    
 }
