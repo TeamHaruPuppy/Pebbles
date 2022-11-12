@@ -39,10 +39,7 @@ class AddPebbleTableViewCell: UITableViewCell{
     @IBOutlet weak var satBtn: UIButton!
     @IBOutlet weak var sunBtn: UIButton!
     
-    @IBOutlet weak var addHabitBtn: UIButton!
-    @IBOutlet weak var addPebbleStackView: UIStackView!
-    @IBOutlet weak var addImg: UIImageView!
-    @IBOutlet weak var addLabel: UILabel!
+    @IBOutlet weak var deleteHabitBtn: UIButton!
     
 //    var delegate : showCalendarProtocol!
     weak var viewController: UIViewController? = nil
@@ -146,13 +143,8 @@ class AddPebbleTableViewCell: UITableViewCell{
         sunBtn.titleLabel?.text = "일"
         sunBtn.backgroundColor = .Gray_10
         
-        addHabitBtn.layer.borderWidth = 1
-        addHabitBtn.layer.borderColor = UIColor.Main_10.cgColor
-        addHabitBtn.layer.masksToBounds = true
-        addHabitBtn.layer.cornerRadius = 8
-        
-        addLabel.textColor = .Main_30
-        addLabel.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 14)
+        deleteHabitBtn.titleLabel?.textColor = .alart
+        deleteHabitBtn.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 14)
         
     }
     func setConfigure(){
@@ -266,20 +258,13 @@ class AddPebbleTableViewCell: UITableViewCell{
             $0.width.equalTo(Constant.edgeWidth*36)
         }
         
-        addHabitBtn.snp.makeConstraints{
+        deleteHabitBtn.snp.makeConstraints{
             $0.top.equalTo(weeksStackView.snp.bottom).offset(Constant.edgeHeight*20)
-            $0.left.equalToSuperview().inset(Constant.edgeWidth*20)
-            $0.width.equalTo(Device.width - Constant.edgeWidth*40)
-            $0.height.equalTo(Constant.edgeHeight*50)
-        }
-        addImg.snp.makeConstraints{
-            $0.width.equalTo(Constant.edgeWidth*14)
-            $0.height.equalTo(Constant.edgeHeight*14)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(Device.width - Constant.edgeWidth*300)
+            $0.height.equalTo(Constant.edgeHeight*40)
         }
         
-        addPebbleStackView.snp.makeConstraints{
-            $0.center.equalTo(addHabitBtn)
-        }
         
     }
     

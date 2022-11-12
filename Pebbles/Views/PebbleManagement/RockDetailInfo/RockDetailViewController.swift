@@ -23,12 +23,12 @@ class RockDetailViewController: UIViewController {
     
     @IBOutlet weak var seperateView: UIView!
     
+    
 //    //MARK: - 데이터 전달 받아올 변수들
 //    var rockName : String?
 //    var start : String?
 //    var end : String?
-    
-    @IBOutlet weak var trash: UIImageView!
+    var habitCnt = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,10 +100,6 @@ class RockDetailViewController: UIViewController {
             $0.width.equalToSuperview()
         }
         
-        
-        trash.snp.makeConstraints{
-            $0.top.equalTo(appBar.snp.bottom)
-        }
     }
     
     func setAttribute(){
@@ -145,11 +141,11 @@ class RockDetailViewController: UIViewController {
         self.dismiss(animated: true)
     }
     
-    func setHeaderData(_ RockName : String, _ startValue : String, _ endValue : String){
-        
+    func setHeaderData(_ RockName : String, _ startValue : String, _ endValue : String, _ habitCnt : Int){
         self.rockTitleLabel.text = RockName
         self.startDayValue.text = startValue
         self.endDayValue.text = endValue
+        self.habitCnt = habitCnt
     }
 }
 
@@ -160,7 +156,7 @@ extension RockDetailViewController : UITableViewDelegate, UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         // habit의 개수 + 헤더 뷰
-        return Constant.HABIT_COUNT
+        return self.habitCnt
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -35,8 +35,7 @@ struct Constant {
     static var startStatus = false
     static var endStatus = false
     
-    //MARK: - home/addHighlight/addPebble 변수
-    static var HABIT_COUNT = 1
+    
     
     static func initConstantData(){
         

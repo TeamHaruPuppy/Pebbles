@@ -2,7 +2,7 @@ import UIKit
 import SnapKit
 
 class AddPebblesViewController: UIViewController {
-
+    
     @IBOutlet weak var appBar: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var backImg: UIImageView!
@@ -17,6 +17,10 @@ class AddPebblesViewController: UIViewController {
     @IBOutlet weak var introLabel: UILabel!
     @IBOutlet weak var headerSeparateView: UIView!
     
+    @IBOutlet weak var habitAddBtn: UIButton!
+    
+    private var HAVIT_CNT = 1
+    private var ROW = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +37,7 @@ class AddPebblesViewController: UIViewController {
         self.setDelegate()
         self.tableView.reloadData()
     }
- 
+    
     func setConfigure(){
         appBar.snp.makeConstraints{
             $0.top.left.right.equalTo(self.view.safeAreaLayoutGuide)
@@ -94,6 +98,12 @@ class AddPebblesViewController: UIViewController {
             $0.top.equalTo(introLabel.snp.bottom).offset(Constant.edgeHeight*20)
             $0.left.right.bottom.equalToSuperview()
         }
+        
+        habitAddBtn.snp.makeConstraints{
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(Device.width - Constant.edgeWidth*40)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(Constant.edgeHeight*152)
+        }
     }
     
     func setAttribute(){
@@ -116,6 +126,14 @@ class AddPebblesViewController: UIViewController {
         introLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
         
         headerSeparateView.backgroundColor = .Gray_10
+        
+        habitAddBtn.layer.masksToBounds = false
+        habitAddBtn.layer.borderWidth = 0.5
+        habitAddBtn.layer.borderColor = UIColor.Main_10.cgColor
+        habitAddBtn.layer.cornerRadius = 8
+        
+        
+        
     }
     
     func registerXib(){
@@ -132,24 +150,38 @@ class AddPebblesViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    
+    @IBAction func habitAddBtnTapped(_ sender: Any) {
+        self.HAVIT_CNT += 1
+        self.tableView.reloadData()
+    }
+    
 }
 
 extension AddPebblesViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        // habit의 개수 + 헤더 뷰
-        return Constant.HABIT_COUNT
+        return self.HAVIT_CNT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddPebbleTableViewCell") as? AddPebbleTableViewCell else {
-               return UITableViewCell()
-            }
+            return UITableViewCell()
+        }
         cell.viewController = self
+        self.ROW = indexPath.row
+        print("IndexPath : \(indexPath)")
+        cell.deleteHabitBtn.tag = indexPath.row
+        cell.deleteHabitBtn.addTarget(self, action:#selector(deleteHabit(_:)), for: .touchUpInside)
         return cell
+    }
+    
+    
+    @objc func deleteHabit(_ sender: UIButton){
+        self.HAVIT_CNT -= 1
+        print("지우기 직전의 ROW수 : \(HAVIT_CNT)")
+        
+        self.tableView.deleteRows(at: [IndexPath(row: sender.tag, section: 0)], with: .automatic)
+        self.tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

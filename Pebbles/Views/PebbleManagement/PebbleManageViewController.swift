@@ -117,7 +117,7 @@ extension PebbleManageViewController : UICollectionViewDelegate, UICollectionVie
             let vc = RockDetailViewController()
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true) {
-                vc.setHeaderData(data.name, data.start, data.end)
+                vc.setHeaderData(data.name, data.start, data.end, data.getRockManageDetailHabitResList.count)
             }
         }
     }

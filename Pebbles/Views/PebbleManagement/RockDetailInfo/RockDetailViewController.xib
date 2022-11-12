@@ -25,7 +25,6 @@
                 <outlet property="startDayValue" destination="C4F-36-Y9k" id="gf9-PJ-Pv2"/>
                 <outlet property="startStackView" destination="NXr-we-kw4" id="hBB-3m-0ti"/>
                 <outlet property="tableView" destination="vc6-Ci-cXf" id="pNb-8I-L6c"/>
-                <outlet property="trash" destination="1Gp-30-F3W" id="YZR-WY-7uE"/>
                 <outlet property="verticalStackView" destination="b44-3J-7gH" id="oBW-1l-qUJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -139,10 +138,6 @@
                     <viewLayoutGuide key="safeArea" id="G02-rI-Rco"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="trash" translatesAutoresizingMaskIntoConstraints="NO" id="1Gp-30-F3W">
-                    <rect key="frame" x="0.0" y="270" width="390" height="574"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -152,7 +147,6 @@
     <resources>
         <image name="arrow_back_ios" width="24" height="24"/>
         <image name="rockDetailGraph" width="64" height="64"/>
-        <image name="trash" width="375" height="574"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
