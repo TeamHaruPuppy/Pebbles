@@ -24,16 +24,14 @@ struct Constant {
     
     //MARK: - POST할 때, 파라미터로 보내는 모델 객체
     static var POST_HIGHLIGHT = HighlightPostModel(end: "", habits: [], name: "", start: "")
+    static var HABIT_SEQ = 0
     
     //MARK: - home/addHighlight/addRock 변수
     static var rockStartDay = Date()
-    static var rockEndDay = Date()
+    static var rockEndDay = Date(year: 2099, month: 12, day: 31)
     // false : 시작 | true : 끝
     static var startOrEnd = false
     
-    static var goalStatus = false
-    static var startStatus = false
-    static var endStatus = false
     
     
     
@@ -53,9 +51,6 @@ struct Constant {
         Constant.rockStartDay = Date()
         
         Constant.startOrEnd = false
-        Constant.goalStatus = false
-        Constant.startStatus = false
-        Constant.endStatus = false
     }
     
 }

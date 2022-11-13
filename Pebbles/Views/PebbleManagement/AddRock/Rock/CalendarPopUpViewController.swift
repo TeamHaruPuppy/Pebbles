@@ -2,7 +2,8 @@ import SnapKit
 import UIKit
 
 protocol DateTimePickerVCDelegate: AnyObject {
-    func updateDateTime(_ dateTime: String)
+    func updateDateTime(_ dateTime: Date)
+    func changeStartToEnd(_ start : Bool, _ startDate : Date, _ endDate : Date)
 }
 
 class CalendarPopUpViewController: UIViewController {
@@ -15,6 +16,8 @@ class CalendarPopUpViewController: UIViewController {
     
     @IBOutlet weak var baseView: UIView!
     weak var delegate: DateTimePickerVCDelegate?
+    var start = Date()
+    var end = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +32,7 @@ class CalendarPopUpViewController: UIViewController {
         
         self.setConfigure()
         self.setAttribute()
-        self.setDatePicker()
-        
-        
+        self.setDatePicker(start, end)
     }
     
     func setAttribute(){
@@ -66,7 +67,7 @@ class CalendarPopUpViewController: UIViewController {
         }
     }
     
-    func setDatePicker() {
+    func setDatePicker(_ startDate : Date , _ endDate : Date) {
         datePicker.preferredDatePickerStyle = .inline
         // locale 설정을 해주고
         datePicker.locale = Locale(identifier: "ko_KR")
@@ -85,26 +86,15 @@ class CalendarPopUpViewController: UIViewController {
         // 선택된 날짜, 주된 컬러를 설정
         datePicker.tintColor = .Main_30
         // 오늘로부터 과거 날짜 블러처리
-        print("시작이니 종료니?? : \(Constant.startOrEnd)")
-        print("시작날짜 : \(Constant.rockStartDay)")
-        print("종료날짜 : \(Constant.rockEndDay)")
-        print("기준 날짜: \(Date())")
-        if Constant.startOrEnd == false{
-            datePicker.minimumDate = Date()
-            if Constant.rockEndDay.text != Date().text{
-                datePicker.maximumDate = Constant.rockEndDay
-            }
-        }
-        else{
-            datePicker.minimumDate = Constant.rockStartDay
-
-        }
+        datePicker.minimumDate = startDate
+        datePicker.maximumDate = endDate
+        
         
     }
     
     // 피커의 데이터를 선택했을 때 어떤 행위를 할지 정의해주는 함수
     @objc func handleDatePicker(_ sender: UIDatePicker) {
-        print(sender.date)
+        print("\(sender.date)")
     }
     
     @IBAction func saveBtnTapped(_ sender: Any) {
@@ -116,13 +106,12 @@ class CalendarPopUpViewController: UIViewController {
         
         dateFormatter.string(from: self.datePicker.date)
         if Constant.startOrEnd == false{
-            Constant.rockStartDay = self.datePicker.date
-            
+            self.delegate?.changeStartToEnd(true, self.datePicker.date, Date(year: 2099, month: 12, day: 31))
         }
         else{
-            Constant.rockEndDay = self.datePicker.date
+            self.delegate?.changeStartToEnd(false, self.start, self.datePicker.date)
         }
-        self.delegate?.updateDateTime(dateFormatter.string(from: self.datePicker.date))
+        self.delegate?.updateDateTime(self.datePicker.date)
         self.dismiss(animated: false)
     }
 }

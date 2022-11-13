@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddPebblesViewController" customModule="Pebbles" customModuleProvider="target">
             <connections>
+                <outlet property="addImg" destination="OEf-I8-tIY" id="e6t-pJ-rju"/>
                 <outlet property="appBar" destination="mX3-mH-PvY" id="30g-6P-Hbn"/>
                 <outlet property="backBtn" destination="co6-eE-qa1" id="Hhy-u1-yqv"/>
                 <outlet property="backImg" destination="LsJ-e2-kDy" id="aJo-bQ-ilC"/>
@@ -18,10 +19,12 @@
                 <outlet property="headerSeparateView" destination="WUv-QR-iJo" id="BPG-NW-IAs"/>
                 <outlet property="headerView" destination="kPt-K0-Lxh" id="a37-BD-ZXb"/>
                 <outlet property="introLabel" destination="Dru-n4-vZA" id="ius-jT-nPs"/>
+                <outlet property="nextBtn" destination="DDD-Yh-W4T" id="93v-aZ-xGa"/>
                 <outlet property="rockImg" destination="O7v-st-BNE" id="DLH-Di-ahf"/>
                 <outlet property="rockTitleLabel" destination="6TB-mk-6wO" id="3pg-aO-dZD"/>
                 <outlet property="rockTitleView" destination="Egz-9W-CbJ" id="gAp-jM-ncn"/>
                 <outlet property="tableView" destination="b7m-2W-nE3" id="gY1-ju-nhu"/>
+                <outlet property="tailView" destination="lZj-Ks-s9q" id="tkC-iG-Wyh"/>
                 <outlet property="titleLabel" destination="YTy-FE-V6y" id="a69-HN-qG4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -70,10 +73,11 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="b7m-2W-nE3">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="b7m-2W-nE3">
                     <rect key="frame" x="0.0" y="112" width="414" height="784"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <view contentMode="scaleToFill" id="kPt-K0-Lxh">
                     <rect key="frame" x="0.0" y="112" width="414" height="165"/>
@@ -137,10 +141,53 @@
                     <viewLayoutGuide key="safeArea" id="rhX-VM-Pdl"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6Ea-dn-bo6">
-                    <rect key="frame" x="37" y="773" width="357" height="53"/>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lZj-Ks-s9q">
+                    <rect key="frame" x="87" y="384" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="add" translatesAutoresizingMaskIntoConstraints="NO" id="OEf-I8-tIY">
+                    <rect key="frame" x="146" y="751" width="14" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDD-Yh-W4T">
+                    <rect key="frame" x="0.0" y="812" width="414" height="50"/>
+                    <color key="backgroundColor" red="0.12941176470588234" green="0.58823529411764708" blue="0.95294117647058818" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="dbU-kD-tgw"/>
+                    </constraints>
+                    <color key="tintColor" red="0.95686274510000002" green="0.96078431369999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain">
+                        <attributedString key="attributedTitle">
+                            <fragment content="다음">
+                                <attributes>
+                                    <font key="NSFont" size="17" name="AppleSDGothicNeo-SemiBold"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                    </buttonConfiguration>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="6Ea-dn-bo6">
+                    <rect key="frame" x="20" y="751" width="356" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal">
+                        <attributedString key="attributedTitle">
+                            <fragment content="          하루 할 일 추가하기">
+                                <attributes>
+                                    <color key="NSColor" red="0.12941" green="0.58823999999999999" blue="0.95294000000000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="14" name="AppleSDGothicNeo-Medium"/>
+                                    <real key="NSKern" value="0.0"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                        <tabStops/>
+                                    </paragraphStyle>
+                                    <color key="NSStrokeColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                    </state>
                     <connections>
                         <action selector="habitAddBtnTapped:" destination="-1" eventType="touchUpInside" id="RRf-4i-3mI"/>
                     </connections>
@@ -148,10 +195,16 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DDD-Yh-W4T" secondAttribute="trailing" id="ISC-R4-JSZ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="DDD-Yh-W4T" secondAttribute="bottom" id="KAk-lJ-R3Z"/>
+                <constraint firstItem="DDD-Yh-W4T" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="w3P-6J-tG7"/>
+            </constraints>
             <point key="canvasLocation" x="115.94202898550725" y="20.758928571428569"/>
         </view>
     </objects>
     <resources>
+        <image name="add" width="12" height="12"/>
         <image name="arrow_back_ios" width="24" height="24"/>
         <image name="ic_pebbles" width="28" height="28"/>
         <systemColor name="systemBackgroundColor">

@@ -184,7 +184,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <action selector="monBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hBR-VP-11d"/>
+                                    <action selector="tueBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jZg-dd-nAs"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q9e-7r-zDm">
@@ -214,7 +214,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <action selector="monBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="H53-MN-3Ud"/>
+                                    <action selector="wedBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gyF-kS-YrP"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="952-FZ-O4w">
@@ -244,7 +244,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <action selector="monBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Nhm-f6-oYT"/>
+                                    <action selector="thuBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dYe-jl-4z2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ReI-jl-3br">
@@ -274,7 +274,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <action selector="monBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Yb0-V3-Aae"/>
+                                    <action selector="friBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="BVO-fk-Ces"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yVc-nh-7HD">
@@ -304,7 +304,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <action selector="monBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ocx-fN-xZa"/>
+                                    <action selector="satBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="39V-e3-47P"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OB3-Lh-3Us">
@@ -334,7 +334,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <action selector="monBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Tlq-qk-zGO"/>
+                                    <action selector="sunBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="oEW-Cf-OQ9"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -347,13 +347,23 @@
                             <attributedString key="attributedTitle">
                                 <fragment content="할 일 삭제하기">
                                     <attributes>
+                                        <color key="NSColor" red="0.97647058823529409" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <font key="NSFont" size="12" name="AppleSDGothicNeo-Regular"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        <integer key="NSUnderline" value="1"/>
                                     </attributes>
                                 </fragment>
                             </attributedString>
                         </state>
+                        <connections>
+                            <action selector="deletePebbleBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qLt-KF-fr4"/>
+                        </connections>
                     </button>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dwh-4p-9Bm">
+                        <rect key="frame" x="0.0" y="0.0" width="384" height="12"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.95686274509803915" green="0.96078431372549022" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -366,6 +376,7 @@
                 <outlet property="endHighlight" destination="NpH-yJ-Gsd" id="5Ss-Ze-Eks"/>
                 <outlet property="endWeekImg" destination="Gf2-bD-utz" id="Oi4-7H-53q"/>
                 <outlet property="friBtn" destination="ReI-jl-3br" id="M3h-JS-j9x"/>
+                <outlet property="headerView" destination="Dwh-4p-9Bm" id="dGq-HZ-6T4"/>
                 <outlet property="monBtn" destination="T0v-tf-bRI" id="sgo-by-4rh"/>
                 <outlet property="pebbleNameLabel" destination="gRp-DP-GGe" id="aMe-2j-Zqe"/>
                 <outlet property="pebbleNameTextField" destination="q5g-Y8-VQi" id="5gd-ft-7Wr"/>

@@ -28,14 +28,20 @@ class AddRockViewController: UIViewController{
     @IBOutlet weak var startCalendarBtn: UIButton!
     @IBOutlet weak var endCalendarBtn: UIButton!
     
-    
     @IBOutlet weak var nextBtn: UIButton!
-
+    
+    var goalStatus = false
+    var startStatus = false
+    var endStatus = false
+    
+    var startDay = Date()
+    var endDay = Date(year: 2099, month: 12, day: 31)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setConfigure()
         self.setAttribute()
-        
+        self.dateInit()
         goalTextField.delegate = self
         
     }
@@ -175,13 +181,6 @@ class AddRockViewController: UIViewController{
         goalTextField.textColor = .Black
         goalTextField.returnKeyType = .done
         
-        startDate.font = UIFont(name: "AppleSDGothicNeo-SemiBold", size: 16)
-        startDate.text = "날짜를 선택 해 주세요"
-        startDate.textColor = .Gray_30
-        endDate.font = UIFont(name: "AppleSDGothicNeo-SemiBold", size: 16)
-        endDate.text = "날짜를 선택 해 주세요"
-        endDate.textColor = .Gray_30
-        
         startHighlight.backgroundColor = .Gray_30
         endHighlight.backgroundColor = .Gray_30
         
@@ -200,11 +199,36 @@ class AddRockViewController: UIViewController{
         
     }
     
+    func dateInit(){
+        startDate.font = UIFont(name: "AppleSDGothicNeo-SemiBold", size: 16)
+        startDate.text = "날짜를 선택 해 주세요"
+        startDate.textColor = .Gray_30
+        endDate.font = UIFont(name: "AppleSDGothicNeo-SemiBold", size: 16)
+        endDate.text = "날짜를 선택 해 주세요"
+        endDate.textColor = .Gray_30
+        
+        startCalendarBtn.isEnabled = true
+        endCalendarBtn.isEnabled = false
+        
+        startStatus = false
+        endStatus = false
+        
+        startDay = Date()
+        endDay = Date(year: 2099, month: 12, day: 31)
+        
+        nextBtn.backgroundColor = .Gray_30
+        nextBtn.isEnabled = false
+    }
+    
     @IBAction func startDateBtnTapped(_ sender: Any) {
         Constant.startOrEnd = false
+        //MARK: - 날짜 설정 초기화
+        self.dateInit()
         let vc = CalendarPopUpViewController()
         vc.delegate = self
         vc.modalPresentationStyle = .overFullScreen
+        vc.start = startDay
+        vc.end = endDay
         self.present(vc, animated: false)
     }
     
@@ -214,6 +238,8 @@ class AddRockViewController: UIViewController{
         let vc = CalendarPopUpViewController()
         vc.delegate = self
         vc.modalPresentationStyle = .overFullScreen
+        vc.start = startDay
+        vc.end = endDay
         self.present(vc, animated: false)
     }
     
@@ -235,66 +261,69 @@ class AddRockViewController: UIViewController{
         self.goalTextField.endEditing(true)
         
         if goalTextField.text != ""{
-            Constant.goalStatus = true
+            goalStatus = true
+            if goalStatus && startStatus && endStatus{
+                nextBtn.backgroundColor = .Main_30
+                nextBtn.isEnabled = true
+            }
         }
         else{
-            Constant.goalStatus = false
-        }
-        
-        if Constant.goalStatus && Constant.startStatus && Constant.endStatus{
-            nextBtn.backgroundColor = .Main_30
-            nextBtn.isEnabled = true
-        }
-        else {
+            goalStatus = false
             nextBtn.backgroundColor = .Gray_30
             nextBtn.isEnabled = false
         }
         
-        print("지금 각 상태별 상황은? : 텍스트필드-> \(Constant.goalStatus) 시작날짜-> \(Constant.startStatus) 종료날짜-> \(Constant.endStatus)")
     }
 }
 
 extension AddRockViewController : DateTimePickerVCDelegate{
-    func updateDateTime(_ dateTime: String) {
-        if Constant.startOrEnd == false{
-            self.startDate.text = dateTime
-            self.startDate.textColor = .Gray_60
-            Constant.startStatus = true
-            if Constant.goalStatus && Constant.startStatus && Constant.endStatus{
-                nextBtn.backgroundColor = .Main_30
-                nextBtn.isEnabled = true
-            }
-            else {
-                nextBtn.backgroundColor = .Gray_30
-                nextBtn.isEnabled = false
-            }
-            print("지금 각 상태별 상황은? : 텍스트필드-> \(Constant.goalStatus) 시작날짜-> \(Constant.startStatus) 종료날짜-> \(Constant.endStatus)")
-        }
-        else {
-            self.endDate.text = dateTime
-            self.endDate.textColor = .Gray_60
-            Constant.endStatus = true
-            if Constant.goalStatus && Constant.startStatus && Constant.endStatus{
-                nextBtn.backgroundColor = .Main_30
-                nextBtn.isEnabled = true
-            }
-            else {
-                nextBtn.backgroundColor = .Gray_30
-                nextBtn.isEnabled = false
-            }
-            print("지금 각 상태별 상황은? : 텍스트필드-> \(Constant.goalStatus) 시작날짜-> \(Constant.startStatus) 종료날짜-> \(Constant.endStatus)")
+    func changeStartToEnd(_ start: Bool, _ startDate: Date, _ endDate : Date) {
+        if start {
+            self.endDay = endDate
+            self.startDay = startDate
+            endCalendarBtn.isEnabled = true
         }
     }
+    
+    func updateDateTime(_ dateTime: Date) {
+        if Constant.startOrEnd == false{
+            self.startDate.text = dateTime.text
+            self.startDate.textColor = .Gray_60
+            startStatus = true
+            if goalStatus && startStatus && endStatus{
+                nextBtn.backgroundColor = .Main_30
+                nextBtn.isEnabled = true
+            }
+            else {
+                nextBtn.backgroundColor = .Gray_30
+                nextBtn.isEnabled = false
+            }
+        }
+        else {
+            self.endDate.text = dateTime.text
+            self.endDate.textColor = .Gray_60
+            endStatus = true
+            if goalStatus && startStatus && endStatus{
+                nextBtn.backgroundColor = .Main_30
+                nextBtn.isEnabled = true
+            }
+            else {
+                nextBtn.backgroundColor = .Gray_30
+                nextBtn.isEnabled = false
+            }
+        }
+    }
+    
 }
 
 extension AddRockViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         if textField.text != ""{
-            Constant.goalStatus = true
+            goalStatus = true
         }
         
-        if Constant.goalStatus && Constant.startStatus && Constant.endStatus{
+        if goalStatus && startStatus && endStatus{
             nextBtn.backgroundColor = .Main_30
             nextBtn.isEnabled = true
         }
@@ -303,7 +332,6 @@ extension AddRockViewController : UITextFieldDelegate {
             nextBtn.isEnabled = false
         }
         
-        print("지금 각 상태별 상황은? : 텍스트필드-> \(Constant.goalStatus) 시작날짜-> \(Constant.startStatus) 종료날짜-> \(Constant.endStatus)")
         return true
     }
    
