@@ -21,7 +21,6 @@ class AddPebblesViewController: UIViewController {
     @IBOutlet weak var headerSeparateView: UIView!
     
     @IBOutlet weak var habitAddBtn: UIButton!
-    @IBOutlet weak var addImg: UIImageView!
     
     @IBOutlet weak var nextBtn: UIButton!
     
@@ -123,13 +122,6 @@ class AddPebblesViewController: UIViewController {
             $0.width.equalTo(Device.width - Constant.edgeWidth*40)
             $0.height.equalTo(Constant.edgeHeight*40)
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-Constant.edgeHeight*150)
-        }
-        
-        addImg.snp.makeConstraints{
-            $0.width.equalTo(Constant.edgeWidth*14)
-            $0.height.equalTo(Constant.edgeHeight*14)
-            $0.centerY.equalTo(habitAddBtn)
-            $0.left.equalTo(habitAddBtn.snp.left).inset(Constant.edgeWidth*108)
         }
     }
     
@@ -240,6 +232,8 @@ class AddPebblesViewController: UIViewController {
         for idx in list{
             Constant.POST_HIGHLIGHT.habits.append(idx)
         }
+        let sand = AddSandViewController()
+        navigationController?.pushViewController(sand, animated: true)
     }
     
     @objc func MyTapMethod(sender: UITapGestureRecognizer) {
