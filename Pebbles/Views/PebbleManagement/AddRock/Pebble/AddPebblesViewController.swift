@@ -12,7 +12,6 @@ class AddPebblesViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var tailView: UIView!
     
     
     @IBOutlet weak var rockTitleView: UIView!
@@ -25,14 +24,15 @@ class AddPebblesViewController: UIViewController {
     @IBOutlet weak var addImg: UIImageView!
     
     @IBOutlet weak var nextBtn: UIButton!
+    
     private var HAVIT_CNT = 1
     var list : [ReqHabit] = []
-    var checkStatus : [Bool] = [false]
+    var checkStatus : [Int : Bool] = Dictionary<Int, Bool>()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setInit()
-        
         let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyTapMethod))
         singleTapGestureRecognizer.numberOfTapsRequired = 1
         singleTapGestureRecognizer.isEnabled = true
@@ -41,12 +41,10 @@ class AddPebblesViewController: UIViewController {
     }
     
     func setInit(){
+        print("초기 checkStatus의 상태 : \(checkStatus)")
+        
         self.navigationController?.isNavigationBarHidden = true
         tableView.tableHeaderView = headerView
-        tailView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: Constant.edgeHeight*150)
-        tableView.tableFooterView = tailView
-        
-        
         
         self.setConfigure()
         self.setAttribute()
@@ -81,7 +79,7 @@ class AddPebblesViewController: UIViewController {
         tableView.snp.makeConstraints{
             $0.top.equalTo(appBar.snp.bottom)
             $0.left.right.equalToSuperview()
-            $0.bottom.equalTo(self.view.safeAreaLayoutGuide)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-Constant.edgeHeight*150)
         }
         
         headerView.snp.makeConstraints{
@@ -124,7 +122,7 @@ class AddPebblesViewController: UIViewController {
             $0.centerX.equalToSuperview()
             $0.width.equalTo(Device.width - Constant.edgeWidth*40)
             $0.height.equalTo(Constant.edgeHeight*40)
-            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-Constant.edgeHeight*152)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-Constant.edgeHeight*150)
         }
         
         addImg.snp.makeConstraints{
@@ -139,7 +137,6 @@ class AddPebblesViewController: UIViewController {
         self.view.backgroundColor = .White
         tableView.backgroundColor = .White
         headerView.backgroundColor = .White
-        tailView.backgroundColor = .White
         
         tableView.isScrollEnabled = false
         
@@ -185,6 +182,7 @@ class AddPebblesViewController: UIViewController {
     
     func setAddTarget(){
         self.habitAddBtn.addTarget(self, action: #selector(moveAddHabit(_:)), for: .touchUpInside)
+        self.nextBtn.addTarget(self, action: #selector(getData(_:)), for: .touchUpInside)
     }
     
     @IBAction func backBtnTapped(_ sender: Any) {
@@ -198,18 +196,20 @@ class AddPebblesViewController: UIViewController {
         if HAVIT_CNT < 3 {
             self.HAVIT_CNT += 1
             self.tableView.insertRows(at: [IndexPath(row: HAVIT_CNT - 1, section: 0)], with: .bottom)
-//            self.tableView.scrollToRow(at: IndexPath(row: HAVIT_CNT - 1, section: 0), at: .bottom, animated: true)
-            tableView.setContentOffset(CGPoint(x: 0, y: tableView.contentSize.height - tableView.bounds.height), animated: true)
+//            tableView.setContentOffset(CGPoint(x: 0, y: tableView.contentSize.height - tableView.bounds.height), animated: true)
+            tableView.scrollToRow(at: IndexPath(row: HAVIT_CNT - 1, section: 0), at: .bottom, animated: true)
+            guard let cell = self.tableView.cellForRow(at: IndexPath(row: HAVIT_CNT - 1, section: 0)) as? AddPebbleTableViewCell else {return;}
             
             //MARK: - 각 해빗의 입력 상태를 체크하는 스테이트 배열 추가작업
-            checkStatus.append(false)
+            checkStatus[cell.deleteHabitBtn.tag] = false
+            print("해빗 추가하고 checkStatus의 상태 : \(checkStatus)")
             falseEnter(false, HAVIT_CNT - 1)
+
+            print("추가된 해빗의 IndexPath : \(cell.deleteHabitBtn.tag) | 추가된 해빗의 위치 : \(HAVIT_CNT - 1)번 row")
         }
-        
     }
     
     @objc func moveAddHabit(_ sender : UIButton){
-        print("해빗 수: \(HAVIT_CNT)")
         if HAVIT_CNT == 1 {
             self.tableView.isScrollEnabled = false
             sender.snp.updateConstraints{
@@ -221,6 +221,24 @@ class AddPebblesViewController: UIViewController {
             sender.snp.updateConstraints{
                 $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-Constant.edgeHeight*100)
             }
+        }
+    }
+    
+    @objc func getData(_ sender : UIButton){
+        self.list.removeAll()
+        var count = 0
+        while count != HAVIT_CNT{
+            guard let cell = self.tableView.cellForRow(at: IndexPath(row: count, section: 0)) as? AddPebbleTableViewCell else {return;}
+            cell.calculateHabitData { data in
+                self.list.append(data)
+            }
+            count += 1
+            Constant.POST_HABIT_DATE.append([cell.calcuStart:cell.calcuEnd])
+        }
+        print("데이터 가져와방 : \(self.list)")
+        print("순서별 날짜 제한 가져오기 : \(Constant.POST_HABIT_DATE)")
+        for idx in list{
+            Constant.POST_HIGHLIGHT.habits.append(idx)
         }
     }
     
@@ -243,6 +261,11 @@ extension AddPebblesViewController : UITableViewDelegate, UITableViewDataSource{
         cell.deleteHabitBtn.tag = indexPath.row
         cell.delegate = self
         cell.deleteHabitBtn.addTarget(self, action:#selector(deleteHabit(_:)), for: .touchUpInside)
+        checkStatus.updateValue(false, forKey: indexPath.row)
+        print("해빗 추가하고 checkStatus의 상태 : \(checkStatus)")
+        falseEnter(false, HAVIT_CNT - 1)
+        
+        print("추가된 해빗의 IndexPath : \(cell.deleteHabitBtn.tag) | 추가된 해빗의 위치 : \(HAVIT_CNT - 1)번 row")
         return cell
     }
     
@@ -252,7 +275,6 @@ extension AddPebblesViewController : UITableViewDelegate, UITableViewDataSource{
         guard let indexPath = tableView.indexPathForRow(at: point) else { return } // 2
         self.tableView.deleteRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .bottom)
         self.tableView.scrollToRow(at: IndexPath(row: self.HAVIT_CNT - 1, section: 0), at: .bottom, animated: true)
-//        deleteHabitIndex(HAVIT_CNT)
         
         if HAVIT_CNT == 1 {
             self.tableView.isScrollEnabled = false
@@ -280,16 +302,17 @@ extension AddPebblesViewController : UITableViewDelegate, UITableViewDataSource{
 
 
 extension AddPebblesViewController : enterCompHabitDelegate {
-    
-    
+    func getHabitData(_ habit: ReqHabit) {
+        print("")
+    }
     
     func deleteHabitIndex(_ index: Int) {
         print("index의 값 : \(index)")
-        print("checkStatus의 상태 : \(checkStatus)")
-        checkStatus.remove(at: index)
-        
+        print("삭제 전 상태 확인 배열 확인 : \(checkStatus)")
+        checkStatus.removeValue(forKey: index)
+        print("삭제 후 상태 확인 배열 확인 : \(checkStatus)")
         for idx in checkStatus{
-            if idx == false {
+            if idx.value == false {
                 nextBtn.isEnabled = false
                 nextBtn.backgroundColor = .Gray_30
                 return;
@@ -300,18 +323,16 @@ extension AddPebblesViewController : enterCompHabitDelegate {
     }
     
     func trueEnter(_ T: Bool, _ index: Int) {
-        checkStatus[index] = T
+        checkStatus.updateValue(T, forKey: index)
         for idx in checkStatus{
-            if idx == false {return;}
+            if idx.value == false {return;}
         }
-        print("checkStatus의 상태 : \(checkStatus)")
         nextBtn.isEnabled = true
         nextBtn.backgroundColor = .Main_30
     }
     
     func falseEnter(_ F: Bool, _ index: Int) {
-        checkStatus[index] = F
-        print("checkStatus의 상태 : \(checkStatus)")
+        checkStatus.updateValue(F, forKey: index)
         nextBtn.isEnabled = false
         nextBtn.backgroundColor = .Gray_30
     }

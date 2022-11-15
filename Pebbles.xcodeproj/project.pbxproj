@@ -318,6 +318,7 @@
 		846BA202291E1A660058A763 /* RockInfo */ = {
 			isa = PBXGroup;
 			children = (
+				846BA214291E316E0058A763 /* RockDetailInfo */,
 				846BA203291E1A8B0058A763 /* RockCollectionViewCell.swift */,
 				846BA204291E1A8B0058A763 /* RockCollectionViewCell.xib */,
 			);
@@ -612,7 +613,6 @@
 				84A64C2228F427E700BB2325 /* PebbleManageViewController.swift */,
 				84A64C2328F427E700BB2325 /* PebbleManageViewController.xib */,
 				840684232919EF3E00A30517 /* AddRock */,
-				846BA214291E316E0058A763 /* RockDetailInfo */,
 				846BA202291E1A660058A763 /* RockInfo */,
 			);
 			path = PebbleManagement;

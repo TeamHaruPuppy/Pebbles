@@ -7,9 +7,9 @@ class BaseTabBarViewController : UITabBarController, UITabBarControllerDelegate{
     let pebbleManageViewContoller = PebbleManageViewController()
     let myStoneTowerViewContoller = MyStoneTowerViewController()
     
-    let homeTabBarItem = UITabBarItem(title: "홈", image: UIImage(named: "homeActive.png", in: nil, with: Constant.configuration ),tag: 0)
-    let pebbleManageTabBarItem = UITabBarItem(title: "바윗돌 관리", image: UIImage(named: "manageActive.png", in: nil, with: Constant.configuration),tag: 1)
-    let myStoneTowerTabBarItem = UITabBarItem(title: "내 돌탑", image: UIImage(named: "stoneTower", in: nil, with: Constant.configuration),tag: 2)
+    let homeTabBarItem = UITabBarItem(title: "홈", image: UIImage(named: "homeActiveX.png", in: nil, with: Constant.configuration ),selectedImage: UIImage(named: "homeActive.png", in: nil, with: Constant.configuration))
+    let pebbleManageTabBarItem = UITabBarItem(title: "바윗돌 관리", image: UIImage(named: "manageActiveX.png", in: nil, with: Constant.configuration),selectedImage: UIImage(named: "manageActive.png", in: nil, with: Constant.configuration))
+//    let myStoneTowerTabBarItem = UITabBarItem(title: "내 돌탑", image: UIImage(named: "stoneTowerX.png", in: nil, with: Constant.configuration),selectedImage: UIImage(named: "stoneTower.png", in: nil, with: Constant.configuration))
     
     override var selectedViewController: UIViewController? { // Mark 2
         didSet {
@@ -35,12 +35,12 @@ class BaseTabBarViewController : UITabBarController, UITabBarControllerDelegate{
         self.tabBar.tintColor = .Main_30
         let homeViewContoller = UINavigationController(rootViewController: homeViewContoller)
         let pebbleManageViewContoller = UINavigationController(rootViewController: pebbleManageViewContoller)
-        let myStoneTowerViewContoller = UINavigationController(rootViewController: myStoneTowerViewContoller)
+//        let myStoneTowerViewContoller = UINavigationController(rootViewController: myStoneTowerViewContoller)
         self.tabBar.backgroundColor = .white
         
         homeViewContoller.tabBarItem = homeTabBarItem
         pebbleManageViewContoller.tabBarItem = pebbleManageTabBarItem
-        myStoneTowerViewContoller.tabBarItem = myStoneTowerTabBarItem
+//        myStoneTowerViewContoller.tabBarItem = myStoneTowerTabBarItem
         
         homeViewContoller.isNavigationBarHidden = true
         pebbleManageViewContoller.isNavigationBarHidden = true

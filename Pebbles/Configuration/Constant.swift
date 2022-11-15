@@ -24,6 +24,8 @@ struct Constant {
     
     //MARK: - POST할 때, 파라미터로 보내는 모델 객체
     static var POST_HIGHLIGHT = HighlightPostModel(end: "", habits: [], name: "", start: "")
+    static var POST_ROCK_DATE : [Date : Date] = [:]
+    static var POST_HABIT_DATE : Array = [Dictionary<Date, Date>]()
     static var HABIT_SEQ = 0
     
     //MARK: - home/addHighlight/addRock 변수

@@ -6,6 +6,7 @@ protocol enterCompHabitDelegate {
     func trueEnter(_ T : Bool, _ index : Int)
     func falseEnter(_ F : Bool, _ index : Int)
     func deleteHabitIndex(_ index : Int)
+    func getHabitData(_ habit : ReqHabit)
 }
 
 class AddPebbleTableViewCell: UITableViewCell{
@@ -16,10 +17,10 @@ class AddPebbleTableViewCell: UITableViewCell{
     var enterEnd = false
     var enterText = false
     var enterWeek : [String] = []
-    var habit : ReqHabit?
+    var habit : ReqHabit = ReqHabit(days: [], end: "", name: "", seq: 0, start: "", todos: [], weeks: ReqWeeks(fri: false, mon: false, sat: false, sun: false, thu: false, tue: false, wed: false))
     
     var startDayValue = Date()
-    var endDayValue = Date(year: 2099, month: 12, day: 31)
+    var endDayValue = Date()
     
     //MARK: - 요일별 날짜 계산하기 위해 시작날짜 종료날짜 저장하는 용도
     var calcuStart = Date()
@@ -179,8 +180,11 @@ class AddPebbleTableViewCell: UITableViewCell{
         startBtn.isEnabled = true
         endBtn.isEnabled = false
         
-        startDayValue = Date()
-        endDayValue = Date(year: 2099, month: 12, day: 31)
+        for (key, value) in Constant.POST_ROCK_DATE{
+            startDayValue = key
+            endDayValue = value
+            print("Key는 \(key): , Value : \(value)")
+        }
         
     }
     
@@ -317,6 +321,9 @@ class AddPebbleTableViewCell: UITableViewCell{
             sender.titleLabel?.textColor = .White
             sender.backgroundColor = .Main_30
             enterWeek.append(sender.titleLabel?.text ?? "")
+            
+            print("주간 체크했을 때 상태 머야 : ")
+            print("해빗이름 : \(enterText) | 시작 날짜: \(enterStart) | 종료 날짜: \(enterEnd) | 주간 선택 : \(enterWeek.isEmpty)")
             if enterText && enterStart && enterStart && !enterWeek.isEmpty{
                 self.delegate.trueEnter(true, deleteHabitBtn.tag)
             }
@@ -348,6 +355,13 @@ class AddPebbleTableViewCell: UITableViewCell{
     }
     @IBAction func endBtnTapped(_ sender: Any) {
         Constant.startOrEnd = true
+        
+        for (key, value) in Constant.POST_ROCK_DATE{
+//            startDayValue = key
+            endDayValue = value
+            print("Key는 \(key): , Value : \(value)")
+        }
+        
         let vc = CalendarPopUpViewController()
         vc.delegate = self
         vc.modalPresentationStyle = .overFullScreen
@@ -363,7 +377,6 @@ class AddPebbleTableViewCell: UITableViewCell{
         setWeekBtnState(sender)
     }
     @IBAction func wedBtnTapped(_ sender: UIButton) {
-        self.calculateDays("Wed")
         setWeekBtnState(sender)
     }
     @IBAction func thuBtnTapped(_ sender: UIButton) {
@@ -400,9 +413,6 @@ extension AddPebbleTableViewCell : DateTimePickerVCDelegate{
             self.startDayLabel.textColor = .Gray_60
             enterStart = true
             calcuStart = dateTime
-            if enterText && enterEnd && enterStart && !enterWeek.isEmpty{
-                self.delegate.trueEnter(true, deleteHabitBtn.tag)
-            }
         }
         else {
             self.endDayLabel.text = dateTime.text
@@ -420,6 +430,10 @@ extension AddPebbleTableViewCell : DateTimePickerVCDelegate{
 extension AddPebbleTableViewCell : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField.text != ""{
             enterText = true
             if enterText && enterEnd && enterStart && !enterWeek.isEmpty{
@@ -440,41 +454,40 @@ extension AddPebbleTableViewCell : UITextFieldDelegate {
 
 extension AddPebbleTableViewCell {
     
-    func calculateHabitData(){
-        self.habit?.start = startDayLabel.text ?? ""
-        self.habit?.end = endDayLabel.text ?? ""
-        self.habit?.name = pebbleNameTextField.text ?? ""
+    func calculateHabitData(_ complition : @escaping (_ data : ReqHabit) -> Void){
+        self.habit.start = startDayLabel.text ?? ""
+        self.habit.end = endDayLabel.text ?? ""
+        self.habit.name = pebbleNameTextField.text ?? ""
         
         //MARK: - Constant.HABIT_SEQ는 추가 이후에 초기화 해 줘야한다.
-        self.habit?.seq = Constant.HABIT_SEQ
+        self.habit.seq = Constant.HABIT_SEQ
         
         for idx in enterWeek{
             switch idx {
             case "월":
-                self.habit?.weeks.mon = true
+                self.habit.weeks.mon = true
                 calculateDays("Mon")
             case "화":
-                self.habit?.weeks.tue = true
+                self.habit.weeks.tue = true
                 calculateDays("Tue")
             case "수":
-                self.habit?.weeks.wed = true
+                self.habit.weeks.wed = true
                 calculateDays("Wed")
             case "목":
-                self.habit?.weeks.thu = true
+                self.habit.weeks.thu = true
                 calculateDays("Thu")
             case "금":
-                self.habit?.weeks.fri = true
+                self.habit.weeks.fri = true
                 calculateDays("Fri")
             case "토":
-                self.habit?.weeks.sat = true
+                self.habit.weeks.sat = true
                 calculateDays("Sat")
             default:
-                self.habit?.weeks.sun = true
+                self.habit.weeks.sun = true
                 calculateDays("Sun")
             }
         }
-        
-        
+        complition(self.habit)
     }
     
     // 시작날짜 -> 처음 week 찾고
@@ -485,8 +498,8 @@ extension AddPebbleTableViewCell {
         while start.onlyWeek != week {
             start = Calendar.current.date(byAdding: .day, value: 1, to: start)!
         }
-        while start > end {
-            self.habit?.days.append(start.text)
+        while start.text <= end.text {
+            self.habit.days.append(start.text)
             start = Calendar.current.date(byAdding: .day, value: 7, to: start)!
         }
     }

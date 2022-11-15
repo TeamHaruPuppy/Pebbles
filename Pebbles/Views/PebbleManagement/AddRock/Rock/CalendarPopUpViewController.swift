@@ -94,7 +94,6 @@ class CalendarPopUpViewController: UIViewController {
     
     // 피커의 데이터를 선택했을 때 어떤 행위를 할지 정의해주는 함수
     @objc func handleDatePicker(_ sender: UIDatePicker) {
-        print("\(sender.date)")
     }
     
     @IBAction func saveBtnTapped(_ sender: Any) {
@@ -103,6 +102,7 @@ class CalendarPopUpViewController: UIViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.amSymbol = "오전"
         dateFormatter.pmSymbol = "오후"
+        dateFormatter.locale = Locale(identifier: "ko_KR")
         
         dateFormatter.string(from: self.datePicker.date)
         if Constant.startOrEnd == false{
@@ -111,6 +111,7 @@ class CalendarPopUpViewController: UIViewController {
         else{
             self.delegate?.changeStartToEnd(false, self.start, self.datePicker.date)
         }
+        print("한국시간으로 몇 시? : \(self.datePicker.date)" )
         self.delegate?.updateDateTime(self.datePicker.date)
         self.dismiss(animated: false)
     }

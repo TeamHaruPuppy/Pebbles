@@ -298,6 +298,7 @@ extension AddRockViewController : DateTimePickerVCDelegate{
                 nextBtn.backgroundColor = .Gray_30
                 nextBtn.isEnabled = false
             }
+            startDay = dateTime
         }
         else {
             self.endDate.text = dateTime.text
@@ -311,6 +312,8 @@ extension AddRockViewController : DateTimePickerVCDelegate{
                 nextBtn.backgroundColor = .Gray_30
                 nextBtn.isEnabled = false
             }
+            endDay = dateTime
+            Constant.POST_ROCK_DATE.updateValue(endDay, forKey: startDay)
         }
     }
     
