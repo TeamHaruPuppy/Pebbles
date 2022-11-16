@@ -2,7 +2,7 @@ import UIKit
 
 class BaseTabBarViewController : UITabBarController, UITabBarControllerDelegate{
     
-    
+//    let homeViewContoller = HomeTableViewController()
     let homeViewContoller = HomeViewController()
     let pebbleManageViewContoller = PebbleManageViewController()
     let myStoneTowerViewContoller = MyStoneTowerViewController()

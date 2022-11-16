@@ -20,9 +20,11 @@ class AddSandViewController: UIViewController {
 
     @IBOutlet weak var nextBtn: UIButton!
     
-    private var SECTION_ZERO_TODO_COUNT = 3
-    private var SECTION_ONE_TODO_COUNT = 3
-    private var SECTION_TWO_TODO_COUNT = 3
+    private var SECTION_ZERO_TODO_COUNT = 0
+    private var SECTION_ONE_TODO_COUNT = 0
+    private var SECTION_TWO_TODO_COUNT = 0
+    
+    private var textFieldIsTapped = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,18 +150,22 @@ class AddSandViewController: UIViewController {
         
         headerSeparateView.backgroundColor = .Gray_10
         
-        nextBtn.isEnabled = false
-        nextBtn.backgroundColor = .Gray_30
+//        nextBtn.isEnabled = false
+//        nextBtn.backgroundColor = .Gray_30
+//        nextBtn.tintColor = .White
+//        nextBtn.titleLabel?.textColor = .White
+        nextBtn.isEnabled = true
+        nextBtn.backgroundColor = .Main_30
         nextBtn.tintColor = .White
         nextBtn.titleLabel?.textColor = .White
         
-        for section in 0..<Constant.POST_HIGHLIGHT.habits.count{
-            
-            for idx in 0..<3{
-                Constant.POST_HIGHLIGHT.habits[section].todos.append(ReqTodo(seq: idx))
-                print("투두 저장하는 즁 : [\(section) : \(idx)]")
-            }
-        }
+//        for section in 0..<Constant.POST_HIGHLIGHT.habits.count{
+//
+//            for idx in 0..<3{
+//                Constant.POST_HIGHLIGHT.habits[section].todos.append(ReqTodo(seq: idx))
+//                print("투두 저장하는 즁 : [\(section) : \(idx)]")
+//            }
+//        }
         
     }
     
@@ -182,6 +188,7 @@ class AddSandViewController: UIViewController {
     }
     
     func setAddTarget(){
+        nextBtn.addTarget(self, action: #selector(postData(_:)), for: .touchUpInside)
     }
     
     @IBAction func backBtnTapped(_ sender: Any) {
@@ -189,6 +196,22 @@ class AddSandViewController: UIViewController {
             Constant.POST_HIGHLIGHT.habits[section].todos.removeAll()
         }
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func postData(_ sender : UIButton){
+        PostHighlightDataManager().postHighlight(Constant.POST_HIGHLIGHT, self) { data in
+            print("데이터 넣는거 성공함??")
+            Constant.POST_HIGHLIGHT_RES = data
+        }
+        
+        GetHomeDataManager().getHome(self) { data in
+            Constant.homeResult = data
+        }
+        GetRockInfoDataManager().getRockInfo(self) { data in
+            Constant.rockResult = data
+            self.dismiss(animated: true)
+        }
+        
     }
     
     @objc func MyTapMethod(sender: UITapGestureRecognizer) {
@@ -250,6 +273,7 @@ extension AddSandViewController : UITableViewDelegate, UITableViewDataSource {
         cell.SECTION = indexPath.section
         
         cell.textField.text = Constant.POST_HIGHLIGHT.habits[indexPath.section].todos[indexPath.row].name ?? ""
+        cell.delegate = self
         return cell
     }
     
@@ -293,13 +317,16 @@ extension AddSandViewController  {
         }
         
         @objc func keyboardWillShow(notification: NSNotification) {
-              if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-                      let keyboardRectangle = keyboardFrame.cgRectValue
-                      let keyboardHeight = keyboardRectangle.height
-                  UIView.animate(withDuration: 1) {
-                      self.view.window?.frame.origin.y -= keyboardHeight
-                  }
-              }
+            
+            if textFieldIsTapped == false {
+                if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                    let keyboardRectangle = keyboardFrame.cgRectValue
+                    let keyboardHeight = keyboardRectangle.height
+                    UIView.animate(withDuration: 1) {
+                        self.view.window?.frame.origin.y -= keyboardHeight
+                    }
+                }
+            }
           }
         
         @objc func keyboardWillHide(notification: NSNotification) {
@@ -313,4 +340,14 @@ extension AddSandViewController  {
                 }
             }
         }
+}
+
+extension AddSandViewController : inTypingDelegate{
+    func typingNow() {
+        textFieldIsTapped = true
+    }
+    func typingEnd() {
+        textFieldIsTapped = false
+    }
+    
 }

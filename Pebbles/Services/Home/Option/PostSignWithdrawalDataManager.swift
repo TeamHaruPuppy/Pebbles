@@ -9,6 +9,10 @@ class PostSignWithdrawalDataManager{
             "X-ACCESS-TOKEN" : Constant.USER_JWTTOKEN
         ]
         
+        
+        
+        
+        
         AF.request("\(Constant.BASE_URL)/api/user/\(userId)/out", method: .post, encoding: JSONEncoding.default, headers: headers)
             .responseDecodable(of: SignWithdrawalModel.self){response in
                 switch response.result {

@@ -74,9 +74,9 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginBtnTapped(_ sender: Any) {
-        let vc = SignInViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
+            let vc = SignInViewController()
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
     }
     
 }

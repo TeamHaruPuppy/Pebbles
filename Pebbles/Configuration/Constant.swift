@@ -24,6 +24,7 @@ struct Constant {
     
     //MARK: - POST할 때, 파라미터로 보내는 모델 객체
     static var POST_HIGHLIGHT = HighlightPostModel(end: "", habits: [], name: "", start: "")
+    static var POST_HIGHLIGHT_RES = PostHighlightResResult(habitsName: [], highlightName: "", todosName: [])
     static var POST_ROCK_DATE : [Date : Date] = [:]
     static var POST_HABIT_DATE : Array = [Dictionary<Date, Date>]()
     static var HABIT_SEQ = 0
@@ -33,8 +34,6 @@ struct Constant {
     static var rockEndDay = Date(year: 2099, month: 12, day: 31)
     // false : 시작 | true : 끝
     static var startOrEnd = false
-    
-    
     
     
     static func initConstantData(){
@@ -54,5 +53,6 @@ struct Constant {
         
         Constant.startOrEnd = false
     }
+    
     
 }

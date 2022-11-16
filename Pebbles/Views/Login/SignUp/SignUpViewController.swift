@@ -427,13 +427,16 @@ class SignUpViewController: UIViewController{
             Constant.USER_ID = data.userID
             Constant.USER_JWTTOKEN = data.jwt
             Constant.USER_NAME = username
+            UserDefaults.standard.set(username, forKey: "id")
+            UserDefaults.standard.set(password, forKey: "pwd")
+            UserDefaults.standard.set(true, forKey: "isAuthLogin")
+            GetRockInfoDataManager().getRockInfo(self) { data in
+                Constant.rockResult = data
+            }
             GetHomeDataManager().getHome(self) { data in
                 Constant.homeResult = data
-                print("홈으로 가기 전 uid는? : \(Constant.USER_ID)")
-                print("홈으로 가기 전 JWT는? : \(Constant.USER_JWTTOKEN)")
-                print("홈 데이터 전부 보여줘 : \(Constant.homeResult)")
                 self.dismiss(animated: true)
-                let baseViewController = HomeViewController()
+                let baseViewController = BaseTabBarViewController()
                 self.changeRootViewController(baseViewController, .transitionCrossDissolve)
             }
         }

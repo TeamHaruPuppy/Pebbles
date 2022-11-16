@@ -58,6 +58,9 @@ class LogoutViewController: UIViewController {
     @IBAction func logoutBtnTapped(_ sender: Any) {
         UserDefaults.standard.removeObject(forKey: "id")
         UserDefaults.standard.removeObject(forKey: "pwd")
+        UserDefaults.standard.set(false, forKey: "isAuthLogin")
+        Constant.USER_ID = 0
+        Constant.USER_JWTTOKEN = ""
         self.dismiss(animated: false)
         let rootVC = LoginViewController()
         changeRootViewController(rootVC, .overrideInheritedDuration)

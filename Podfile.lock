@@ -23,6 +23,7 @@ PODS:
     - RxSwift (= 6.5.0)
   - RxSwift (6.5.0)
   - SnapKit (5.6.0)
+  - SwiftyJSON (5.0.1)
   - Then (3.0.0)
   - UIWindowTransitions (1.0.0)
 
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - RxGesture
   - RxSwift
   - SnapKit
+  - SwiftyJSON
   - Then
   - UIWindowTransitions
 
@@ -53,6 +55,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SnapKit
+    - SwiftyJSON
     - Then
     - UIWindowTransitions
 
@@ -68,9 +71,10 @@ SPEC CHECKSUMS:
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
   UIWindowTransitions: 2237083382e11f100db7de934041bba0c4669c86
 
-PODFILE CHECKSUM: f201c3f531f8c783f098515f5d33248003c63dd6
+PODFILE CHECKSUM: 96b3856400770b341462e2649179ee1aebbea416
 
 COCOAPODS: 1.11.2

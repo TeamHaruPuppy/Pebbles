@@ -23,7 +23,7 @@ struct Habit: Codable {
     let weeks: Weeks
     let today: String
     let consDays, seq: Int
-    let todayStatus, status: Status
+    let todayStatus, status: String
     let todos: [Todo]
 
     enum CodingKeys: String, CodingKey {
@@ -35,20 +35,15 @@ struct Habit: Codable {
     }
 }
 
-enum Status: String, Codable {
-    case statusFalse = "False"
-    case StatusTrue = "True"
-}
-
 // MARK: - Todo
 struct Todo: Codable {
     let id: Int
     let name: String
     let seq: Int
-    let status: Status
+    let status: String
 }
 
 // MARK: - Weeks
 struct Weeks: Codable {
-    let mon, tue, wed, thu, fri, sat, sun: Bool?
+    let mon, tue, wed, thu, fri, sat, sun: Bool
 }
