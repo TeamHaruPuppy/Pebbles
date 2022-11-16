@@ -12,13 +12,13 @@ class HomeViewController: UIViewController {
         var habits : [Habit] = []
         init(){
             for idx in Constant.homeResult.habits {
-                if Constant.selectDay == "Mon" && idx.weeks.mon {habits.append(idx); todoCount.append(idx.todos.count)}
-                if Constant.selectDay == "Tue" && idx.weeks.tue {habits.append(idx); todoCount.append(idx.todos.count)}
-                if Constant.selectDay == "Wed" && idx.weeks.wed {habits.append(idx); todoCount.append(idx.todos.count)}
-                if Constant.selectDay == "Thu" && idx.weeks.thu {habits.append(idx); todoCount.append(idx.todos.count)}
-                if Constant.selectDay == "Fri" && idx.weeks.fri {habits.append(idx); todoCount.append(idx.todos.count)}
-                if Constant.selectDay == "Sat" && idx.weeks.sat {habits.append(idx); todoCount.append(idx.todos.count)}
-                if Constant.selectDay == "Sun" && idx.weeks.sun {habits.append(idx); todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Mon" && (idx.weeks.mon ?? false) {habits.append(idx); todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Tue" && (idx.weeks.tue ?? false) {habits.append(idx); todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Wed" && (idx.weeks.wed ?? false) {habits.append(idx); todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Thu" && (idx.weeks.thu ?? false) {habits.append(idx); todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Fri" && (idx.weeks.fri ?? false) {habits.append(idx); todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Sat" && (idx.weeks.sat ?? false) {habits.append(idx); todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Sun" && (idx.weeks.sun ?? false) {habits.append(idx); todoCount.append(idx.todos.count)}
             }
         }
     }
@@ -295,24 +295,25 @@ extension HomeViewController : FSCalendarDelegate , FSCalendarDataSource, FSCale
         print("오늘 날짜 : \(today.text) vs 선택한 날짜 : \(date.text)")
         if date.text != today.text{
             for idx in Constant.homeResult.habits {
-                if Constant.selectDay == "Mon" && idx.weeks.mon {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
-                if Constant.selectDay == "Tue" && idx.weeks.tue {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
-                if Constant.selectDay == "Wed" && idx.weeks.wed {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
-                if Constant.selectDay == "Thu" && idx.weeks.thu {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
-                if Constant.selectDay == "Fri" && idx.weeks.fri {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
-                if Constant.selectDay == "Sat" && idx.weeks.sat {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
-                if Constant.selectDay == "Sun" && idx.weeks.sun {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
+                
+                if Constant.selectDay == "Mon" && (idx.weeks.mon ?? false) {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
+                if Constant.selectDay == "Tue" && (idx.weeks.tue ?? false) {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
+                if Constant.selectDay == "Wed" && (idx.weeks.wed ?? false) {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
+                if Constant.selectDay == "Thu" && (idx.weeks.thu ?? false) {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
+                if Constant.selectDay == "Fri" && (idx.weeks.fri ?? false) {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
+                if Constant.selectDay == "Sat" && (idx.weeks.sat ?? false) {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
+                if Constant.selectDay == "Sun" && (idx.weeks.sun ?? false) {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
             }
         }
         else{
             for idx in Constant.homeResult.habits {
-                if Constant.selectDay == "Mon" && idx.weeks.mon {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
-                if Constant.selectDay == "Tue" && idx.weeks.tue {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
-                if Constant.selectDay == "Wed" && idx.weeks.wed {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
-                if Constant.selectDay == "Thu" && idx.weeks.thu {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
-                if Constant.selectDay == "Fri" && idx.weeks.fri {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
-                if Constant.selectDay == "Sat" && idx.weeks.sat {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
-                if Constant.selectDay == "Sun" && idx.weeks.sun {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Mon" && (idx.weeks.mon ?? false) {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Tue" && (idx.weeks.tue ?? false) {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Wed" && (idx.weeks.wed ?? false) {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Thu" && (idx.weeks.thu ?? false) {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Fri" && (idx.weeks.fri ?? false) {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Sat" && (idx.weeks.sat ?? false) {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
+                if Constant.selectDay == "Sun" && (idx.weeks.sun ?? false) {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
             }
         }
         print("----------------------------------------")
@@ -396,34 +397,6 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         flow.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 20, right: 20)
         let width = UIScreen.main.bounds.width - 40
         let countHeight = Float(todayHabit.habits[indexPath.row].todos.count)
-//        let countHeight = Float(todayHabit.todoCount[indexPath.row])
-        
-//        let today = Date()
-//        todayHabit.habits.removeAll()
-//        todayHabit.todoCount.removeAll()
-//        if Constant.selectFullDay != today.text{
-//            for idx in Constant.homeResult.habits {
-//                if Constant.selectDay == "Mon" && idx.weeks.mon {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
-//                if Constant.selectDay == "Tue" && idx.weeks.tue {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
-//                if Constant.selectDay == "Wed" && idx.weeks.wed {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
-//                if Constant.selectDay == "Thu" && idx.weeks.thu {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
-//                if Constant.selectDay == "Fri" && idx.weeks.fri {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
-//                if Constant.selectDay == "Sat" && idx.weeks.sat {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
-//                if Constant.selectDay == "Sun" && idx.weeks.sun {todayHabit.habits.append(idx); todayHabit.todoCount.append(0)}
-//            }
-//        }
-//        else{
-//            for idx in Constant.homeResult.habits {
-//                if Constant.selectDay == "Mon" && idx.weeks.mon {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
-//                if Constant.selectDay == "Tue" && idx.weeks.tue {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
-//                if Constant.selectDay == "Wed" && idx.weeks.wed {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
-//                if Constant.selectDay == "Thu" && idx.weeks.thu {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
-//                if Constant.selectDay == "Fri" && idx.weeks.fri {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
-//                if Constant.selectDay == "Sat" && idx.weeks.sat {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
-//                if Constant.selectDay == "Sun" && idx.weeks.sun {todayHabit.habits.append(idx); todayHabit.todoCount.append(idx.todos.count)}
-//            }
-//        }
-        
         return CGSize(width: width, height: 50*CGFloat(countHeight) + 50 )
     }
     

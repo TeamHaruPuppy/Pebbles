@@ -244,9 +244,9 @@ class AddRockViewController: UIViewController{
     }
     
     @IBAction func nextBtnTapped(_ sender: Any) {
-        Constant.POST_HIGHLIGHT.name = "\(String(describing: goalTextField.text))"
-        Constant.POST_HIGHLIGHT.start = "\(String(describing: startDate.text))"
-        Constant.POST_HIGHLIGHT.end = "\(String(describing: endDate.text))"
+        Constant.POST_HIGHLIGHT.name = "\(goalTextField.text!)"
+        Constant.POST_HIGHLIGHT.start = "\(startDate.text!)"
+        Constant.POST_HIGHLIGHT.end = "\(endDate.text!)"
         
         let pebbles = AddPebblesViewController()
         navigationController?.pushViewController(pebbles, animated: true)

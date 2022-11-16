@@ -24,6 +24,7 @@ class SignInViewController: UIViewController {
         self.setConfigure()
         
         if let userId = UserDefaults.standard.string(forKey: "id"),let pwd = UserDefaults.standard.string(forKey: "pwd"){
+            print("여기 들어오냐?")
             login(userId, pwd)
         }
         
@@ -135,7 +136,6 @@ class SignInViewController: UIViewController {
             print("홈으로 가기 전 uid는? : \(Constant.USER_ID)")
             print("홈으로 가기 전 JWT는? : \(Constant.USER_JWTTOKEN)")
             print("홈 데이터 전부 보여줘 : \(Constant.homeResult)")
-            
             
         }
     }

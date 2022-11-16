@@ -10,8 +10,8 @@ import UIKit
 class TextFieldTableViewCell: UITableViewCell {
 
     static let identifier = "TextFieldTableViewCell"
-    
-    
+    var SECTION = 0
+    //MARK: - tag => indexPath.row
     @IBOutlet weak var textField: UITextField!
     
     override func awakeFromNib() {
@@ -54,4 +54,13 @@ class TextFieldTableViewCell: UITableViewCell {
 }
 
 extension TextFieldTableViewCell : UITextFieldDelegate{
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        Constant.POST_HIGHLIGHT.habits[self.SECTION].todos[self.textField.tag].name = textField.text ?? ""
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
 }

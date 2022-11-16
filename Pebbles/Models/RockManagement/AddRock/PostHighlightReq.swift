@@ -22,7 +22,7 @@ struct ReqHabit: Codable {
 
 // MARK: - Todo
 struct ReqTodo: Codable {
-    var name: String
+    var name: String?
     var seq: Int
 }
 

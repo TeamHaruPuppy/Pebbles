@@ -102,7 +102,7 @@ class AddPebblesViewController: UIViewController {
         }
         
         rockTitleLabel.snp.makeConstraints{
-            $0.right.equalToSuperview().inset(Constant.edgeWidth*20)
+            $0.left.equalTo(rockImg.snp.right).inset(-Constant.edgeWidth*8)
             $0.centerY.equalToSuperview()
         }
         
@@ -142,6 +142,7 @@ class AddPebblesViewController: UIViewController {
         
         rockTitleLabel.textColor = .Main_50
         rockTitleLabel.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 15)
+        rockTitleLabel.text = Constant.POST_HIGHLIGHT.name
         
         introLabel.textColor = .Black
         introLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
@@ -178,6 +179,8 @@ class AddPebblesViewController: UIViewController {
     }
     
     @IBAction func backBtnTapped(_ sender: Any) {
+        Constant.POST_HABIT_DATE.removeAll()
+        Constant.POST_HIGHLIGHT.habits.removeAll()
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -227,8 +230,6 @@ class AddPebblesViewController: UIViewController {
             count += 1
             Constant.POST_HABIT_DATE.append([cell.calcuStart:cell.calcuEnd])
         }
-        print("데이터 가져와방 : \(self.list)")
-        print("순서별 날짜 제한 가져오기 : \(Constant.POST_HABIT_DATE)")
         for idx in list{
             Constant.POST_HIGHLIGHT.habits.append(idx)
         }

@@ -1,45 +1,54 @@
+
 import Foundation
 import Alamofire
 
 // MARK: - HomeModel
 struct HomeModel: Codable {
-    let code: Int
     let isSuccess: Bool
+    let code: Int
     let message: String
     let result: HomeResult
 }
+
 // MARK: - Result
 struct HomeResult: Codable {
-    let habits: [Habit]
     let today: String
+    let habits: [Habit]
 }
+
 // MARK: - Habit
 struct Habit: Codable {
-    let consDays: Int
-    let end: String
     let id: Int
-    let name: String
-    let seq: Int
-    let start, status, today, todayStatus: String
-    let todos: [Todo]
+    let name, start, end: String
     let weeks: Weeks
+    let today: String
+    let consDays, seq: Int
+    let todayStatus, status: Status
+    let todos: [Todo]
 
     enum CodingKeys: String, CodingKey {
+        case id, name, start, end, weeks, today
         case consDays = "cons_days"
-        case end, id, name, seq, start, status, today
+        case seq
         case todayStatus = "today_status"
-        case todos, weeks
+        case status, todos
     }
 }
+
+enum Status: String, Codable {
+    case statusFalse = "False"
+    case StatusTrue = "True"
+}
+
 // MARK: - Todo
 struct Todo: Codable {
     let id: Int
     let name: String
     let seq: Int
-    let status: String
+    let status: Status
 }
+
 // MARK: - Weeks
 struct Weeks: Codable {
-    let fri, mon, sat, sun: Bool
-    let thu, tue, wed: Bool
+    let mon, tue, wed, thu, fri, sat, sun: Bool?
 }

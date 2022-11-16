@@ -13,7 +13,7 @@ struct Constant {
     
     
     //MARK: - Home 관련 데이터
-    static var homeResult : HomeResult = HomeResult(habits: [], today: "")
+    static var homeResult : HomeResult = HomeResult(today: "", habits: [])
     static var selectDay = ""
     static var selectFullDay = ""
     
@@ -43,7 +43,7 @@ struct Constant {
         Constant.USER_JWTTOKEN = ""
         Constant.USER_NAME = ""
         
-        Constant.homeResult = HomeResult(habits: [], today: "")
+        Constant.homeResult = HomeResult(today: "", habits: [])
         Constant.selectDay = ""
         Constant.selectFullDay = ""
         

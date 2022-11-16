@@ -34,6 +34,11 @@ class AddSandViewController: UIViewController {
         tableView.addGestureRecognizer(singleTapGestureRecognizer)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
     func setInit(){
         
         self.navigationController?.isNavigationBarHidden = true
@@ -45,6 +50,7 @@ class AddSandViewController: UIViewController {
         self.registerXib()
         self.setDelegate()
         self.setAddTarget()
+        self.setKeyboardObserver()
         
     }
     
@@ -97,7 +103,7 @@ class AddSandViewController: UIViewController {
         }
         
         rockTitleLabel.snp.makeConstraints{
-            $0.right.equalToSuperview().inset(Constant.edgeWidth*20)
+            $0.left.equalTo(rockImg.snp.right).inset(-Constant.edgeWidth*8)
             $0.centerY.equalToSuperview()
         }
         
@@ -135,6 +141,7 @@ class AddSandViewController: UIViewController {
         
         rockTitleLabel.textColor = .Main_50
         rockTitleLabel.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 15)
+        rockTitleLabel.text = Constant.POST_HIGHLIGHT.name
         
         introLabel.textColor = .Black
         introLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
@@ -145,6 +152,15 @@ class AddSandViewController: UIViewController {
         nextBtn.backgroundColor = .Gray_30
         nextBtn.tintColor = .White
         nextBtn.titleLabel?.textColor = .White
+        
+        for section in 0..<Constant.POST_HIGHLIGHT.habits.count{
+            
+            for idx in 0..<3{
+                Constant.POST_HIGHLIGHT.habits[section].todos.append(ReqTodo(seq: idx))
+                print("투두 저장하는 즁 : [\(section) : \(idx)]")
+            }
+        }
+        
     }
     
     func registerXib(){
@@ -169,6 +185,9 @@ class AddSandViewController: UIViewController {
     }
     
     @IBAction func backBtnTapped(_ sender: Any) {
+        for section in 0..<Constant.POST_HIGHLIGHT.habits.count{
+            Constant.POST_HIGHLIGHT.habits[section].todos.removeAll()
+        }
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -181,6 +200,7 @@ class AddSandViewController: UIViewController {
 extension AddSandViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
+            
             return SECTION_ZERO_TODO_COUNT
         }
         else if section == 1 {
@@ -202,13 +222,14 @@ extension AddSandViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SandHeaderTableViewCell") as? SandHeaderTableViewCell else {return UIView()}
-        
+        header.pebbleTitleLabel.text = Constant.POST_HIGHLIGHT.habits[section].name
         return header
     }
     
     
     //MARK: - section의 footer관련
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        
         return Constant.edgeHeight*80
     }
     
@@ -225,8 +246,13 @@ extension AddSandViewController : UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldTableViewCell", for: indexPath) as? TextFieldTableViewCell else {
             return UITableViewCell()
         }
+        cell.textField.tag = indexPath.row
+        cell.SECTION = indexPath.section
+        
+        cell.textField.text = Constant.POST_HIGHLIGHT.habits[indexPath.section].todos[indexPath.row].name ?? ""
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constant.edgeHeight*60
@@ -241,15 +267,50 @@ extension AddSandViewController : UITableViewDelegate, UITableViewDataSource {
         
         if sender.tag == 0{
             SECTION_ZERO_TODO_COUNT += 1
+            //MARK: - 마지막 ReqTodo(seq:)에는 Index 순서가 들어감 (0부터 시작)
+            Constant.POST_HIGHLIGHT.habits[sender.tag].todos.append(ReqTodo(seq: SECTION_ZERO_TODO_COUNT - 1))
             self.tableView.insertRows(at: [IndexPath(row: SECTION_ZERO_TODO_COUNT - 1, section: sender.tag)], with: .bottom)
         }else if sender.tag == 1 {
             SECTION_ONE_TODO_COUNT += 1
+            //MARK: - 마지막 ReqTodo(seq:)에는 Index 순서가 들어감 (0부터 시작)
+            Constant.POST_HIGHLIGHT.habits[sender.tag].todos.append(ReqTodo(seq: SECTION_ONE_TODO_COUNT - 1))
             self.tableView.insertRows(at: [IndexPath(row: SECTION_ONE_TODO_COUNT - 1, section: sender.tag)], with: .bottom)
         }else {
             SECTION_TWO_TODO_COUNT += 1
+            //MARK: - 마지막 ReqTodo(seq:)에는 Index 순서가 들어감 (0부터 시작)
+            Constant.POST_HIGHLIGHT.habits[sender.tag].todos.append(ReqTodo(seq: SECTION_TWO_TODO_COUNT - 1))
             self.tableView.insertRows(at: [IndexPath(row: SECTION_TWO_TODO_COUNT - 1, section: sender.tag)], with: .bottom)
         }
     }
     
 }
 
+extension AddSandViewController  {
+    func setKeyboardObserver() {
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object:nil)
+        }
+        
+        @objc func keyboardWillShow(notification: NSNotification) {
+              if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                      let keyboardRectangle = keyboardFrame.cgRectValue
+                      let keyboardHeight = keyboardRectangle.height
+                  UIView.animate(withDuration: 1) {
+                      self.view.window?.frame.origin.y -= keyboardHeight
+                  }
+              }
+          }
+        
+        @objc func keyboardWillHide(notification: NSNotification) {
+            if self.view.window?.frame.origin.y != 0 {
+                if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                        let keyboardRectangle = keyboardFrame.cgRectValue
+                        let keyboardHeight = keyboardRectangle.height
+                    UIView.animate(withDuration: 1) {
+                        self.view.window?.frame.origin.y += keyboardHeight
+                    }
+                }
+            }
+        }
+}

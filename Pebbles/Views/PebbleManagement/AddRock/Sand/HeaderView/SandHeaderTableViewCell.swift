@@ -50,7 +50,7 @@ class SandHeaderTableViewCell: UITableViewHeaderFooterView {
         }
         
         pebbleTitleLabel.snp.makeConstraints{
-            $0.right.equalToSuperview().inset(Constant.edgeWidth*20)
+            $0.left.equalTo(pebbleImg.snp.right).inset(-Constant.edgeWidth*8)
             $0.centerY.equalToSuperview()
         }
         
