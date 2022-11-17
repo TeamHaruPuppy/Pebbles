@@ -19,12 +19,17 @@ class PebbleManageViewController: UIViewController {
         self.setInit()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.collectionView.reloadData()
+    }
     func setInit(){
         self.setAttribute()
         self.setConfigure()
         self.registerXib()
         self.setDelegate()
     }
+
     func setConfigure(){
         
         self.appBar.snp.makeConstraints{

@@ -11,6 +11,7 @@ class HomeTodoTableViewCell: UITableViewCell {
     @IBOutlet weak var separateView: UIView!
     
     var section = 0
+    var row = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,11 +21,9 @@ class HomeTodoTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
         self.configure()
-        contentView.backgroundColor = .White
-        backgroundView?.backgroundColor = .Main_BG
     }
-    
     func configure(){
         separateView.snp.makeConstraints{
             $0.height.equalTo(1)

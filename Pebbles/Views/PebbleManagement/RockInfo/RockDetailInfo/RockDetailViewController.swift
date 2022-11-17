@@ -36,6 +36,10 @@ class RockDetailViewController: UIViewController {
         self.setInit()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
+    
     func setInit(){
         self.navigationController?.isNavigationBarHidden = true
         tableView.tableHeaderView = headerView

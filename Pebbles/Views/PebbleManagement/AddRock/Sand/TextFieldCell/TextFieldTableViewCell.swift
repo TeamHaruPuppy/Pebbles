@@ -7,18 +7,18 @@
 
 import UIKit
 
-protocol inTypingDelegate {
-    func typingNow()
-    func typingEnd()
+protocol saveTodoDelegate {
+    func saveTodo(_ sender : UITextField)
 }
+
 
 class TextFieldTableViewCell: UITableViewCell {
 
     static let identifier = "TextFieldTableViewCell"
-    var delegate : inTypingDelegate!
     var SECTION = 0
     //MARK: - tag => indexPath.row
     @IBOutlet weak var textField: UITextField!
+    var delegate : saveTodoDelegate!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -60,14 +60,13 @@ class TextFieldTableViewCell: UITableViewCell {
 }
 
 extension TextFieldTableViewCell : UITextFieldDelegate{
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.delegate.typingNow()
-    }
+
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        self.delegate.typingEnd()
-        Constant.POST_HIGHLIGHT.habits[self.SECTION].todos[self.textField.tag].name = textField.text ?? ""
+        print("작성 완료")
+        if textField.text != "" {
+            self.delegate.saveTodo(textField)
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

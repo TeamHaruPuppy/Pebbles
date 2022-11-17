@@ -199,17 +199,20 @@ class AddSandViewController: UIViewController {
     }
     
     @objc func postData(_ sender : UIButton){
+        self.checkTodoInEmpty()
+        
         PostHighlightDataManager().postHighlight(Constant.POST_HIGHLIGHT, self) { data in
             print("데이터 넣는거 성공함??")
             Constant.POST_HIGHLIGHT_RES = data
-        }
-        
-        GetHomeDataManager().getHome(self) { data in
-            Constant.homeResult = data
-        }
-        GetRockInfoDataManager().getRockInfo(self) { data in
-            Constant.rockResult = data
-            self.dismiss(animated: true)
+            GetHomeDataManager().getHome(self) { data in
+                Constant.homeResult = data
+            }
+            GetRockInfoDataManager().getRockInfo(self) { data in
+                Constant.rockResult = data
+                guard let pvc = self.presentingViewController else { return }
+                pvc.viewWillAppear(true)
+                self.dismiss(animated: true)
+            }
         }
         
     }
@@ -218,15 +221,31 @@ class AddSandViewController: UIViewController {
             self.view.endEditing(true)
     }
 
+    
+    func checkTodoInEmpty(){
+        var index = 0
+        for idx in Constant.POST_HIGHLIGHT.habits{
+            if idx.todos.count == 0 {
+                Constant.POST_HIGHLIGHT.habits[index].todos.append(ReqTodo(name: "\(idx.name)", seq: 0))
+            }
+            index += 1
+        }
+        
+        for idx in Constant.POST_HIGHLIGHT.habits{
+            print("[\(idx.name)]의 투두는 : \(idx.todos)")
+        }
+        
+    }
+    
 }
 
 extension AddSandViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
-            
             return SECTION_ZERO_TODO_COUNT
         }
         else if section == 1 {
+            
             return SECTION_ONE_TODO_COUNT
         }
         else {
@@ -271,8 +290,6 @@ extension AddSandViewController : UITableViewDelegate, UITableViewDataSource {
         }
         cell.textField.tag = indexPath.row
         cell.SECTION = indexPath.section
-        
-        cell.textField.text = Constant.POST_HIGHLIGHT.habits[indexPath.section].todos[indexPath.row].name ?? ""
         cell.delegate = self
         return cell
     }
@@ -291,19 +308,16 @@ extension AddSandViewController : UITableViewDelegate, UITableViewDataSource {
         
         if sender.tag == 0{
             SECTION_ZERO_TODO_COUNT += 1
-            //MARK: - 마지막 ReqTodo(seq:)에는 Index 순서가 들어감 (0부터 시작)
-            Constant.POST_HIGHLIGHT.habits[sender.tag].todos.append(ReqTodo(seq: SECTION_ZERO_TODO_COUNT - 1))
             self.tableView.insertRows(at: [IndexPath(row: SECTION_ZERO_TODO_COUNT - 1, section: sender.tag)], with: .bottom)
+            self.tableView.scrollToRow(at: IndexPath(row: SECTION_ZERO_TODO_COUNT - 1, section: sender.tag), at: .bottom, animated: true)
         }else if sender.tag == 1 {
             SECTION_ONE_TODO_COUNT += 1
-            //MARK: - 마지막 ReqTodo(seq:)에는 Index 순서가 들어감 (0부터 시작)
-            Constant.POST_HIGHLIGHT.habits[sender.tag].todos.append(ReqTodo(seq: SECTION_ONE_TODO_COUNT - 1))
             self.tableView.insertRows(at: [IndexPath(row: SECTION_ONE_TODO_COUNT - 1, section: sender.tag)], with: .bottom)
+            self.tableView.scrollToRow(at: IndexPath(row: SECTION_ONE_TODO_COUNT - 1, section: sender.tag), at: .bottom, animated: true)
         }else {
             SECTION_TWO_TODO_COUNT += 1
-            //MARK: - 마지막 ReqTodo(seq:)에는 Index 순서가 들어감 (0부터 시작)
-            Constant.POST_HIGHLIGHT.habits[sender.tag].todos.append(ReqTodo(seq: SECTION_TWO_TODO_COUNT - 1))
             self.tableView.insertRows(at: [IndexPath(row: SECTION_TWO_TODO_COUNT - 1, section: sender.tag)], with: .bottom)
+            self.tableView.scrollToRow(at: IndexPath(row: SECTION_TWO_TODO_COUNT - 1, section: sender.tag), at: .bottom, animated: true)
         }
     }
     
@@ -312,21 +326,19 @@ extension AddSandViewController : UITableViewDelegate, UITableViewDataSource {
 extension AddSandViewController  {
     func setKeyboardObserver() {
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-            
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object:nil)
         }
         
         @objc func keyboardWillShow(notification: NSNotification) {
             
-            if textFieldIsTapped == false {
+            
                 if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
                     let keyboardRectangle = keyboardFrame.cgRectValue
                     let keyboardHeight = keyboardRectangle.height
                     UIView.animate(withDuration: 1) {
-                        self.view.window?.frame.origin.y -= keyboardHeight
+                        self.view.window?.frame.origin.y = -keyboardHeight
                     }
                 }
-            }
           }
         
         @objc func keyboardWillHide(notification: NSNotification) {
@@ -335,19 +347,30 @@ extension AddSandViewController  {
                         let keyboardRectangle = keyboardFrame.cgRectValue
                         let keyboardHeight = keyboardRectangle.height
                     UIView.animate(withDuration: 1) {
-                        self.view.window?.frame.origin.y += keyboardHeight
+                        self.view.window?.frame.origin.y = 0
                     }
                 }
             }
         }
 }
 
-extension AddSandViewController : inTypingDelegate{
-    func typingNow() {
-        textFieldIsTapped = true
+
+extension AddSandViewController : saveTodoDelegate {
+    func saveTodo(_ sender: UITextField) {
+        //MARK: - 선택한 곳을 기준으로 section과 row의 위치를 판별함
+        let point = sender.convert(CGPoint.zero, to: tableView)    //1
+        guard let indexPath = tableView.indexPathForRow(at: point) else { return } //2
+        
+        if indexPath.section == 0 {
+            Constant.POST_HIGHLIGHT.habits[indexPath.section].todos.append(ReqTodo(name: sender.text, seq: SECTION_ZERO_TODO_COUNT - 1))
+        }
+        else if indexPath.section == 1{
+            Constant.POST_HIGHLIGHT.habits[indexPath.section].todos.append(ReqTodo(name: sender.text, seq: SECTION_ONE_TODO_COUNT - 1))
+        }
+        else {
+            Constant.POST_HIGHLIGHT.habits[indexPath.section].todos.append(ReqTodo(name: sender.text, seq: SECTION_TWO_TODO_COUNT - 2))
+        }
+
+        
     }
-    func typingEnd() {
-        textFieldIsTapped = false
-    }
-    
 }

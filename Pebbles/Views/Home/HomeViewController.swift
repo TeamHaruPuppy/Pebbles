@@ -20,10 +20,13 @@ class HomeViewController: UIViewController {
     private var currentPage: Date?
     
     private var findLastCell : [Int] = []
-    private var checkStatus : [Int : Int] = [0:0]
+    private var checkStatus : [Int : Int] = [:]
     private var isToday = false
-    
+    private var isFirstVisit = false
     private var section = 0
+    
+    private var curDay = Date()
+    
     
     
     private lazy var today: Date = {
@@ -50,7 +53,7 @@ class HomeViewController: UIViewController {
         self.registerXib()
         self.registerDelegate()
         self.configure()
-        
+        self.initTodayData()
         
         optionBtn.addTarget(self, action: #selector(showOptionView), for: .touchUpInside)
         
@@ -105,8 +108,6 @@ class HomeViewController: UIViewController {
         $0.clipsToBounds = true
         $0.appearance.headerDateFormat = "YYYY년 MM월"
         $0.locale = Locale(identifier: "ko_KR")
-        
-        
         
     }
     
@@ -211,6 +212,35 @@ class HomeViewController: UIViewController {
         
     }
     
+    func initTodayData(){
+        for idx in Constant.homeResult.habits{
+            //MARK: - 오늘 날짜와 해빗이 나타나야하는 날짜가 같으면
+            if Date().text == idx.today{
+                //MARK: - 오늘의 요일과, 해빗의 요일이 같으면
+                if idx.weeks.mon && (Date().onlyWeek == "Mon"){
+                    Constant.TODAY_DATA.append(idx)
+                }
+                if idx.weeks.tue && (Date().onlyWeek == "Tue"){
+                    Constant.TODAY_DATA.append(idx)
+                }
+                if idx.weeks.wed && (Date().onlyWeek == "Wed"){
+                    Constant.TODAY_DATA.append(idx)
+                }
+                if idx.weeks.thu && (Date().onlyWeek == "Thu"){
+                    Constant.TODAY_DATA.append(idx)
+                }
+                if idx.weeks.fri && (Date().onlyWeek == "Fri"){
+                    Constant.TODAY_DATA.append(idx)
+                }
+                if idx.weeks.sat && (Date().onlyWeek == "Sat"){
+                    Constant.TODAY_DATA.append(idx)
+                }
+                if idx.weeks.sun && (Date().onlyWeek == "Sun"){
+                    Constant.TODAY_DATA.append(idx)
+                }
+            }
+        }
+    }
     
     @IBAction func weekMonthBtnTapped(_ sender: UIButton) {
         sender.isSelected.toggle()
@@ -291,72 +321,102 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource{
     //MARK: - cell의 정보
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTodoTableViewCell", for: indexPath) as? HomeTodoTableViewCell else {return UITableViewCell()}
-        
-        findLastCell[indexPath.section] -= 1
-        cell.todoLabel.text = showSelectData[indexPath.section].todos[indexPath.row].name
-        if showSelectData[indexPath.section].todos[indexPath.row].status == "False" {
-            cell.todoCheckImg.image = UIImage(named: "todoUnSelected.png")
-            cell.todoCheckBtn.isSelected = false
-        }else{
-            cell.todoCheckImg.image = UIImage(named: "todoSelected.png")
-            cell.todoCheckBtn.isSelected = true
-        }
-        
-        if findLastCell[indexPath.section] == 0 {
-            cell.separateView.backgroundColor = .White
-            cell.contentView.layer.masksToBounds = true
-            cell.contentView.layer.borderWidth = 0
-            cell.contentView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
-        }
-        
+       
         if isToday {
+            cell.todoLabel.text = Constant.TODAY_DATA[indexPath.section].todos[indexPath.row].name
+            if  Constant.TODAY_DATA[indexPath.section].todos[indexPath.row].status == "False" {
+                cell.todoCheckImg.image = UIImage(named: "todoUnSelected.png")
+                cell.todoCheckBtn.isSelected = false
+            }
+            else{
+                cell.todoCheckImg.image = UIImage(named: "todoSelected.png")
+                cell.todoCheckBtn.isSelected = true
+            }
             cell.todoCheckBtn.isEnabled = true
-        }else{
-            cell.todoCheckBtn.isEnabled = false
+            cell.todoCheckBtn.tag = indexPath.section
+            cell.todoCheckBtn.addTarget(self, action: #selector(changeStatus(_:)), for: .touchUpInside)
+            return cell
         }
-        cell.todoCheckBtn.tag = indexPath.row
-        cell.section = indexPath.section
-        cell.todoCheckBtn.addTarget(self, action: #selector(changeStatus(_:)), for: .touchUpInside)
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.section = indexPath.section
+        else{
+            cell.todoLabel.text = showSelectData[indexPath.section].todos[indexPath.row].name
+            if showSelectData[indexPath.section].todos[indexPath.row].status == "False" {
+                cell.todoCheckImg.image = UIImage(named: "todoUnSelected.png")
+                cell.todoCheckBtn.isSelected = false
+            }else{
+                cell.todoCheckImg.image = UIImage(named: "todoSelected.png")
+                cell.todoCheckBtn.isSelected = true
+            }
+            cell.todoCheckBtn.isEnabled = false
+            return cell
+        }
     }
     
     @objc func changeStatus(_ sender : UIButton){
-        guard let cell = habitTableView.cellForRow(at: IndexPath(row: sender.tag, section: self.section)) as? HomeTodoTableViewCell else {return;}
-        
-        guard let header = habitTableView.headerView(forSection: self.section) as? HabitHeaderTableViewCell else {return;}
 
+        //MARK: - 선택한 곳을 기준으로 section과 row의 위치를 판별함
+        let point = sender.convert(CGPoint.zero, to: habitTableView)    //1
+        guard let indexPath = habitTableView.indexPathForRow(at: point) else { return } //2
+        
+        guard let cell = habitTableView.cellForRow(at: IndexPath(row: indexPath.row, section: indexPath.section)) as? HomeTodoTableViewCell else {return;}
+        guard let header = habitTableView.headerView(forSection: sender.tag) as? HabitHeaderTableViewCell else {return;}
+        print("선택한 섹션의 번호 : \(indexPath.section)")
+        
+        //MARK: - 현재 상태를 local에 저장해뒀다가, status를 가져와서 반영 해줘야함
         cell.todoCheckBtn.isSelected.toggle()
         if cell.todoCheckBtn.isSelected {
+            checkStatus[indexPath.section] = checkStatus[indexPath.section]! - 1
             DispatchQueue.main.async {
                 cell.todoCheckImg.image = UIImage(named: "todoSelected.png")
+                Constant.TODAY_DATA[indexPath.section].todos[indexPath.row].status = "true"
             }
-            checkStatus[cell.section] = checkStatus[cell.section]! - 1
         }
         else {
+            checkStatus[indexPath.section] = checkStatus[indexPath.section]! + 1
             DispatchQueue.main.async {
                 cell.todoCheckImg.image = UIImage(named: "todoUnSelected.png")
+                Constant.TODAY_DATA[indexPath.section].todos[indexPath.row].status = "False"
             }
-            checkStatus[cell.section] = checkStatus[cell.section]! + 1
         }
         
-        print("체크의 현재 크기 몇이여?? : \(checkStatus[cell.section])")
-        if checkStatus[cell.section] == 0 {
-            header.backgroundColor = .Main_10
+        if checkStatus[indexPath.section] == 0 {
+            Constant.TODAY_DATA[indexPath.section].status = "true"
+            header.headerView.backgroundColor = .Main_10
+            header.habitTitle.textColor = .White
         }else{
-            header.backgroundColor = .White
+            Constant.TODAY_DATA[indexPath.section].status = "False"
+            header.headerView.backgroundColor = .White
+            header.habitTitle.textColor = .Black
         }
     }
     
     //MARK: - section의 헤더 정보
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HabitHeaderTableViewCell") as? HabitHeaderTableViewCell else {return UIView()}
-        header.habitTitle.text = showSelectData[section].name
-        return header
+        
+        if isToday {
+            header.habitTitle.text = Constant.TODAY_DATA[section].name
+            if Constant.TODAY_DATA[section].status == "true"{
+                header.headerView.backgroundColor = .Main_10
+                header.habitTitle.textColor = .White
+            }
+            else{
+                header.headerView.backgroundColor = .White
+                header.habitTitle.textColor = .Black
+            }
+            return header
+        }
+        else{
+            header.habitTitle.text = showSelectData[section].name
+            if showSelectData[section].status == "true"{
+                header.headerView.backgroundColor = .Main_10
+                header.habitTitle.textColor = .White
+            }
+            else{
+                header.headerView.backgroundColor = .White
+                header.habitTitle.textColor = .Black
+            }
+            return header
+        }
     }
     
     //MARK: - cell의 높이
@@ -436,7 +496,6 @@ extension HomeViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
     
     //MARK: - 각 날짜의 내부 채우기 색상 조절
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
-        
         let baseMonth = calendar.currentPage.onlyMonthText
         let currMonth = date.onlyMonthText
         
@@ -452,29 +511,29 @@ extension HomeViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
         calendar.reloadData()
     }
     
+
+    
+    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+     
+        if Date().text == date.text{
+            isToday = true
+        }else{
+            isToday = false
+        }
+        
         showSelectData.removeAll()
         findLastCell.removeAll()
         checkStatus.removeAll()
-        print("요일이 멀까유 : \(date.onlyWeek)")
-        print("들어온 해빗 전체 : \(Constant.homeResult.habits)")
+        
         //MARK: - 진짜 오늘의 해빗인지, 과거 혹은 미래의 해빗인지 확인해서 버튼 비활성화 해야함
-        if Date().text == date.text{
-            isToday = true
-            print("오늘 맞아융")
-        }else{
-            isToday = false
-            print("오늘 아니에융")
-        }
+        
         for idx in Constant.homeResult.habits{
             //MARK: - 선택한 날짜와 해빗이 나타나야하는 날짜가 같으면
             if date.text == idx.today{
                 //MARK: - 선택한 날의 요일과, 해빗의 요일이 같으면
                 if idx.weeks.mon && (date.onlyWeek == "Mon"){
-                    print("월요일 들어와씁니다~~~")
-                    print("넣을 데이더 : \(idx)")
                     showSelectData.append(idx)
-                    print("월요일 데이터 : \(showSelectData)")
                 }
                 if idx.weeks.tue && (date.onlyWeek == "Tue"){
                     showSelectData.append(idx)
@@ -496,17 +555,13 @@ extension HomeViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
                 }
             }
         }
-        print("리로드 눌러씁니다")
-        print(showSelectData)
-        
         
         var section = 0
         for idx in showSelectData {
             checkStatus[section] = idx.todos.count
             findLastCell.append(idx.todos.count)
+            section += 1
         }
-        print("마지막 셀을 찾아라~~~ : \(findLastCell)")
-        
         habitTableView.reloadData()
     }
     

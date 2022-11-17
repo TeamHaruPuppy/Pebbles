@@ -7,24 +7,24 @@ struct HomeModel: Codable {
     let isSuccess: Bool
     let code: Int
     let message: String
-    let result: HomeResult
+    var result: HomeResult
 }
 
 // MARK: - Result
 struct HomeResult: Codable {
-    let today: String
-    let habits: [Habit]
+    var today: String
+    var habits: [Habit]
 }
 
 // MARK: - Habit
 struct Habit: Codable {
-    let id: Int
-    let name, start, end: String
-    let weeks: Weeks
-    let today: String
-    let consDays, seq: Int
-    let todayStatus, status: String
-    let todos: [Todo]
+    var id: Int
+    var name, start, end: String
+    var weeks: Weeks
+    var today: String
+    var consDays, seq: Int
+    var todayStatus, status: String
+    var todos: [Todo]
 
     enum CodingKeys: String, CodingKey {
         case id, name, start, end, weeks, today
@@ -37,13 +37,13 @@ struct Habit: Codable {
 
 // MARK: - Todo
 struct Todo: Codable {
-    let id: Int
-    let name: String
-    let seq: Int
-    let status: String
+    var id: Int
+    var name: String
+    var seq: Int
+    var status: String
 }
 
 // MARK: - Weeks
 struct Weeks: Codable {
-    let mon, tue, wed, thu, fri, sat, sun: Bool
+    var mon, tue, wed, thu, fri, sat, sun: Bool
 }
