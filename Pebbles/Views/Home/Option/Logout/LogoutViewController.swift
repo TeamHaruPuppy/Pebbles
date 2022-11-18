@@ -1,5 +1,6 @@
 import UIKit
 import SnapKit
+import RealmSwift
 
 class LogoutViewController: UIViewController {
     
@@ -59,6 +60,12 @@ class LogoutViewController: UIViewController {
         UserDefaults.standard.removeObject(forKey: "id")
         UserDefaults.standard.removeObject(forKey: "pwd")
         UserDefaults.standard.set(false, forKey: "isAuthLogin")
+        
+        let realm = try! Realm()
+        
+        try! realm.write {
+            realm.deleteAll()
+        }
         Constant.USER_ID = 0
         Constant.USER_JWTTOKEN = ""
         self.dismiss(animated: false)

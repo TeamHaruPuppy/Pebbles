@@ -105,7 +105,7 @@ class AddPebbleTableViewCell: UITableViewCell{
         
         monBtn.layer.masksToBounds = true
         monBtn.layer.borderWidth = 0
-        monBtn.layer.cornerRadius = Constant.edgeWidth*18
+        monBtn.layer.cornerRadius = monBtn.layer.bounds.width/2
         monBtn.isSelected = false
         monBtn.titleLabel?.textColor = .Gray_30
         monBtn.titleLabel?.text = "월"
@@ -113,7 +113,7 @@ class AddPebbleTableViewCell: UITableViewCell{
         
         tueBtn.layer.masksToBounds = true
         tueBtn.layer.borderWidth = 0
-        tueBtn.layer.cornerRadius = 18
+        tueBtn.layer.cornerRadius = tueBtn.layer.bounds.width/2
         tueBtn.isSelected = false
         tueBtn.titleLabel?.textColor = .Gray_30
         tueBtn.titleLabel?.text = "화"
@@ -121,7 +121,7 @@ class AddPebbleTableViewCell: UITableViewCell{
         
         wedBtn.layer.masksToBounds = true
         wedBtn.layer.borderWidth = 0
-        wedBtn.layer.cornerRadius = 18
+        wedBtn.layer.cornerRadius = wedBtn.layer.bounds.width/2
         wedBtn.isSelected = false
         wedBtn.titleLabel?.textColor = .Gray_30
         wedBtn.titleLabel?.text = "수"
@@ -129,7 +129,7 @@ class AddPebbleTableViewCell: UITableViewCell{
         
         thuBtn.layer.masksToBounds = true
         thuBtn.layer.borderWidth = 0
-        thuBtn.layer.cornerRadius = 18
+        thuBtn.layer.cornerRadius = thuBtn.layer.bounds.width/2
         thuBtn.isSelected = false
         thuBtn.titleLabel?.textColor = .Gray_30
         thuBtn.titleLabel?.text = "목"
@@ -137,7 +137,7 @@ class AddPebbleTableViewCell: UITableViewCell{
         
         friBtn.layer.masksToBounds = true
         friBtn.layer.borderWidth = 0
-        friBtn.layer.cornerRadius = 18
+        friBtn.layer.cornerRadius = friBtn.layer.bounds.width/2
         friBtn.isSelected = false
         friBtn.titleLabel?.textColor = .Gray_30
         friBtn.titleLabel?.text = "금"
@@ -145,7 +145,7 @@ class AddPebbleTableViewCell: UITableViewCell{
         
         satBtn.layer.masksToBounds = true
         satBtn.layer.borderWidth = 0
-        satBtn.layer.cornerRadius = 18
+        satBtn.layer.cornerRadius = satBtn.layer.bounds.width/2
         satBtn.isSelected = false
         satBtn.titleLabel?.textColor = .Gray_30
         satBtn.titleLabel?.text = "토"
@@ -153,7 +153,7 @@ class AddPebbleTableViewCell: UITableViewCell{
         
         sunBtn.layer.masksToBounds = true
         sunBtn.layer.borderWidth = 0
-        sunBtn.layer.cornerRadius = 18
+        sunBtn.layer.cornerRadius = sunBtn.layer.bounds.width/2
         sunBtn.isSelected = false
         sunBtn.titleLabel?.textColor = .Gray_30
         sunBtn.titleLabel?.text = "일"

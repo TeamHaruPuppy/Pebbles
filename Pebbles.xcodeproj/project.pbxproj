@@ -93,8 +93,6 @@
 		84C22CC1290EA6C2002699E4 /* SignInDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C22CC0290EA6C2002699E4 /* SignInDataManager.swift */; };
 		84C56361291E4BE200460FB9 /* PebbleDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5635F291E4BE200460FB9 /* PebbleDetailCollectionViewCell.swift */; };
 		84C56362291E4BE200460FB9 /* PebbleDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C56360291E4BE200460FB9 /* PebbleDetailCollectionViewCell.xib */; };
-		84C56365291E4BF200460FB9 /* SandDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C56363291E4BF200460FB9 /* SandDetailCollectionViewCell.swift */; };
-		84C56366291E4BF200460FB9 /* SandDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C56364291E4BF200460FB9 /* SandDetailCollectionViewCell.xib */; };
 		84C56369291E4CE200460FB9 /* HighlightDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C56368291E4CE200460FB9 /* HighlightDetailModel.swift */; };
 		84C5636C291E4DB800460FB9 /* GetHighlightDetailInfoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5636B291E4DB800460FB9 /* GetHighlightDetailInfoDataManager.swift */; };
 		84C5636F291E70E300460FB9 /* FirstSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5636D291E70E300460FB9 /* FirstSignUpViewController.swift */; };
@@ -103,6 +101,10 @@
 		84CC3F572912A0CC00E151E1 /* GetHomeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CC3F562912A0CC00E151E1 /* GetHomeDataManager.swift */; };
 		84EE42312926747300728273 /* HomeUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE42302926747300728273 /* HomeUserData.swift */; };
 		84EE42332926774000728273 /* RealMDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE42322926774000728273 /* RealMDataManager.swift */; };
+		84EE423629276E2C00728273 /* RockDetailSectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE423429276E2C00728273 /* RockDetailSectionHeaderTableViewCell.swift */; };
+		84EE423729276E2C00728273 /* RockDetailSectionHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EE423529276E2C00728273 /* RockDetailSectionHeaderTableViewCell.xib */; };
+		84EE423B2927710600728273 /* HabitFooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE42392927710600728273 /* HabitFooterTableViewCell.swift */; };
+		84EE423C2927710600728273 /* HabitFooterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EE423A2927710600728273 /* HabitFooterTableViewCell.xib */; };
 		84F4765828EF830300B6F755 /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F4765728EF830300B6F755 /* UIScrollView.swift */; };
 		F510E6A562B3BB2AA7547786 /* Pods_Pebbles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A174502E8721EB5D2107F2B /* Pods_Pebbles.framework */; };
 /* End PBXBuildFile section */
@@ -198,8 +200,6 @@
 		84C22CC0290EA6C2002699E4 /* SignInDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDataManager.swift; sourceTree = "<group>"; };
 		84C5635F291E4BE200460FB9 /* PebbleDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PebbleDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		84C56360291E4BE200460FB9 /* PebbleDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PebbleDetailCollectionViewCell.xib; sourceTree = "<group>"; };
-		84C56363291E4BF200460FB9 /* SandDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandDetailCollectionViewCell.swift; sourceTree = "<group>"; };
-		84C56364291E4BF200460FB9 /* SandDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SandDetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		84C56368291E4CE200460FB9 /* HighlightDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightDetailModel.swift; sourceTree = "<group>"; };
 		84C5636B291E4DB800460FB9 /* GetHighlightDetailInfoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHighlightDetailInfoDataManager.swift; sourceTree = "<group>"; };
 		84C5636D291E70E300460FB9 /* FirstSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSignUpViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +209,10 @@
 		84D5A57114568676E81C6FE6 /* Pods-Pebbles.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pebbles.debug.xcconfig"; path = "Target Support Files/Pods-Pebbles/Pods-Pebbles.debug.xcconfig"; sourceTree = "<group>"; };
 		84EE42302926747300728273 /* HomeUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUserData.swift; sourceTree = "<group>"; };
 		84EE42322926774000728273 /* RealMDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealMDataManager.swift; sourceTree = "<group>"; };
+		84EE423429276E2C00728273 /* RockDetailSectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockDetailSectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		84EE423529276E2C00728273 /* RockDetailSectionHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RockDetailSectionHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		84EE42392927710600728273 /* HabitFooterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitFooterTableViewCell.swift; sourceTree = "<group>"; };
+		84EE423A2927710600728273 /* HabitFooterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabitFooterTableViewCell.xib; sourceTree = "<group>"; };
 		84F4765728EF830300B6F755 /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -384,6 +388,8 @@
 		841836E229250E08007353C4 /* HomeTodoCell */ = {
 			isa = PBXGroup;
 			children = (
+				84EE4238292770C000728273 /* HabitCellFooter */,
+				841836DD292503EB007353C4 /* HabitCellHeader */,
 				841836E329250E2C007353C4 /* HomeTodoTableViewCell.swift */,
 				841836E429250E2C007353C4 /* HomeTodoTableViewCell.xib */,
 			);
@@ -393,9 +399,9 @@
 		846BA202291E1A660058A763 /* RockInfo */ = {
 			isa = PBXGroup;
 			children = (
-				846BA214291E316E0058A763 /* RockDetailInfo */,
 				846BA203291E1A8B0058A763 /* RockCollectionViewCell.swift */,
 				846BA204291E1A8B0058A763 /* RockCollectionViewCell.xib */,
+				846BA214291E316E0058A763 /* RockDetailInfo */,
 			);
 			path = RockInfo;
 			sourceTree = "<group>";
@@ -678,7 +684,6 @@
 			isa = PBXGroup;
 			children = (
 				84068440291A83D700A30517 /* Option */,
-				841836DD292503EB007353C4 /* HabitCellHeader */,
 				841836E229250E08007353C4 /* HomeTodoCell */,
 				84A64C1E28F427D500BB2325 /* HomeViewController.swift */,
 				84A64C1F28F427D500BB2325 /* HomeViewController.xib */,
@@ -731,8 +736,8 @@
 			children = (
 				84C5635F291E4BE200460FB9 /* PebbleDetailCollectionViewCell.swift */,
 				84C56360291E4BE200460FB9 /* PebbleDetailCollectionViewCell.xib */,
-				84C56363291E4BF200460FB9 /* SandDetailCollectionViewCell.swift */,
-				84C56364291E4BF200460FB9 /* SandDetailCollectionViewCell.xib */,
+				84EE423429276E2C00728273 /* RockDetailSectionHeaderTableViewCell.swift */,
+				84EE423529276E2C00728273 /* RockDetailSectionHeaderTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -769,6 +774,15 @@
 				84068452291B2C4B00A30517 /* Option */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		84EE4238292770C000728273 /* HabitCellFooter */ = {
+			isa = PBXGroup;
+			children = (
+				84EE42392927710600728273 /* HabitFooterTableViewCell.swift */,
+				84EE423A2927710600728273 /* HabitFooterTableViewCell.xib */,
+			);
+			path = HabitCellFooter;
 			sourceTree = "<group>";
 		};
 		DEC977D147129968330FF911 /* Pods */ = {
@@ -841,9 +855,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				846BA201291D32770058A763 /* AddPebbleTableViewCell.xib in Resources */,
+				84EE423C2927710600728273 /* HabitFooterTableViewCell.xib in Resources */,
 				847B794B28EC4CBF000DC20A /* SignUpViewController.xib in Resources */,
 				841836D329241F7D007353C4 /* SandHeaderTableViewCell.xib in Resources */,
 				840684272919EF7300A30517 /* AddRockViewController.xib in Resources */,
+				84EE423729276E2C00728273 /* RockDetailSectionHeaderTableViewCell.xib in Resources */,
 				84068449291AA4ED00A30517 /* LogoutViewController.xib in Resources */,
 				84A64C2528F427E700BB2325 /* PebbleManageViewController.xib in Resources */,
 				84068459291BA97800A30517 /* OnboardingViewController.xib in Resources */,
@@ -854,7 +870,6 @@
 				84A64C2A28F4282000BB2325 /* MyStoneTowerViewController.xib in Resources */,
 				841836D729242148007353C4 /* SandFooterTableViewCell.xib in Resources */,
 				8406844E291AB74B00A30517 /* SignWithdrawalViewController.xib in Resources */,
-				84C56366291E4BF200460FB9 /* SandDetailCollectionViewCell.xib in Resources */,
 				84C56370291E70E300460FB9 /* FirstSignUpViewController.xib in Resources */,
 				841836C4292401DB007353C4 /* TextFieldTableViewCell.xib in Resources */,
 				847B78B028E5E8D6000DC20A /* LaunchScreen.storyboard in Resources */,
@@ -932,7 +947,6 @@
 				840684212916E67F00A30517 /* SignInViewController.swift in Sources */,
 				841836E82925289A007353C4 /* PostHightlightDataManager.swift in Sources */,
 				84CC3F572912A0CC00E151E1 /* GetHomeDataManager.swift in Sources */,
-				84C56365291E4BF200460FB9 /* SandDetailCollectionViewCell.swift in Sources */,
 				847B78DC28E9DAFE000DC20A /* Device.swift in Sources */,
 				847B78D028E9DAC3000DC20A /* UIViewController.swift in Sources */,
 				846BA212291E31360058A763 /* RockDetailViewController.swift in Sources */,
@@ -957,6 +971,7 @@
 				840684262919EF7300A30517 /* AddRockViewController.swift in Sources */,
 				84C5636F291E70E300460FB9 /* FirstSignUpViewController.swift in Sources */,
 				847B78D828E9DAED000DC20A /* UIImageView.swift in Sources */,
+				84EE423629276E2C00728273 /* RockDetailSectionHeaderTableViewCell.swift in Sources */,
 				8406843D291A41B600A30517 /* PostHighlightReq.swift in Sources */,
 				847B78CA28E9DA9B000DC20A /* UIColor.swift in Sources */,
 				84C22CBF290EA6B7002699E4 /* SignUpDataManager.swift in Sources */,
@@ -989,6 +1004,7 @@
 				846BA200291D32770058A763 /* AddPebbleTableViewCell.swift in Sources */,
 				84068438291A039100A30517 /* CalendarPopUpViewController.swift in Sources */,
 				84068443291A83ED00A30517 /* OptionViewController.swift in Sources */,
+				84EE423B2927710600728273 /* HabitFooterTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1144,7 +1160,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.02;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.harupuppyPebbles-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1180,7 +1196,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.02;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.harupuppyPebbles-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

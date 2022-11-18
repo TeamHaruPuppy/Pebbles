@@ -1,5 +1,6 @@
 import SnapKit
 import UIKit
+import RealmSwift
 
 class SignWithdrawalViewController: UIViewController {
     
@@ -73,7 +74,13 @@ class SignWithdrawalViewController: UIViewController {
         self.navigationController?.popToRootViewController(animated: true)
         PostSignWithdrawalDataManager().signWithdrawal(Constant.USER_ID, self) { data in
             Constant.initConstantData()
-            
+            let realm = try! Realm()
+            try! realm.write {
+                realm.deleteAll()
+            }
+            UserDefaults.standard.set(false, forKey: "isAuthLogin")
+            UserDefaults.standard.removeObject(forKey: "id")
+            UserDefaults.standard.removeObject(forKey: "pwd")
             let rootVC = LoginViewController()
             self.changeRootViewController(rootVC, .curveEaseIn)
         }

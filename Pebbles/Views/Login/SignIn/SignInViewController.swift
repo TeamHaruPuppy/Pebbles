@@ -23,9 +23,9 @@ class SignInViewController: UIViewController {
         self.setAttribute()
         self.setConfigure()
         
-        if let userId = UserDefaults.standard.string(forKey: "id"),let pwd = UserDefaults.standard.string(forKey: "pwd"){
+        if UserDefaults.standard.bool(forKey: "isAuthLogin"){
             print("여기 들어오냐?")
-            login(userId, pwd)
+            login(UserDefaults.standard.string(forKey: "id"), UserDefaults.standard.string(forKey: "pwd"))
         }
         
         idTextField.delegate = self

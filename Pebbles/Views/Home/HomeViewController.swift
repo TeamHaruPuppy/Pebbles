@@ -42,9 +42,10 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.addSubview(logoImageView)
-        self.view.addSubview(optionBtn)
-        self.view.addSubview(optionImageView)
+        self.view.addSubview(appBar)
+        self.appBar.addSubview(logoImageView)
+        self.appBar.addSubview(optionBtn)
+        self.appBar.addSubview(optionImageView)
         self.view.addSubview(shadow)
         self.shadow.addSubview(backView)
         self.backView.addSubview(weekChangeBtn)
@@ -71,6 +72,10 @@ class HomeViewController: UIViewController {
         habitTableView.reloadData()
     }
     
+    
+    private let appBar = UIView().then{
+        $0.backgroundColor = .Main_BG
+    }
     
     private let logoImageView = UIImageView().then{
         $0.image = UIImage(named: "mainLogo_color.png")!
@@ -131,6 +136,9 @@ class HomeViewController: UIViewController {
         
         let headerNib = UINib(nibName: HabitHeaderTableViewCell.identifier, bundle: nil)
         habitTableView.register(headerNib, forHeaderFooterViewReuseIdentifier: HabitHeaderTableViewCell.identifier)
+        
+        let footerNib = UINib(nibName: HabitFooterTableViewCell.identifier, bundle: nil)
+        habitTableView.register(footerNib, forHeaderFooterViewReuseIdentifier:  HabitFooterTableViewCell.identifier)
     }
     
     private func registerDelegate(){
@@ -146,6 +154,11 @@ class HomeViewController: UIViewController {
     func configure(){
         self.view.backgroundColor = .Main_BG
         habitTableView.backgroundColor = .Main_BG
+//        if #available(iOS 15.0, *) {
+//            habitTableView.sectionHeaderTopPadding = Constant.edgeHeight*20
+//        } else {
+//            // Fallback on earlier versions
+//        }
         weekChangeImg.tintColor = .Gray_40
         navigationController?.setNavigationBarHidden(true, animated: false)
         
@@ -154,11 +167,18 @@ class HomeViewController: UIViewController {
         
         
         //MARK: - 제약조건 설정
+        
+        self.appBar.snp.makeConstraints{
+            $0.top.equalTo(self.view.safeAreaLayoutGuide)
+            $0.left.right.equalToSuperview()
+            $0.height.equalTo(Constant.edgeHeight*56)
+        }
+        
         self.logoImageView.snp.makeConstraints{
-            $0.height.equalTo(Constant.edgeHeight*64)
-            $0.width.equalTo(Constant.edgeWidth*64)
-            $0.top.equalToSuperview().offset(Constant.edgeHeight*44)
-            $0.left.equalToSuperview().inset(Constant.edgeWidth*8)
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(Constant.edgeWidth*56)
+            $0.height.equalTo(Constant.edgeHeight*56)
+            $0.left.equalToSuperview().inset(Constant.edgeWidth*20)
         }
         
         self.optionBtn.snp.makeConstraints{
@@ -216,28 +236,7 @@ class HomeViewController: UIViewController {
         for idx in Constant.homeResult.habits{
             //MARK: - 오늘 날짜와 해빗이 나타나야하는 날짜가 같으면
             if Date().text == idx.today{
-                //MARK: - 오늘의 요일과, 해빗의 요일이 같으면
-                if idx.weeks.mon && (Date().onlyWeek == "Mon"){
-                    Constant.TODAY_DATA.append(idx)
-                }
-                if idx.weeks.tue && (Date().onlyWeek == "Tue"){
-                    Constant.TODAY_DATA.append(idx)
-                }
-                if idx.weeks.wed && (Date().onlyWeek == "Wed"){
-                    Constant.TODAY_DATA.append(idx)
-                }
-                if idx.weeks.thu && (Date().onlyWeek == "Thu"){
-                    Constant.TODAY_DATA.append(idx)
-                }
-                if idx.weeks.fri && (Date().onlyWeek == "Fri"){
-                    Constant.TODAY_DATA.append(idx)
-                }
-                if idx.weeks.sat && (Date().onlyWeek == "Sat"){
-                    Constant.TODAY_DATA.append(idx)
-                }
-                if idx.weeks.sun && (Date().onlyWeek == "Sun"){
-                    Constant.TODAY_DATA.append(idx)
-                }
+                Constant.TODAY_DATA.append(idx)
             }
         }
         RealmManager().getRealm()
@@ -399,7 +398,11 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HabitHeaderTableViewCell") as? HabitHeaderTableViewCell else {return UIView()}
         
+        print("------------섹션 헤더의 번호는? : \(section)----------------")
+        print("------------그 섹션의 이름은? : \(Constant.TODAY_DATA[section].name)--------------")
         if isToday {
+            
+            
             header.habitTitle.text = Constant.TODAY_DATA[section].name
             if Constant.TODAY_DATA[section].todayStatus == "true"{
                 header.headerView.backgroundColor = .Main_10
@@ -424,6 +427,20 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource{
             return header
         }
     }
+    
+    //MARK: - section의 footer정보
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HabitFooterTableViewCell") as? HabitFooterTableViewCell else {return UIView()}
+        
+        
+        return footer
+    }
+    
+    //MARK: - footer의 높이
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return Constant.edgeHeight*48
+    }
+    
     
     //MARK: - cell의 높이
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -537,28 +554,7 @@ extension HomeViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
         for idx in Constant.homeResult.habits{
             //MARK: - 선택한 날짜와 해빗이 나타나야하는 날짜가 같으면
             if date.text == idx.today{
-                //MARK: - 선택한 날의 요일과, 해빗의 요일이 같으면
-                if idx.weeks.mon && (date.onlyWeek == "Mon"){
-                    showSelectData.append(idx)
-                }
-                if idx.weeks.tue && (date.onlyWeek == "Tue"){
-                    showSelectData.append(idx)
-                }
-                if idx.weeks.wed && (date.onlyWeek == "Wed"){
-                    showSelectData.append(idx)
-                }
-                if idx.weeks.thu && (date.onlyWeek == "Thu"){
-                    showSelectData.append(idx)
-                }
-                if idx.weeks.fri && (date.onlyWeek == "Fri"){
-                    showSelectData.append(idx)
-                }
-                if idx.weeks.sat && (date.onlyWeek == "Sat"){
-                    showSelectData.append(idx)
-                }
-                if idx.weeks.sun && (date.onlyWeek == "Sun"){
-                    showSelectData.append(idx)
-                }
+                showSelectData.append(idx)
             }
         }
         
@@ -567,6 +563,11 @@ extension HomeViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
             checkStatus[section] = idx.todos.count
             findLastCell.append(idx.todos.count)
             section += 1
+        }
+        
+        for idx in Constant.TODAY_DATA {
+            print("들어간 데이터들 좀 보자 : \(idx)")
+            
         }
         habitTableView.reloadData()
     }

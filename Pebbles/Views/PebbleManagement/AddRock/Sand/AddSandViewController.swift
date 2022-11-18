@@ -202,16 +202,26 @@ class AddSandViewController: UIViewController {
         self.checkTodoInEmpty()
         
         PostHighlightDataManager().postHighlight(Constant.POST_HIGHLIGHT, self) { data in
-            print("데이터 넣는거 성공함??")
             Constant.POST_HIGHLIGHT_RES = data
             GetHomeDataManager().getHome(self) { data in
                 Constant.homeResult = data
-            }
-            GetRockInfoDataManager().getRockInfo(self) { data in
-                Constant.rockResult = data
-                guard let pvc = self.presentingViewController else { return }
-                pvc.viewWillAppear(true)
-                self.dismiss(animated: true)
+                for idx in Constant.homeResult.habits{
+                    if idx.today == Date().text {
+                        let endIndex = Constant.TODAY_DATA.endIndex
+                        if  Constant.TODAY_DATA.isEmpty {
+                        }
+                        else if idx.id > Constant.TODAY_DATA[endIndex - 1].id{
+                            Constant.TODAY_DATA.append(idx)
+                        }
+                    }
+                }
+                print("Constant.TODAY_DATA에 있는 값 전부 들고와봐 : \(Constant.TODAY_DATA)")
+                GetRockInfoDataManager().getRockInfo(self) { data in
+                    Constant.rockResult = data
+                    guard let pvc = self.presentingViewController else { return }
+                    pvc.viewWillAppear(true)
+                    self.dismiss(animated: true)
+                }
             }
         }
         
