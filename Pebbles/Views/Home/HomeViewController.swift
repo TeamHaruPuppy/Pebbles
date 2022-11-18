@@ -1,6 +1,7 @@
 import UIKit
 import SnapKit
 import Then
+import RealmSwift
 import FSCalendar
 import UIWindowTransitions
 
@@ -26,7 +27,6 @@ class HomeViewController: UIViewController {
     private var section = 0
     
     private var curDay = Date()
-    
     
     
     private lazy var today: Date = {
@@ -240,7 +240,11 @@ class HomeViewController: UIViewController {
                 }
             }
         }
+        RealmManager().getRealm()
     }
+    // 앱을 실행시키면 realm에서 데이터 가져오기 -> 앱을 종료시키면 realm에 데이터 저장하기
+    // 근데 만약 어제 저장하고 종료하고 오늘 앱을 열면?
+    
     
     @IBAction func weekMonthBtnTapped(_ sender: UIButton) {
         sender.isSelected.toggle()
@@ -318,19 +322,21 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource{
         return Constant.edgeHeight*58
     }
     
+    
     //MARK: - cell의 정보
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTodoTableViewCell", for: indexPath) as? HomeTodoTableViewCell else {return UITableViewCell()}
-       
+        
         if isToday {
             cell.todoLabel.text = Constant.TODAY_DATA[indexPath.section].todos[indexPath.row].name
-            if  Constant.TODAY_DATA[indexPath.section].todos[indexPath.row].status == "False" {
-                cell.todoCheckImg.image = UIImage(named: "todoUnSelected.png")
-                cell.todoCheckBtn.isSelected = false
-            }
-            else{
+            if  Constant.TODAY_DATA[indexPath.section].todos[indexPath.row].status == "true" {
+                checkStatus[indexPath.section] = checkStatus[indexPath.section]! - 1
                 cell.todoCheckImg.image = UIImage(named: "todoSelected.png")
                 cell.todoCheckBtn.isSelected = true
+            }
+            else{
+                cell.todoCheckImg.image = UIImage(named: "todoUnSelected.png")
+                cell.todoCheckBtn.isSelected = false
             }
             cell.todoCheckBtn.isEnabled = true
             cell.todoCheckBtn.tag = indexPath.section
@@ -339,12 +345,12 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource{
         }
         else{
             cell.todoLabel.text = showSelectData[indexPath.section].todos[indexPath.row].name
-            if showSelectData[indexPath.section].todos[indexPath.row].status == "False" {
-                cell.todoCheckImg.image = UIImage(named: "todoUnSelected.png")
-                cell.todoCheckBtn.isSelected = false
-            }else{
+            if showSelectData[indexPath.section].todos[indexPath.row].status == "true" {
                 cell.todoCheckImg.image = UIImage(named: "todoSelected.png")
                 cell.todoCheckBtn.isSelected = true
+            }else{
+                cell.todoCheckImg.image = UIImage(named: "todoUnSelected.png")
+                cell.todoCheckBtn.isSelected = false
             }
             cell.todoCheckBtn.isEnabled = false
             return cell
@@ -352,7 +358,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource{
     }
     
     @objc func changeStatus(_ sender : UIButton){
-
+        
         //MARK: - 선택한 곳을 기준으로 section과 row의 위치를 판별함
         let point = sender.convert(CGPoint.zero, to: habitTableView)    //1
         guard let indexPath = habitTableView.indexPathForRow(at: point) else { return } //2
@@ -379,11 +385,11 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource{
         }
         
         if checkStatus[indexPath.section] == 0 {
-            Constant.TODAY_DATA[indexPath.section].status = "true"
+            Constant.TODAY_DATA[indexPath.section].todayStatus = "true"
             header.headerView.backgroundColor = .Main_10
             header.habitTitle.textColor = .White
         }else{
-            Constant.TODAY_DATA[indexPath.section].status = "False"
+            Constant.TODAY_DATA[indexPath.section].todayStatus = "False"
             header.headerView.backgroundColor = .White
             header.habitTitle.textColor = .Black
         }
@@ -395,7 +401,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource{
         
         if isToday {
             header.habitTitle.text = Constant.TODAY_DATA[section].name
-            if Constant.TODAY_DATA[section].status == "true"{
+            if Constant.TODAY_DATA[section].todayStatus == "true"{
                 header.headerView.backgroundColor = .Main_10
                 header.habitTitle.textColor = .White
             }
@@ -511,11 +517,11 @@ extension HomeViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
         calendar.reloadData()
     }
     
-
+    
     
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-     
+        
         if Date().text == date.text{
             isToday = true
         }else{

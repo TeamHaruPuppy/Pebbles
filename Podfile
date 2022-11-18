@@ -17,6 +17,7 @@ target 'Pebbles' do
   pod 'FSCalendar'
   pod 'UIWindowTransitions'
   pod 'SwiftyJSON'
+  pod 'RealmSwift'
   # Pods for Pebbles
 
 end

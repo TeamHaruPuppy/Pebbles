@@ -10,7 +10,7 @@ struct Constant {
     static let edgeWidth = 375 / Device.width
     static let edgeHeight = 812 / Device.height
     static let configuration = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular, scale: .small)
-    
+    static let defaults = UserDefaults.standard
     
     //MARK: - Home 관련 데이터
     static var homeResult : HomeResult = HomeResult(today: "", habits: [])
