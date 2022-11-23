@@ -162,4 +162,10 @@ Dependencies/
 # https://github.com/johnno1962/injectionforxcode
 
 Pebbles/Configuration/Secret
+
+Podfile.*
+LICENSE
+
+Pebbles.xcodeproj/
+Pebbles.xcworkspace/
 # End of https://www.toptal.com/developers/gitignore/api/swift,macos,cocoapods,objective-c
