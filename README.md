@@ -26,17 +26,32 @@
 - 지금 당장 하지 않아도 아무일도 일어나지 않는다.
 - 이러한 일들은 점차 우선순위에서 밀려나게 된다.<br>
 #### -> **그렇기 때문에 오늘 당장 해야하는 일부터 시작해서 최종 목표까지 실천을 쌓아나가자!**
+<br><br>
 
 🗓️ **작업기간** : 2022.11 ~ 현재 앱스토어 출시 (지속적인 버그 수정 및 추가기능 업데이트)
+<br><br>
 
 👨‍💻 **투입인원** : 안드로이드(1명), 서버(1명), iOS(1명), 기획자(1명), 디자인(1명) - 본인 iOS 담당
+<br><br>
 
 📒 **주요업무** 
 - iOS 클라이언트 개발
 - UIKit을 이용한 View제작
-- Alamofire를 통한 RESTFul API네트워크 통신
-
+- Alamofire를 통한 RESTful API네트워크 통신
+- SnapKit을 이용한 codable한 layout구성<br>
 < 추가업무 >
 - ReactorKit을 활용한 MVVM 패턴 적용
 - RxSwift를 통한 비동기 UI작업 처리
+
+<br><br>
+
+🌱 **사용툴**
+
+`Xcode` `Figma` `Discord` `Notion` `Github` `Postman` `Swagger` 
+
+<br><br>
+## 시연 영상 (iOS)
+
+<img src="https://user-images.githubusercontent.com/80234027/203608827-db28d952-3ef9-48f9-b746-c786aa2a5ae2.gif"  width="200" height="432.5">
+
 
