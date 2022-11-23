@@ -1,4 +1,4 @@
-📚 오늘의 조약돌(Pebbles) - 목표를 이루는 하루 
+📚 오늘의 조약돌(Pebbles) - 목표를 이루는 하루 만들기
 ====================
 [![Build Status](https://img.shields.io/badge/status-developing-green)](https://github.com/tmdgh1592/Parking-Service)
 ![License](https://img.shields.io/apm/l/vim-mode?color=yellowgreen)
