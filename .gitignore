@@ -161,6 +161,5 @@ Dependencies/
 # After new code Injection tools there's a generated folder /iOSInjectionProject
 # https://github.com/johnno1962/injectionforxcode
 
-Pebbles/Resource
 Pebbles/Configuration/Secret
 # End of https://www.toptal.com/developers/gitignore/api/swift,macos,cocoapods,objective-c

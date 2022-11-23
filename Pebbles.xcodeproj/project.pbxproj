@@ -72,7 +72,6 @@
 		847B793028EB6E34000DC20A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847B792E28EB6E34000DC20A /* LoginViewController.xib */; };
 		847B793B28EB78FB000DC20A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B793A28EB78FB000DC20A /* SceneDelegate.swift */; };
 		847B793D28EB7A6B000DC20A /* LaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 847B793C28EB7A6B000DC20A /* LaunchScreen.png */; };
-		847B794228EB95A7000DC20A /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B794128EB95A7000DC20A /* Secret.swift */; };
 		847B794A28EC4CBF000DC20A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B794828EC4CBF000DC20A /* SignUpViewController.swift */; };
 		847B794B28EC4CBF000DC20A /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847B794928EC4CBF000DC20A /* SignUpViewController.xib */; };
 		847B797F28EC7556000DC20A /* WriteNickNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B797E28EC7556000DC20A /* WriteNickNameViewModel.swift */; };
@@ -180,7 +179,6 @@
 		847B792E28EB6E34000DC20A /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		847B793A28EB78FB000DC20A /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		847B793C28EB7A6B000DC20A /* LaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreen.png; sourceTree = "<group>"; };
-		847B794128EB95A7000DC20A /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		847B794828EC4CBF000DC20A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		847B794928EC4CBF000DC20A /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		847B797E28EC7556000DC20A /* WriteNickNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteNickNameViewModel.swift; sourceTree = "<group>"; };
@@ -618,7 +616,6 @@
 		847B794028EB958B000DC20A /* Secret */ = {
 			isa = PBXGroup;
 			children = (
-				847B794128EB95A7000DC20A /* Secret.swift */,
 			);
 			path = Secret;
 			sourceTree = "<group>";
@@ -964,7 +961,6 @@
 				847B78D628E9DAE7000DC20A /* UIImage.swift in Sources */,
 				84EE42332926774000728273 /* RealMDataManager.swift in Sources */,
 				8484EE2A291D308300F96E4B /* AddPebblesViewController.swift in Sources */,
-				847B794228EB95A7000DC20A /* Secret.swift in Sources */,
 				841836B92923EF32007353C4 /* AddSandViewController.swift in Sources */,
 				846BA205291E1A8B0058A763 /* RockCollectionViewCell.swift in Sources */,
 				847B78C828E9DA94000DC20A /* Date.swift in Sources */,
