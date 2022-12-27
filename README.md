@@ -39,8 +39,8 @@
 - UIKit을 이용한 View제작
 - Alamofire를 통한 RESTful API네트워크 통신
 - SnapKit을 이용한 codable한 layout구성
-- ReactorKit을 활용한 MVVM 패턴 적용
-- RxSwift를 통한 비동기 UI작업 처리
+- ReactorKit을 활용한 MVVM 패턴 적용 (~진행 중)
+- RxSwift를 통한 비동기 UI작업 처리 (~진행 중)
 
 <br><br>
 
