@@ -34,12 +34,11 @@
 👨‍💻 **투입인원** : 안드로이드(1명), 서버(1명), iOS(1명), 기획자(1명), 디자인(1명) - 본인 iOS 담당
 <br><br>
 
-📒 **주요업무** 
+📒 **주요업무**
 - iOS 클라이언트 개발
 - UIKit을 이용한 View제작
 - Alamofire를 통한 RESTful API네트워크 통신
-- SnapKit을 이용한 codable한 layout구성<br>
-< 추가업무 >
+- SnapKit을 이용한 codable한 layout구성
 - ReactorKit을 활용한 MVVM 패턴 적용
 - RxSwift를 통한 비동기 UI작업 처리
 
